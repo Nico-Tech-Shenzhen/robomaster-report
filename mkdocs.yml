@@ -1,5 +1,5 @@
 site_name: RoboMaster 完全研究レポート
-site_url: https://takasumasakazu.net/robomaster-report/
+site_url: https://takasumasakazu.net/
 theme:
   name: material
   language: ja
@@ -33,6 +33,7 @@ plugins:
       cover_title: RoboMaster 完全研究レポート
       cover_subtitle: 中国ロボット競技のエコシステム、技術、政策を深掘りする
       enabled_if_env: ENABLE_PDF_EXPORT
+      output_path: pdf/robomaster-report.pdf
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
