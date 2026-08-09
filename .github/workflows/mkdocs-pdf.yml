@@ -1,13 +1,9 @@
-name: Build and Deploy MkDocs with PDF
+name: Build and Deploy MkDocs
 
 on:
   push:
-    branches:
-      - main
-
-concurrency:
-  group: pages
-  cancel-in-progress: false
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -21,7 +17,7 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install system dependencies (CJK fonts)
+      - name: Install CJK fonts
         run: |
           sudo apt-get update
           sudo apt-get install -y fonts-noto-cjk
@@ -32,7 +28,7 @@ jobs:
           pip install mkdocs-with-pdf
           pip install pymdown-extensions
 
-      - name: Build MkDocs site + PDF
+      - name: Build site with PDF
         env:
           ENABLE_PDF_EXPORT: 1
         run: mkdocs build
@@ -44,9 +40,9 @@ jobs:
           path: site/pdf/*.pdf
           if-no-files-found: warn
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy to gh-pages
+        if: github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
-          cname: takasumasakazu.net

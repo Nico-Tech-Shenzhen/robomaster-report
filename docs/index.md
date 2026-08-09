@@ -3,7 +3,7 @@
 本レポートは、DJIが主催する大学ロボット競技大会「RoboMaster（ロボマスター）」を多角的に分析した包括的研究です。
 
 [![Build Status](https://github.com/Nico-Tech-Shenzhen/robomaster-report/actions/workflows/mkdocs-pdf.yml/badge.svg)](https://github.com/Nico-Tech-Shenzhen/robomaster-report/actions/workflows/mkdocs-pdf.yml)
-[![Pages](https://img.shields.io/badge/View-Report-blue?logo=github)](https://takasumasakazu.net/robomaster-report/)
+[![Pages](https://img.shields.io/badge/View-Report-blue?logo=github)](https://nico-tech-shenzhen.github.io/robomaster-report/)
 
 ## 対象読者
 
