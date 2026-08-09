@@ -1,0 +1,48 @@
+name: Build and Deploy MkDocs with PDF
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install mkdocs-material
+          pip install mkdocs-with-pdf
+          pip install pymdown-extensions
+
+      - name: Build MkDocs site
+        run: mkdocs build
+
+      - name: Build PDF
+        env:
+          ENABLE_PDF_EXPORT: 1
+        run: mkdocs build
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: robomaster-report-pdf
+          path: site/pdf/*.pdf
+
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
