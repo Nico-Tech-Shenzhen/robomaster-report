@@ -1,4 +1,4 @@
-site_name: RoboMaster 完全研究レポート
+site_name: ROBOMASTER レポート
 site_url: https://nico-tech-shenzhen.github.io/robomaster-report/
 theme:
   name: material
@@ -29,7 +29,9 @@ extra:
 plugins:
   - search
   - with-pdf:
-      author: Nico Tech Shenzhen
+      author: Scramble
+      cover_title: ROBOMASTER レポート
+      cover_subtitle: 中国ロボット競技のエコシステム、技術、政策を深掘りする
       cover_title: RoboMaster 完全研究レポート
       cover_subtitle: 中国ロボット競技のエコシステム、技術、政策を深掘りする
       enabled_if_env: ENABLE_PDF_EXPORT

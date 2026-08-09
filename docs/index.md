@@ -1,10 +1,9 @@
-# RoboMaster 完全研究レポート
+# ROBOMASTER レポート
 
-本レポートは、DJIが主催する大学ロボット競技大会「**RoboMaster（ロボマスター）**」を多角的に分析した包括的研究です。中国のロボティクス産業、教育制度、スタートアップエコシステムの交差点に位置するこの競技大会の構造を、政策・技術・ビジネスの3側面から深掘りします。
+本レポートは、**次世代ロボットエンジニア支援機構 Scramble（一般社団法人）**が、日本における今後のロボット競技の開催およびロボットエンジニア人材の育成を目的に作成した調査研究資料である。DJIが主催する大学ロボット競技大会「**RoboMaster（ロボマスター）**」の構造を、中国のロボティクス産業、教育制度、スタートアップエコシステムの交差点から政策・技術・ビジネスの3側面から深掘りする。
 
 [:material-file-pdf-box: PDF版をダウンロード](pdf/robomaster-report.pdf){ .md-button .md-button--primary }
 [:material-github: GitHubリポジトリ](https://github.com/Nico-Tech-Shenzhen/robomaster-report){ .md-button }
-[:octicons-mark-github-24: GitHubリポジトリ](https://github.com/Nico-Tech-Shenzhen/robomaster-report){ .md-button }
 
 ---
 
