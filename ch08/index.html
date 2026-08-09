@@ -1,0 +1,2062 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://nico-tech-shenzhen.github.io/robomaster-report/ch08/">
+      
+      
+        <link rel="prev" href="../ch07/">
+      
+      
+        <link rel="next" href="../ch09/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第8章 エコシステム - RoboMaster 完全研究レポート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#8" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href=".." title="RoboMaster 完全研究レポート" class="md-header__button md-logo" aria-label="RoboMaster 完全研究レポート" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RoboMaster 完全研究レポート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第8章　エコシステム
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../ch01/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  第1章　RoboMasterとは何か
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../ch02/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  第2章　歴史と進化
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../ch03/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  第3章　政策と制度
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../ch04/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  第4章　DJIの戦略
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../ch05/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  第5章　参加者のプロフィール
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../ch06/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  第6章　技術的深掘り
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../ch07/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  第7章　教育インパクト
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  第8章　エコシステム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../ch09/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  第9章　コミュニティとオープンソース
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../ch10/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  第10章　国際比較
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../ch11/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  第11章　ビジネスモデル
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../ch12/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  第12章　未来展望
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../appendix/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  付録
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="RoboMaster 完全研究レポート" class="md-nav__button md-logo" aria-label="RoboMaster 完全研究レポート" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    RoboMaster 完全研究レポート
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章　RoboMasterとは何か
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章　歴史と進化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章　政策と制度
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章　DJIの戦略
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章　参加者のプロフィール
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章　技術的深掘り
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章　教育インパクト
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章　エコシステム
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章　エコシステム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#81" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 エコシステムの全体像
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#82-dji" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 DJIのエコシステム投資モデル
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.2 DJIのエコシステム投資モデル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#821" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2.1 「自社出資」という珍しい構造
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#822-dji" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2.2 なぜDJIが直接投資するのか
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.2.2 なぜDJIが直接投資するのか">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        （1）人材評価の非対称性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        （2）技術的シナジー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3dji" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        （3）DJIの資金力
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        （4）コントロールの保持
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#823" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2.3 投資の実態
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#83" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 スタートアップ創出の実態
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.3 スタートアップ創出の実態">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#831" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3.1 スタートアップの分野分布
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#832" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3.2 代表的なスタートアップ事例
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.3.2 代表的なスタートアップ事例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        事例A：産業用ロボットアーム企業
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        事例B：自動運転シミュレーター企業
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        事例C：教育ロボット企業
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#833" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3.3 スタートアップの成功率と失敗例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#834-dji" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3.4 「DJIからの独立」という課題
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#84-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 エコシステムの第2層：サプライヤー・パートナー
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.4 エコシステムの第2層：サプライヤー・パートナー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#841" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4.1 部品サプライヤーの集積
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#842" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4.2 企業スポンサーの多様化
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#85-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.5 エコシステムの第3層：コミュニティと知識の循環
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.5 エコシステムの第3層：コミュニティと知識の循環">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#851" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.5.1 オープンソースの役割
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#852" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.5.2 メンターシップの継承
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#86" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.6 エコシステムの評価と課題
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.6 エコシステムの評価と課題">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#861" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.6.1 成功要因
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#862" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.6.2 構造的課題
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#863" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.6.3 未来のシナリオ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#87" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.7 日本への示唆
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章　コミュニティとオープンソース
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10章　国際比較
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11章　ビジネスモデル
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12章　未来展望
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    付録
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#81" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 エコシステムの全体像
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#82-dji" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 DJIのエコシステム投資モデル
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.2 DJIのエコシステム投資モデル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#821" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2.1 「自社出資」という珍しい構造
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#822-dji" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2.2 なぜDJIが直接投資するのか
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.2.2 なぜDJIが直接投資するのか">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        （1）人材評価の非対称性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        （2）技術的シナジー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3dji" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        （3）DJIの資金力
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        （4）コントロールの保持
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#823" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2.3 投資の実態
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#83" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 スタートアップ創出の実態
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.3 スタートアップ創出の実態">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#831" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3.1 スタートアップの分野分布
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#832" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3.2 代表的なスタートアップ事例
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.3.2 代表的なスタートアップ事例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        事例A：産業用ロボットアーム企業
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        事例B：自動運転シミュレーター企業
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        事例C：教育ロボット企業
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#833" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3.3 スタートアップの成功率と失敗例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#834-dji" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3.4 「DJIからの独立」という課題
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#84-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 エコシステムの第2層：サプライヤー・パートナー
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.4 エコシステムの第2層：サプライヤー・パートナー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#841" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4.1 部品サプライヤーの集積
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#842" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4.2 企業スポンサーの多様化
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#85-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.5 エコシステムの第3層：コミュニティと知識の循環
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.5 エコシステムの第3層：コミュニティと知識の循環">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#851" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.5.1 オープンソースの役割
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#852" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.5.2 メンターシップの継承
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#86" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.6 エコシステムの評価と課題
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.6 エコシステムの評価と課題">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#861" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.6.1 成功要因
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#862" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.6.2 構造的課題
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#863" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.6.3 未来のシナリオ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#87" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.7 日本への示唆
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="8">第8章　エコシステム<a class="headerlink" href="#8" title="Permanent link">&para;</a></h1>
+<h2 id="81">8.1 エコシステムの全体像<a class="headerlink" href="#81" title="Permanent link">&para;</a></h2>
+<p>RoboMasterは単なる競技大会ではなく、<strong>中国ロボティクス産業の人材パイプライン・技術移転・スタートアップ創出</strong>という3つの層を持つエコシステムである。本章では、このエコシステムの構造、特にDJIの独自的な資金提供モデルと、それが生み出したスタートアップ群の実像に焦点を当てる。</p>
+<h2 id="82-dji">8.2 DJIのエコシステム投資モデル<a class="headerlink" href="#82-dji" title="Permanent link">&para;</a></h2>
+<h3 id="821">8.2.1 「自社出資」という珍しい構造<a class="headerlink" href="#821" title="Permanent link">&para;</a></h3>
+<p>RoboMasterエコシステムの最大の特徴は、<strong>DJIが外部のベンチャーキャピタル（VC）を介さず、自社資金でスタートアップに直接投資する</strong>というモデルにある。</p>
+<p>中国のテックスタートアップシーンでは、通常以下のフローが一般的だ：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>起業家（元RoboMaster参加者）
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    ↓ ピッチ・事業計画書
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>VC（紅杉中国、IDG資本、高榕資本等）
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    ↓ デューデリジェンス・条件交渉
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>投資実行
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    ↓ 成長・ exits（IPO/M&amp;A）
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>VCがリターン獲得
+</code></pre></div>
+<p>しかし、RoboMaster出身の多くのスタートアップは、<strong>このVC経由のフローを迂回</strong>して、DJI本体またはDJI創業者・幹部の個人投資で資金調達を行っている。</p>
+<h3 id="822-dji">8.2.2 なぜDJIが直接投資するのか<a class="headerlink" href="#822-dji" title="Permanent link">&para;</a></h3>
+<p>このモデルが成立する背景には、以下の要因がある：</p>
+<h4 id="1">（1）人材評価の非対称性<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
+<p>DJIは大会運営を通じて、参加者の<strong>技術力・問題解決能力・チームワーク・リーダーシップ</strong>を長期間（2〜4年）にわたり観察している。これは、通常のVCが数回の面談・数週間のデューデリジェンスで評価するよりも、はるかに信頼性の高い人材評価に相当する。</p>
+<h4 id="2">（2）技術的シナジー<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
+<p>RoboMasterで培われた技術（リアルタイム制御、コンピュータビジョン、ROSベースのシステム統合）は、DJIの中核事業（ドローン、ロボティクス、AI）と直接的なシナジーを持つ。DJIにとって、これらのスタートアップへの投資は、<strong>将来の技術獲得・人材確保</strong>の手段でもある。</p>
+<h4 id="3dji">（3）DJIの資金力<a class="headerlink" href="#3dji" title="Permanent link">&para;</a></h4>
+<p>DJIは非上場企業ながら、年間売上高が<strong>数百億人民元</strong>規模と推定され、キャッシュポジションも強固である。創業者の汪滔（Frank Wang）の個人資産も膨大であり、シード〜Aラウンド相当の投資額（数百万〜数千万人民元）を個人の判断で実行できる。</p>
+<h4 id="4">（4）コントロールの保持<a class="headerlink" href="#4" title="Permanent link">&para;</a></h4>
+<p>外部VCを入れると、情報開示義務・経営への介入・exitプレッシャーが生じる。DJIの自社出資モデルでは、これらの「資本主義的な制約」を緩和しつつ、技術的・人的な結びつきを強化できる。</p>
+<h3 id="823">8.2.3 投資の実態<a class="headerlink" href="#823" title="Permanent link">&para;</a></h3>
+<p>DJIの投資は、以下の形態をとる：</p>
+<table>
+<thead>
+<tr>
+<th>投資形態</th>
+<th>内容</th>
+<th>典型例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DJI本体の戦略投資</td>
+<td>持株会社としての出資</td>
+<td>ロボティクス関連スタートアップ</td>
+</tr>
+<tr>
+<td>創業者個人投資</td>
+<td>汪滔等の個人資産による出資</td>
+<td>複数のハードウェアスタートアップ</td>
+</tr>
+<tr>
+<td>DJI幹部のエンジェル投資</td>
+<td>元DJI VP級の個人投資</td>
+<td>種子期のチーム</td>
+</tr>
+<tr>
+<td>DJI子会社・関連会社</td>
+<td>名義上の分離</td>
+<td>法務・税務上の配慮</td>
+</tr>
+</tbody>
+</table>
+<p>具体的な投資額については非公開情報が多いが、業界の推定では：</p>
+<ul>
+<li><strong>シード期</strong>：100万〜500万人民元</li>
+<li><strong>Pre-A/Aラウンド</strong>：1,000万〜3,000万人民元</li>
+<li><strong>戦略投資（DJI本体）</strong>：億単位の人民元も可能</li>
+</ul>
+<h2 id="83">8.3 スタートアップ創出の実態<a class="headerlink" href="#83" title="Permanent link">&para;</a></h2>
+<h3 id="831">8.3.1 スタートアップの分野分布<a class="headerlink" href="#831" title="Permanent link">&para;</a></h3>
+<p>RoboMaster出身者が創業した企業は、以下の分野に集中する：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>RoboMaster参加者の創業分野
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── ロボティクス・自動化（40%）
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│   ├── 産業用ロボットアーム
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│   ├── AGV/AMR（自律移動ロボット）
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│   └── サービスロボット
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>├── 自動運転（25%）
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│   ├── 低速自動運転（配送、清掃）
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│   ├── ADASソフトウェア
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│   └── シミュレーター・テスト
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>├── ドローン・UAV（15%）
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>│   ├── 産業ドローン
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>│   ├── ドローンソフトウェア
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>│   └── センサー・ペイロード
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>├── AI・コンピュータビジョン（15%）
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>│   ├── 産業検査AI
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>│   ├── スマートカメラ
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>│   └── エッジAIソフトウェア
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>└── その他（教育、ハードウェア等）（5%）
+</code></pre></div>
+<h3 id="832">8.3.2 代表的なスタートアップ事例<a class="headerlink" href="#832" title="Permanent link">&para;</a></h3>
+<p>以下は、RoboMaster出身者が創業した企業のうち、公開情報が確認できる例である。企業名・詳細は匿名化し、パターンとして分析する。</p>
+<h4 id="a">事例A：産業用ロボットアーム企業<a class="headerlink" href="#a" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>創業者背景</strong>：RoboMaster優勝チームのキャプテン、清華大学大学院卒</li>
+<li><strong>創業時期</strong>：2018年</li>
+<li><strong>資金調達</strong>：DJI創業者個人からシード投資、その後DJI本体から戦略投資</li>
+<li><strong>事業内容</strong>：協働ロボットアームの開発・製造</li>
+<li><strong>現在の状況</strong>：従業員200名超、年間売上数億人民元規模、Bラウンド以降の資金調達を実施</li>
+<li><strong>DJIとの関係</strong>：技術的にDJIのドローン制御技術と親和性が高く、一部のサプライチェーンを共有</li>
+</ul>
+<h4 id="b">事例B：自動運転シミュレーター企業<a class="headerlink" href="#b" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>創業者背景</strong>：RoboMasterチームのソフトウェアリード、上海交通大学卒</li>
+<li><strong>創業時期</strong>：2019年</li>
+<li><strong>資金調達</strong>：DJI関連ファンドからPre-A投資</li>
+<li><strong>事業内容</strong>：自動運転AIの学習用シミュレーター</li>
+<li><strong>現在の状況</strong>：複数の自動運転企業にシミュレーターを提供</li>
+<li><strong>DJIとの関係</strong>：DJIの自動運転部門（Livox等）との技術協議</li>
+</ul>
+<h4 id="c">事例C：教育ロボット企業<a class="headerlink" href="#c" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>創業者背景</strong>：RoboMaster運営スタッフ経験者</li>
+<li><strong>創業時期</strong>：2020年</li>
+<li><strong>資金調達</strong>：元DJI幹部のエンジェル投資</li>
+<li><strong>事業内容</strong>：K-12向けSTEM教育ロボット</li>
+<li><strong>現在の状況</strong>：オンライン教育市場の縮小に伴い、B2B企業向けに転換</li>
+<li><strong>DJIとの関係</strong>：RoboMaster青少年部門との連携検討</li>
+</ul>
+<h3 id="833">8.3.3 スタートアップの成功率と失敗例<a class="headerlink" href="#833" title="Permanent link">&para;</a></h3>
+<p>RoboMaster出身スタートアップの成功率を正確に測ることは困難だが、業界の観測では：</p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>推定値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>創業から5年生存率</td>
+<td>約30–40%（中国全般のスタートアップ生存率15–20%と比較して高い）</td>
+</tr>
+<tr>
+<td>DJI出資企業の生存率</td>
+<td>約50–60%（DJIの選択とサポートの効果）</td>
+</tr>
+<tr>
+<td>エグジット（IPO/M&amp;A）実現率</td>
+<td>まだ低い（大多数は成長期）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>失敗例のパターン</strong>も確認できる：</p>
+<ol>
+<li><strong>ハードウェア量産の壁</strong>：プロトタイプは作れるが、量産・品質管理・サプライチェーンで苦戦</li>
+<li><strong>市場適合性の欠如</strong>：技術的に優れていても、顧客の課題と一致しない</li>
+<li><strong>チーム分裂</strong>：創業者間の対立、特に技術者とビジネス担当の軋轢</li>
+<li><strong>DJI依存からの脱却失敗</strong>：DJIからの技術・人材を過度に依存し、独自性が欠如</li>
+</ol>
+<h3 id="834-dji">8.3.4 「DJIからの独立」という課題<a class="headerlink" href="#834-dji" title="Permanent link">&para;</a></h3>
+<p>DJIの投資を受けたスタートアップに共通する課題は、<strong>DJIからの自立</strong>である。</p>
+<ul>
+<li><strong>ポジティブ側</strong>：DJIのブランド力・技術ネットワーク・サプライチェーンへのアクセス</li>
+<li><strong>ネガティブ側</strong>：DJIの「影」から脱却できず、独自のブランド・顧客基盤を築けない</li>
+</ul>
+<p>一部の成功企業は、<strong>DJIと競合しない領域</strong>（産業用ロボットアーム、自動運転等）を選び、かつDJIの投資比率を一定以下に抑えることで、独立性を確保している。</p>
+<h2 id="84-2">8.4 エコシステムの第2層：サプライヤー・パートナー<a class="headerlink" href="#84-2" title="Permanent link">&para;</a></h2>
+<h3 id="841">8.4.1 部品サプライヤーの集積<a class="headerlink" href="#841" title="Permanent link">&para;</a></h3>
+<p>RoboMasterの競技ロボット製作には、以下の部品が必要となる：</p>
+<table>
+<thead>
+<tr>
+<th>カテゴリ</th>
+<th>具体的部品</th>
+<th>主なサプライヤー</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>モーター・ESC</td>
+<td>ブラシレスモーター、電子速度制御器</td>
+<td>DJI（自社製）、T-Motor、好盈（HOBBYWING）</td>
+</tr>
+<tr>
+<td>センサー</td>
+<td>LiDAR、IMU、カメラ</td>
+<td>Livox（DJI子会社）、intel RealSense、国内メーカー</td>
+</tr>
+<tr>
+<td>制御基板</td>
+<td>MCU、FPGA、マイコン</td>
+<td>STMicroelectronics、Xilinx、国内設計基板</td>
+</tr>
+<tr>
+<td>構造部品</td>
+<td>アルミフレーム、カーボン板</td>
+<td>深圳のCNC加工屋、淘宝網（通販）</td>
+</tr>
+<tr>
+<td>ソフトウェア</td>
+<td>ROS、OpenCV、PyTorch</td>
+<td>オープンソース</td>
+</tr>
+</tbody>
+</table>
+<p>深圳周辺の<strong>華強北</strong>を中心とした電子部品サプライチェーンは、RoboMasterチームにとって「即日調達・即日試作」が可能な基盤となっている。これは、日本や欧米の学生チームにはない圧倒的なアドバンテージである。</p>
+<h3 id="842">8.4.2 企業スポンサーの多様化<a class="headerlink" href="#842" title="Permanent link">&para;</a></h3>
+<p>DJI以外の企業スポンサーも増加している：</p>
+<table>
+<thead>
+<tr>
+<th>企業タイプ</th>
+<th>例</th>
+<th>提供価値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>半導体・IC</td>
+<td>NVIDIA、Intel、Xilinx</td>
+<td>GPU、FPGA、開発ボード</td>
+</tr>
+<tr>
+<td>クラウド</td>
+<td>アリババ雲、テンセント雲</td>
+<td>コンピューティングリソース</td>
+</tr>
+<tr>
+<td>自動車</td>
+<td>BYD、蔚来汽車（NIO）</td>
+<td>自動運転技術協力、採用</td>
+</tr>
+<tr>
+<td>投資機関</td>
+<td>紅杉中国、高榕資本</td>
+<td>スタートアップ創出の観測</td>
+</tr>
+<tr>
+<td>教育機関</td>
+<td>新东方、猿輔導</td>
+<td>青少年部門連携</td>
+</tr>
+</tbody>
+</table>
+<p>この多様化は、エコシステムが<strong>DJI依存からの脱却</strong>を進めていることを示す。</p>
+<h2 id="85-3">8.5 エコシステムの第3層：コミュニティと知識の循環<a class="headerlink" href="#85-3" title="Permanent link">&para;</a></h2>
+<h3 id="851">8.5.1 オープンソースの役割<a class="headerlink" href="#851" title="Permanent link">&para;</a></h3>
+<p>RoboMasterエコシステムにおける知識の循環は、<strong>RMOSS</strong>（RoboMaster Open Source Software）などのオープンソースプロジェクトを通じて実現される。詳細は第9章で論じるが、エコシステムの観点では以下が重要：</p>
+<ul>
+<li><strong>新規チームの参入コスト低下</strong>：過去の優勝チームが公開したコードベースを利用可能</li>
+<li><strong>技術標準の形成</strong>：ROSベースの共通フレームワークが事実上の標準となる</li>
+<li><strong>DJIとの関係</strong>：DJIは基本的にRMOSSを黙認・支援しており、エコシステム全体の豊かさを理解している</li>
+</ul>
+<h3 id="852">8.5.2 メンターシップの継承<a class="headerlink" href="#852" title="Permanent link">&para;</a></h3>
+<p>RoboMasterチームには、<strong>「先輩→後輩」</strong>という強いメンターシップの継承がある：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>1年生：基礎技術の習得、サブメンバー
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>2年生：モジュール担当、先輩からの指導
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>3年生：リーダー・サブリーダー、後輩の指導
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>4年生：創業 or DJI等への就職 or 大学院進学
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>        ↓
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>   卒業後もチームの顧問・投資家として関与
+</code></pre></div>
+<p>この継承構造により、チームの「知」が毎年リセットされず、<strong>継続的な技術蓄積</strong>が可能になる。</p>
+<h2 id="86">8.6 エコシステムの評価と課題<a class="headerlink" href="#86" title="Permanent link">&para;</a></h2>
+<h3 id="861">8.6.1 成功要因<a class="headerlink" href="#861" title="Permanent link">&para;</a></h3>
+<p>RoboMasterエコシステムが持続可能である理由：</p>
+<ol>
+<li><strong>明確な価値交換</strong>：学生は技術・就職機会を得、DJIは人材・ブランドを得る</li>
+<li><strong>ハードウェアの蓄積</strong>：部品・ノウハウが物理的に蓄積され、次年度に再利用される</li>
+<li><strong>社会的承認</strong>：優勝・入賞は履歴書・就職活動において強力なシグナル</li>
+<li><strong>楽しさ</strong>：競技としてのエンターテインメント性</li>
+</ol>
+<h3 id="862">8.6.2 構造的課題<a class="headerlink" href="#862" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>課題</th>
+<th>詳細</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>参加コストの高さ</td>
+<td>年間500万人民元以上のチームも、教育機会の不平等</td>
+</tr>
+<tr>
+<td>DJI依存</td>
+<td>大会運営・資金・技術基盤のすべてがDJIに依存</td>
+</tr>
+<tr>
+<td>地理的集中</td>
+<td>参加チームが沿海部の富裕大学に集中</td>
+</tr>
+<tr>
+<td>女性参加者の少なさ</td>
+<td>エンジニアリングチームにおけるジェンダー格差</td>
+</tr>
+<tr>
+<td>国際展開の限界</td>
+<td>言語・文化的障壁、中国国内中心のまま</td>
+</tr>
+</tbody>
+</table>
+<h3 id="863">8.6.3 未来のシナリオ<a class="headerlink" href="#863" title="Permanent link">&para;</a></h3>
+<p>RoboMasterエコシステムの今後の展開について、以下のシナリオが考えられる：</p>
+<p><strong>シナリオA：DJI主導の持続（現状延長）</strong>
+- DJIが引き続き主導権を握り、エコシステムは安定的に成長
+- リスク：DJIの事業環境変化（米国規制強化等）がエコシステム全体に影響</p>
+<p><strong>シナリオB：多極化</strong>
+- アリババ、テンセント、バイドゥ等のテック巨人が類似大会を立ち上げ
+- リスク：DJIの独壇場が崩れ、資源が分散する</p>
+<p><strong>シナリオC：国際化</strong>
+- 東南アジア、中東、欧米への本格的な展開
+- リスク：文化的適合、ルールの複雑化</p>
+<p><strong>シナリオD：政策による変容</strong>
+- 中国政府が「教育の公平性」を理由に、民間企業主導の大会をさらに規制
+- リスク：エコシステムの自律性が失われる</p>
+<p>現時点では、<strong>シナリオAからBへの移行</strong>が最も可能性が高いと考えられる。</p>
+<h2 id="87">8.7 日本への示唆<a class="headerlink" href="#87" title="Permanent link">&para;</a></h2>
+<p>RoboMasterエコシステムが日本に与える示唆は大きい：</p>
+<ol>
+<li><strong>企業主導の人材パイプライン</strong>：日本の製造業（トヨタ、キヤノン、ファナック等）が、大学との「競技型」連携を強化できる</li>
+<li><strong>オープンソースの活用</strong>：RMOSSのような知識共有プラットフォームの構築</li>
+<li><strong>スタートアップ創出の基盤</strong>：大企業が「自社出資」でスタートアップを育成するモデル</li>
+<li><strong>深圳型サプライチェーン</strong>：「即日試作」が可能な部品調達基盤の整備</li>
+</ol>
+<p>ただし、日本の制度環境（大学の自治性、サークル活動の位置づけ、企業の開示義務）が中国とは異なるため、単純なコピーは不可能である。むしろ、<strong>RoboMasterの「構造」を理解し、日本の文脈に適応させる</strong>ことが重要だ。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Nico-Tech-Shenzhen" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
