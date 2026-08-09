@@ -2,7 +2,8 @@
 
 本レポートは、DJIが主催する大学ロボット競技大会「**RoboMaster（ロボマスター）**」を多角的に分析した包括的研究です。中国のロボティクス産業、教育制度、スタートアップエコシステムの交差点に位置するこの競技大会の構造を、政策・技術・ビジネスの3側面から深掘りします。
 
-[:octicons-file-pdf-24: PDF版をダウンロード](pdf/robomaster-report.pdf){ .md-button .md-button--primary }
+[:material-file-pdf-box: PDF版をダウンロード](pdf/robomaster-report.pdf){ .md-button .md-button--primary }
+[:material-github: GitHubリポジトリ](https://github.com/Nico-Tech-Shenzhen/robomaster-report){ .md-button }
 [:octicons-mark-github-24: GitHubリポジトリ](https://github.com/Nico-Tech-Shenzhen/robomaster-report){ .md-button }
 
 ---
@@ -10,7 +11,7 @@
 ## 主要な発見
 
 - RoboMasterは単なる競技大会ではなく、**中国ロボティクス産業の人材パイプライン**として機能している
-- 2019年の**ホワイトリスト制度への格下げ**は、政府の優遇政策から自律的エコシステムへの転換点となった
+- 2019年の**ホワイトリストからの退出**は、エコシステムが自律的に自走できるようになった転換点となった
 - DJIの**自社出資モデル**は、外部VCに依存しない持続可能なスタートアップ育成の珍しい事例である
 - **RMOSS**などのオープンソースフレームワークが、グローバルな技術標準化を促進している
 
