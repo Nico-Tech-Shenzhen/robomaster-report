@@ -4,17 +4,11 @@
 
 - **URLs must be specific**, not top-level pages. Click → direct document.
 - **URLs must be clickable links**: Wrap all `Available: URL` with angle brackets: `Available: <URL>`. This enables MkDocs auto-linking.
-- **Priority**: ①Chinese primary docs (DJI, teams) ②Zhihu/bbs ③GitHub ④Chinese media ⑤EN/JP secondary
+- **In-body URLs must be links**: Any URL mentioned in body text must be a clickable link: `[text](<URL>)` or `<URL>` for bare URLs.
+- **Priority**: ①Chinese primary docs (DJI, teams) ②Zhihu/bbs ③GitHub/Gitee ④Chinese media ⑤EN/JP secondary
 - **Format**: IEEE style
   ```
   [1] Author, "Title," Location, Year. [Online]. Available: <URL>
-  ```
-
-- **URLs must be specific**, not top-level pages. Click → direct document.
-- **Priority**: ①Chinese primary docs (DJI, teams) ②Zhihu/bbs ③GitHub ④Chinese media ⑤EN/JP secondary
-- **Format**: IEEE style
-  ```
-  [1] Author, "Title," Location, Year. [Online]. Available: URL
   ```
 
 ## 2. Facts First
@@ -51,9 +45,10 @@ Before each chapter edit, re-read this file. After adding rules, check for:
 
 | Type | Format |
 |---|---|
-| Online report | `[n] Author, "Title," Location, Year. [Online]. Available: URL` |
-| Web page | `[n] Author, "Page Title," Website, Date. [Online]. Available: URL` |
-| GitHub repo | `[n] Author/Org, "Repo Name," GitHub, Year. [Online]. Available: URL` |
+| Online report | `[n] Author, "Title," Location, Year. [Online]. Available: <URL>` |
+| Web page | `[n] Author, "Page Title," Website, Date. [Online]. Available: <URL>` |
+| GitHub repo | `[n] Author/Org, "Repo Name," GitHub, Year. [Online]. Available: <URL>` |
+| Gitee repo | `[n] Author/Org, "Repo Name," Gitee, Year. [Online]. Available: <URL>` |
 | Quote/Interview | `[n] Name (Title, Org), "Statement," Context, Date.` |
 
 ---
