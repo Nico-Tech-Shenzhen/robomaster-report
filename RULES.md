@@ -3,6 +3,14 @@
 ## 1. References
 
 - **URLs must be specific**, not top-level pages. Click → direct document.
+- **URLs must be clickable links**: Wrap all `Available: URL` with angle brackets: `Available: <URL>`. This enables MkDocs auto-linking.
+- **Priority**: ①Chinese primary docs (DJI, teams) ②Zhihu/bbs ③GitHub ④Chinese media ⑤EN/JP secondary
+- **Format**: IEEE style
+  ```
+  [1] Author, "Title," Location, Year. [Online]. Available: <URL>
+  ```
+
+- **URLs must be specific**, not top-level pages. Click → direct document.
 - **Priority**: ①Chinese primary docs (DJI, teams) ②Zhihu/bbs ③GitHub ④Chinese media ⑤EN/JP secondary
 - **Format**: IEEE style
   ```
