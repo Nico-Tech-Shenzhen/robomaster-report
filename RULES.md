@@ -43,11 +43,6 @@
 
 ## 7. Self-Check on Edit
 
-- Use **Japanese kanji** (新字体) in body text.
-- Simplified Chinese **only** in: direct quotes, titles, proper nouns, URLs.
-
-## 6. Self-Check on Edit
-
 Before each chapter edit, re-read this file. After adding rules, check for:
 - Contradictions with existing rules
 - Redundancy (merge don't append)
