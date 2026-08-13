@@ -1,6 +1,6 @@
 # Chinese-Japanese Term Dictionary (dic.md)
 
-> Auto-generated from ch01.md and ch02.md. Update as new terms appear.
+> Update as new terms appear in each chapter.
 
 ## Companies
 
@@ -13,6 +13,7 @@
 | 腾讯 | 騰訊（テンセント） | SNS・ゲーム・クラウド |
 | 阿里巴巴 | アリババ | EC・クラウド |
 | 小米 | 小米（シャオミ） | スマートフォン・IoT |
+| 字节跳动 | 字节（ByteDance） | TikTok親会社。テック企業 |
 | 影石创新 | 影石創新（Insta360） | 360度カメラ |
 | 拓竹 | 拓竹（Bambu Lab） | 3Dプリンタ |
 | 正浩 | 正浩（EcoFlow） | ポータブル電源 |
@@ -33,8 +34,16 @@
 | 全国大学生机器人大赛 | 全国大学生ロボット大会 | 共青団中央主催の大会傘下 |
 | 共青团中央 | 共青団中央 | 中国共産主義青年団中央委員会 |
 | 全国学联 | 全国学連 | 中華全国学生連合会 |
-|  RoboMaster 培训体系 | RoboMaster培訓体系 | DJI主導の教育コンテンツ |
+| RoboMaster 培训体系 | RoboMaster培訓体系 | DJI主導の教育コンテンツ |
 | 全国普通高校大学生竞赛榜单 | 全国普通高校大学生競技リスト | 通称「ホワイトリスト」 |
+
+## Government / Research Institutes
+
+| Simplified Chinese | Japanese | Notes |
+|---|---|---|
+| 中国航天研究院 | 中国航天研究院 | 国有宇宙開発研究機関 |
+| 中国广核集团 | 中国広核集団 | 国有原子力発電企業 |
+| 深圳市科技创新委员会 | 深セン市科学技術革新委員会 | 深セン市政府部局 |
 
 ## Technical Terms
 
@@ -64,6 +73,10 @@
 | 嵌入式 | 組み込み | 組み込みシステム |
 | 总线 | 総線 | CAN総線等 |
 | 保研 | 推薦研究生 | 成績優秀者の大学院推薦入学 |
+| 教改课题 | 教改課題 | 教育制度改革研究プロジェクト |
+| 课程沙龙 | 課程沙龍 | DJI主催の教育ライブ配信・フォーラム |
+| 参赛攻略 | 參賽攻略 | 大会参加ガイド |
+| PBL | PBL | プロジェクト式学習（Project-Based Learning） |
 
 ## Places
 
@@ -81,10 +94,34 @@
 | 大连理工大学 | 大連理工大学 | 大連 |
 | 中国科学技术大学 | 中国科学技術大学 | 合肥 |
 | 深圳北理莫斯科大学 | 深セン北理莫斯科大学 | 深セン。PolarBear Robotics |
+| 江苏大学 | 江蘇大学 | 镇江。RoboMaster教改課題を立案 |
+
+## Teams
+
+| Simplified Chinese | Japanese | Notes |
+|---|---|---|
 | 华南虎 | 華南虎 | 華南理工大学チーム |
 | T-DT | T-DT | 東北大学アルゴリズムチーム |
 | 狼牙 | 狼牙 | 華中科技大学チーム |
 | 交龙 | 交竜 | 上海交通大學チーム |
+
+## Media / Platforms
+
+| Simplified Chinese | Japanese | Notes |
+|---|---|---|
+| 深视新闻 | 深視新聞 | 深圳メディア。RoboMaster関連報道 |
+| 知乎 | 知乎（Zhihu） | 中国のQ&Aプラットフォーム |
+| Bilibili | Bilibili | 中国の動画プラットフォーム |
+| 微信 | WeChat（微信） | 中国のSNSプラットフォーム |
+
+## Programming / Tools
+
+| Simplified Chinese | Japanese | Notes |
+|---|---|---|
+| Scratch | Scratch | グラフィカルプログラミング言語 |
+| Python | Python | プログラミング言語 |
+| ROS | ROS | Robot Operating System |
+| ROS2 | ROS2 | Robot Operating System 2 |
 
 ---
 
