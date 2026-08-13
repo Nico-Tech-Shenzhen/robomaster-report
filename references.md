@@ -87,6 +87,40 @@
 
 [70] 美的集団AI研究院, "Embodied AI Algorithm Engineer/Senior Engineer/Principle Engineer," GitHub — Awesome-Embodied-AI-Job, 2025. [Online]. Available: <https://github.com/StarCycle/Awesome-Embodied-AI-Job/blob/main/2025/美的集团AI研究院.md>
 
+## DJI Strategy / Founding
+
+[71] DJI RoboMaster, "极少公开演讲的大疆创始人为何在大学生机器人大赛露面？," 2015. [Online]. Available: <https://www.robomaster.com/zh-CN/resource/pages/406>
+
+[72] 雷锋网, "'异类'汪滔," 2017. [Online]. Available: <https://m.leiphone.com/category/industrynews/Gf0heeZfDkJqzdP5.html>
+
+[73] 雷锋网, "大疆汪滔：我们要让工程师当明星," 2015. [Online]. Available: <https://m.leiphone.com/news/201507/9Z079z1aWojcLTj0.html>
+
+[74] DJI RoboMaster, "大疆RoboMasters全国大学生机器人大赛：寻找未来的乔布斯," 2016. [Online]. Available: <https://www.robomaster.com/zh-CN/resource/pages/472>
+
+[75] 全天候科技, "任性！豪掷三亿'造星'后，大疆的商业回报几乎为零," 2018. [Online]. Available: <https://awtmt.com/articles/3382454>
+
+[76] 新浪财经/澎湃新闻, "大疆深耕教育领域：机器人大赛为行业发展铺路，年投入达千万," 2019. [Online]. Available: <https://finance.sina.cn/2019-08-12/detail-ihytcitm8706691.d.html>
+
+[77] DJI RoboMaster, "机甲大师高校系列赛," 2026. [Online]. Available: <https://www.robomaster.com/zh-CN/robo/overview>
+
+[78] 央广网/科技频道, "企业招聘频现'RoboMaster优先' 大疆12年赛事成人才蓄水池," 2026. [Online]. Available: <https://tech.cnr.cn/techph/20260509/t20260509_527614912.shtml>
+
+[79] DJI Careers, "校园招聘 - RoboMaster专属招聘通道," 2026. [Online]. Available: <https://we.dji.com/zh-CN/campus?source=niuke1>
+
+[80] DJI 大疆创新, "【招聘帖】大疆创新 RoboMaster参赛队专场招聘," RoboMaster BBS, 2018. [Online]. Available: <https://bbs.robomaster.com/article/4650>
+
+[81] DJI 大疆创新, "DJI 大疆创新推出其首款教育机器人：机甲大师RoboMaster S1," 2019. [Online]. Available: <https://www.dji.com/cn/media-center/announcements/dji-release-robomaster-s1>
+
+[82] DJI 大疆创新, "机甲大师RoboMaster EP 技术支持," 2020. [Online]. Available: <https://www.dji.com/cn/support/product/robomaster-ep>
+
+[83] 新浪财经/网易, "大疆创新公司深度调研报告," 2025. [Online]. Available: <https://www.163.com/dy/article/KFG7MOI70556I990.html>
+
+[84] DJI RoboMaster, "RoboMaster 机甲大师高校系列赛," 2026. [Online]. Available: <https://www.robomaster.com/zh-CN/robo>
+
+---
+
+*Last updated: 2026-08-13*"Embodied AI Algorithm Engineer/Senior Engineer/Principle Engineer," GitHub — Awesome-Embodied-AI-Job, 2025. [Online]. Available: <https://github.com/StarCycle/Awesome-Embodied-AI-Job/blob/main/2025/美的集团AI研究院.md>
+
 ---
 
 *Last updated: 2026-08-13*
