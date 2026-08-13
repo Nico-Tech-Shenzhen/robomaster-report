@@ -1,52 +1,35 @@
-# RoboMaster 完全研究レポート
+# RoboMaster レポート
 
-[![Build Status](https://github.com/Nico-Tech-Shenzhen/robomaster-report/actions/workflows/mkdocs-pdf.yml/badge.svg)](https://github.com/Nico-Tech-Shenzhen/robomaster-report/actions/workflows/mkdocs-pdf.yml)
+##  レポートの概要
 
-本リポジトリは、次世代ロボットエンジニア支援機構 Scramble（一般社団法人）が作成する、DJI RoboMaster に関する包括的研究レポートのソースです。MkDocs + Material テーマで構築され、GitHub Actions により **Web サイト** と **PDF** を自動生成・デプロイします。
+本レポートは、DJI RoboMaster競技会、その技術エコシステム、そして中国のロボット産業および教育システムに与える多大なインパクトについて、包括的かつ詳細な分析を提供します。
 
-## 公開サイト
+##  目次
 
-| 形式 | URL |
-|---|---|
-| **Web サイト** | https://nico-tech-shenzhen.github.io/robomaster-report/ |
-| **PDF** | GitHub Actions の Artifacts からダウンロード |
+-   **第1章: RoboMasterの全体像**
+    -   競技の目的、基本ルール、全体規模、社会へのインパクトなどの概要。
+-   **第2章: オープンソースエコシステムと制度**
+    -   オープンソース文化、RMOSS、大学リポジトリ、審査・表彰制度の詳細な分析。
+-   **第3章: DJIの戦略と人材エコシステム**
+    -   DJIにとってのRoboMasterの戦略的価値、人材パイプライン、R&Dのテストフィールドとしての役割。
+-   **第4章: 技術的進化と産業への転用**
+    -   特定の技術トレンド（SLAM、Embodied AIなど）と、スタートアップ企業（Bambu Lab、Damiao、AgileXなど）による商業化の事例。
+-   **第5章: 歴史と進化**
+    -   2013年のサマーキャンプから現在までの変遷、および主要なルール・規模の変更点。
+-   **第6章: 参加者プロフィールとチーム運営**
+    -   参加学生の属性、チーム内の役割分担（機械/電装/制御/戦術）、プロジェクトマネジメントの実態。
+-   **第7章: 教育インパクトとキャリアパス**
+    -   大学教育への影響、トップテック企業への就職実績、参加経験がキャリアに与える影響。
+-   **第8章: スタートアップと産業エコシステム**
+    -   RoboMasterのOBや技術から生まれたハードウェアスタートアップの勃興と産業への波及効果。
 
-## レポート進捗
+##  ライブレポート
 
-| 章 | タイトル | 状態 |
-|---|---|---|
-| [第1章](docs/ch01.md) | RoboMasterとは何か | ✅ Complete |
-| [第2章](docs/ch02.md) | 人材と成果 | ✅ Complete |
-| [第3章](docs/ch03.md) | エコシステムとコミュニティ | ✅ Complete |
-| [第4章](docs/ch04.md) | 教育インパクト | ✅ Complete |
-| [第5章](docs/ch05.md) | 技術的深掘り | ✅ Complete |
-| [第6章](docs/ch06.md) | DJIの戦略 | ✅ Complete |
-| [第7章](docs/ch07.md) | 政策と制度 | ✅ Complete |
-| [第8章](docs/ch08.md) | エコシステム（国内比較予定） | 🟡 Skeleton |
-| [第9章](docs/ch09.md) | コミュニティとオープンソース | 🟡 Skeleton |
-| [第10章](docs/ch10.md) | 国際比較 | 🟡 Skeleton |
-| [第11章](docs/ch11.md) | ビジネスモデル | 🟡 Skeleton |
-| [第12章](docs/ch12.md) | 未来展望 | 🟡 Skeleton |
-| [付録](docs/appendix.md) | | 🟡 Skeleton |
+レポートの最新版はこちらからお読みいただけます：
+ <RoboMaster Report (Live)>
 
-> ✅ = 執筆・レビュー完了　🟡 = 未執筆または Skeleton
+## ️ コントリビューションとレビュー
 
-## ローカル開発
-
-```bash
-pip install mkdocs-material mkdocs-with-pdf pymdown-extensions
-mkdocs serve
-```
-
-## 構成ツール
-
-| ツール | 用途 |
-|---|---|
-| [MkDocs](https://www.mkdocs.org/) | 静的サイトジェネレーター |
-| [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) | レスポンシブテーマ |
-| [mkdocs-with-pdf](https://github.com/orzih/mkdocs-with-pdf) | PDF 出力プラグイン |
-| GitHub Actions | 自動ビルド・デプロイ |
-
-## ライセンス
-
-© 2026 Nico Tech Shenzhen / 次世代ロボットエンジニア支援機構 Scramble
+-   `RULES.md` のガイドラインに従ってください。
+-   用語は `kaiyuanshe` の用語集および `dic.md` で定義されたものを使用してください。
+-   2025-2026年のデータを優先し、表のデータ整合性を確保してください。
