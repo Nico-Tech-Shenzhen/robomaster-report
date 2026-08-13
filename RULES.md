@@ -31,6 +31,20 @@
 
 - Use **Japanese kanji** (新字体) in body text.
 - Simplified Chinese **only** in: direct quotes, titles, proper nouns, URLs.
+- **First-use annotation only**: Attach simplified Chinese in parens on first use of a Chinese term. Subsequent uses use Japanese kanji only.
+- Example first use: `全国普通高校大学生競技リスト（全国普通高校大学生竞赛榜单）`
+- Example subsequent uses: `ホワイトリスト` (never `白名单` in body text).
+
+## 6. Hyperlinks in Body Text
+
+- Any URL, repository name, BBS post, or forum thread mentioned in body text **must be a clickable link**.
+- Examples: `[华南虎战队](<URL>)`, `[bbs.robomaster.com](<URL>)`, `[rmoss_core](<URL>)`.
+- Never mention a GitHub repo, Gitee repo, or BBS thread without linking it.
+
+## 7. Self-Check on Edit
+
+- Use **Japanese kanji** (新字体) in body text.
+- Simplified Chinese **only** in: direct quotes, titles, proper nouns, URLs.
 
 ## 6. Self-Check on Edit
 
