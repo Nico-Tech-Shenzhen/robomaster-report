@@ -26,7 +26,7 @@
 ##  ライブレポート
 
 レポートの最新版はこちらからお読みいただけます：
- <RoboMaster Report (Live)>
+ <RoboMaster Report (Live)>https://takasumasakazu.net/robomaster-report/
 
 ## ️ コントリビューションとレビュー
 
