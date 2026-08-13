@@ -43,6 +43,9 @@
 
 [25] 青岛大学未来战队, "qdu-rm-ai," Gitee, 2023. [Online]. Available: <https://gitee.com/c12h22o11/qdu-rm-ai>
 
+[26] robomaster-oss, "rmoss_mindvision_driver — MindVision camera ROS2 driver for RoboMaster-OSS," GitHub, 2022. [Online]. Available: <https://github.com/robomaster-oss/rmoss_mindvision_driver>
+
+
 ## BBS Posts
 
 [30] 华南理工大学华南虎战队, "2024赛季日程分析软件开源," RoboMaster BBS, 2024. [Online]. Available: <https://bbs.robomaster.com/article/54068>
@@ -131,14 +134,14 @@
 
 [89] 世界機器人大會, "深圳市達妙科技有限公司-展商資訊," 2026. [Online]. Available: <https://www.worldrobotconference.com/expo/company/550.html>
 
+[35] 华南理工大学华南虎战队, "RM AWARD 2025 华南理工大学华南虎战队 陈翀 招新、培养、管理三方经验分享," RoboMaster BBS, 2025. [Online]. Available: <https://bbs.robomaster.com/article/815698>
+
+[36] DJI RoboMaster Organizing Committee, "RoboMaster 2025机甲大师超级对抗赛赛季规划通过名单," 2024. [Online]. Available: <https://www.robomaster.com/zh-CN/resource/pages/announcement/1804>
+
+[37] PIE战队, "PIE战队开源-2025赛季成本控制," RoboMaster BBS, 2025. [Online]. Available: <https://bbs-web-static.robomaster.com/2220f882a5f746d4874ef6f9a87ace2b1756311384864/PIE%E6%88%98%E9%98%9F%E5%BC%80%E6%BA%90-2025%E8%B5%9B%E5%AD%A3%E6%88%90%E6%9C%AC%E6%8E%A7%E5%88%B6.pdf>
+
+[38] DJI RoboMaster Organizing Committee, "RoboMaster 2026机甲大师高校系列赛开源奖规范及评选细则," 2025. [Online]. Available: <https://www.robomaster.com/zh-CN/resource/pages/announcement/1882>
+
 ---
 
-*Last updated: 2026-08-13*"RoboMaster 机甲大师高校系列赛," 2026. [Online]. Available: <https://www.robomaster.com/zh-CN/robo>
-
----
-
-*Last updated: 2026-08-13*"Embodied AI Algorithm Engineer/Senior Engineer/Principle Engineer," GitHub — Awesome-Embodied-AI-Job, 2025. [Online]. Available: <https://github.com/StarCycle/Awesome-Embodied-AI-Job/blob/main/2025/美的集团AI研究院.md>
-
----
-
-*Last updated: 2026-08-13*
+*Last updated: 2026-08-13*  (Ch02 additions: rmoss_mindvision_driver, article/815698, announcement/1804, PIE cost control, announcement/1882)
