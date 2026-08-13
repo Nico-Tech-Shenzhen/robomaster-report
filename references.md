@@ -117,6 +117,24 @@
 
 [84] DJI RoboMaster, "RoboMaster 机甲大师高校系列赛," 2026. [Online]. Available: <https://www.robomaster.com/zh-CN/robo>
 
+## News / Media (2026 Finals)
+
+[85] 人民日報, "一項機器人賽事，走出20萬青年工程師," 北京, 2026. [Online]. Available: <https://www.peopleapp.com/column/30052888650-500007643026>
+
+[86] 深圳新聞網, "RoboMaster 2026收官 賽事舉辦11年累計培養近20萬名青年工程師," 深圳, 2026. [Online]. Available: <https://www.sznews.com/news/content/2026-08/10/content_32144576.htm>
+
+## Startups / Ecosystem
+
+[87] 香港科技大學工學院, "獲拓竹科技捐贈承諾設立獎學金及3D列印設備," 2026. [Online]. Available: <https://seng.hkust.edu.hk/zh-hant/news/20260127/hkust-engineering-receives-donation-pledge-bambu-lab>
+
+[88] 深圳市政府, "深圳奔向全球『消費級3D列印第一城』," 2025. [Online]. Available: <https://www.sz.gov.cn/cn/xxgk/zfxxgj/zwdt/content/post_12405780.html>
+
+[89] 世界機器人大會, "深圳市達妙科技有限公司-展商資訊," 2026. [Online]. Available: <https://www.worldrobotconference.com/expo/company/550.html>
+
+---
+
+*Last updated: 2026-08-13*"RoboMaster 机甲大师高校系列赛," 2026. [Online]. Available: <https://www.robomaster.com/zh-CN/robo>
+
 ---
 
 *Last updated: 2026-08-13*"Embodied AI Algorithm Engineer/Senior Engineer/Principle Engineer," GitHub — Awesome-Embodied-AI-Job, 2025. [Online]. Available: <https://github.com/StarCycle/Awesome-Embodied-AI-Job/blob/main/2025/美的集团AI研究院.md>
