@@ -11,7 +11,7 @@ from pathlib import Path
 
 # Pattern to find bare URLs (not already in a markdown link)
 BARE_URL_PATTERN = re.compile(
-    r'(?<![\[(])https?://[^\s\)>\]]+(?![\)\]])'
+    r'(?<![\[(<])https?://[^\s\)>\]]+(?![\)\]])'
 )
 
 # Exclude patterns

@@ -1,30 +1,20 @@
-# RoboMaster レポート
+# RoboMaster 2026 research report
 
-## レポートの概要
+Japanese research report on the 2026 competition, current team implementations, knowledge transfer, team operations, industry/institutional connections, and practical lessons for Japan.
 
-本レポートは、DJI RoboMaster競技会、その技術エコシステム、そして中国のロボット産業および教育システムに与える多大なインパクトについて、包括的かつ詳細な分析を提供します。
+## Contents
 
-## 目次
+1. RoboMaster 2026の現場
+2. 規則を設計入力に変える
+3. 2026年の機体とソフトウェア
+4. 設計資産が次のシーズンへ残る仕組み
+5. 一年でロボット群を作る組織
+6. 人材・産業・DJIの接点
+7. 大学・制度・他競技との違い
+8. 日本で再現するための条件
 
-- **第1章**: RoboMasterとは何か——競技の構造と現在の姿
-- **第2章**: ルール変更が技術をどう動かすか——2024→2025→2026の進化
-- **第3章**: 2026年のロボット技術スタック——チームから見た実装
-- **第4章**: 知識はどう蓄積されるか——オープンソースと標準化
-- **第5章**: チームはどう動くか——運営と人材育成
-- **第6章**: 卒業後の循環——採用、スタートアップ、産業
-- **第7章**: DJIはなぜ、どう運営するか——戦略と投資
-- **第8章**: 制度はどう関わるか——政策とホワイトリスト
-- **第9章**: 他の競技とは何が違うか——国際比較
-- **第10章**: 日本に何が使えるか——Scrambleへの示唆
-- **付録**: 用語集、データソース注意、謝辞
+## Build and validation
 
-## ライブレポート
+Run the repository validators, then `mkdocs build --strict`. Run `python scripts/build_pdf.py` for the PDF artifact.
 
-レポートの最新版はこちらからお読みいただけます：
- <RoboMaster Report (Live)>https://takasumasakazu.net/robomaster-report/
-
-## コントリビューションとレビュー
-
-- `RULES.md` のガイドラインに従ってください。
-- 用語は `dic.md` で定義されたものを使用してください。
-- 2025-2026年のデータを優先し、表のデータ整合性を確保してください。
+Editorial rules are in `RULES.md`; authoritative Japanese names are in `dic.md`.
