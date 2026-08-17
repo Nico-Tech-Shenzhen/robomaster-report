@@ -8,7 +8,7 @@
 - **Priority**: ①Chinese primary docs (DJI, teams) ②Zhihu/bbs ③GitHub/Gitee ④Chinese media ⑤EN/JP secondary
 - **Format**: IEEE style
   ```
-  [1] Author, "Title," Location, Year. [Online]. Available: <URL>
+  [n] Author, "Title," Location, Year. [Online]. Available: <URL>
   ```
 
 ## 2. Facts First
@@ -41,7 +41,40 @@
 - Examples: `[华南虎战队](<URL>)`, `[bbs.robomaster.com](<URL>)`, `[rmoss_core](<URL>)`.
 - Never mention a GitHub repo, Gitee repo, or BBS thread without linking it.
 
-## 7. Self-Check on Edit
+## 7. Topic Ownership
+
+- Each substantial topic has **one canonical chapter**.
+- Do not repeat detailed explanations elsewhere.
+- Other chapters may mention the topic in 1–2 sentences and point to the canonical chapter.
+
+## 8. Freshness
+
+- Statements about the current state must be verified with recent sources (2025–2026 preferred).
+- Historical sources are fine for historical claims.
+
+## 9. Evidence Hierarchy
+
+- Prefer primary official/team sources over secondary summaries.
+- Do not use secondary reporting to override newer official information.
+
+## 10. Causality
+
+- Do not infer direct causation from affiliation or technical similarity.
+- Distinguish: A. directly documented transfer, B. developed by alumni, C. similar stack, D. speculative.
+- Only A or B should be described as direct transfer.
+
+## 11. Numeric Consistency
+
+- The same metric must not have conflicting values across chapters unless definitions differ explicitly.
+- If a reliable number cannot be confirmed, remove it or qualify it.
+- Do not preserve impressive numbers just because they make the report stronger.
+
+## 12. Cross-Reference Integrity
+
+- Any structural change requires a full repository-wide cross-reference check.
+- Update ALL references to chapter numbers, titles, section numbers, and "see Chapter X" links.
+
+## 13. Self-Check on Edit
 
 Before each chapter edit, re-read this file. After adding rules, check for:
 - Contradictions with existing rules
@@ -62,4 +95,4 @@ Before each chapter edit, re-read this file. After adding rules, check for:
 
 ---
 
-*Adopted 2026-08-09. Apply to all chapters.*
+*Adopted 2026-08-17. Apply to all chapters.*
