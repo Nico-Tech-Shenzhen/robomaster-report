@@ -25,6 +25,7 @@ MIXED_NAMES = ["上海交通大學", "西南交通大學", "哈爾浜工業大�
 URL = re.compile(r"https?://[^\s)>]+")
 LINK = re.compile(r"\[[^\]]*\]\([^)]*\)")
 INLINE = re.compile(r"`[^`]*`")
+OFFICIAL_NAME = re.compile(r"（[^）]+ / [^）]+）")
 
 
 def visible_lines(text: str):
@@ -35,7 +36,7 @@ def visible_lines(text: str):
             continue
         if fenced or line.startswith("    "):
             continue
-        clean = LINK.sub("", URL.sub("", INLINE.sub("", line)))
+        clean = OFFICIAL_NAME.sub("", LINK.sub("", URL.sub("", INLINE.sub("", line))))
         # Original-language titles and explicit source-form cells are allowed.
         if "本章の主要資料" in clean or re.search(r"[「『].*[」』]", clean):
             continue

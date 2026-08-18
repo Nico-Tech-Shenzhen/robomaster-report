@@ -25,7 +25,8 @@ def main():
         for filename, lineno, text in extract_headings(md_file):
             heading_map[text].append((filename, lineno))
 
-    duplicates = {h: locs for h, locs in heading_map.items() if len(locs) > 1}
+    allowed = {'参考文献'}
+    duplicates = {h: locs for h, locs in heading_map.items() if len(locs) > 1 and h not in allowed}
 
     if not duplicates:
         print("OK: No duplicated headings detected.")

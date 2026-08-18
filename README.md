@@ -1,20 +1,21 @@
 # RoboMaster 2026 research report
 
-Japanese research report on the 2026 competition, current team implementations, knowledge transfer, team operations, industry/institutional connections, and practical lessons for Japan.
+Japanese evidence-based report explaining RoboMaster to first-time readers.
 
-## Contents
+## Chapters
 
 1. RoboMaster 2026の現場
-2. 規則を設計入力に変える
+2. 2024→2025→2026の進化——ルール変更が技術をどう動かすか
 3. 2026年の機体とソフトウェア
 4. 設計資産が次のシーズンへ残る仕組み
-5. 一年でロボット群を作る組織
-6. 人材・産業・DJIの接点
-7. 大学・制度・他競技との違い
-8. 日本で再現するための条件
+5. 誰がチームを動かすのか——学年、登録区分、年間運営
+6. 調達、スポンサー、人材と企業
+7. DJIと競技用ハードウェアの境界
+8. 政府はどう関わるか——制度・政策とRoboMaster
+9. 中国の大学ロボット競技の中でRoboMasterは何が違うか
 
-## Build and validation
+The report is followed by an appendix. Editorial rules are in `RULES.md`, and canonical terminology is in `dic.md`.
 
-Run the repository validators, then `mkdocs build --strict`. Run `python scripts/build_pdf.py` for the PDF artifact.
+## Validation
 
-Editorial rules are in `RULES.md`; authoritative Japanese names are in `dic.md`.
+Run all Python validators under `scripts/`, then `mkdocs build --strict` and `git diff --check`. `scripts/build_pdf.py` provides the separate PDF build.

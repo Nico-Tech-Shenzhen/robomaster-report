@@ -37,15 +37,37 @@ def check_file(filepath: Path) -> list:
     return issues
 
 
+def check_chapter_references(filepath: Path) -> list:
+    """Require every numeric citation to link to an anchor in the same chapter."""
+    issues = []
+    text = filepath.read_text(encoding='utf-8')
+    anchors = set(re.findall(r'<a id="ref-(\d+)"></a>', text))
+    linked = re.findall(r'\[\[(\d+)\]\]\(#ref-(\d+)\)', text)
+
+    for visible, target in linked:
+        if visible != target:
+            issues.append((filepath.name, 0, f'citation [{visible}] targets ref-{target}'))
+        elif target not in anchors:
+            issues.append((filepath.name, 0, f'citation [{visible}] has no local anchor'))
+
+    body = text.split('## 参考文献', 1)[0]
+    masked = re.sub(r'\[\[\d+\]\]\(#ref-\d+\)', '', body)
+    for number in re.findall(r'(?<!\[)\[(\d+)\](?!\])', masked):
+        issues.append((filepath.name, 0, f'citation [{number}] is not clickable'))
+    return issues
+
+
 def main():
     all_issues = []
     for md_file in sorted(Path('.').rglob('*.md')):
         if '.git' in str(md_file):
             continue
         all_issues.extend(check_file(md_file))
+        if re.fullmatch(r'ch\d{2}\.md', md_file.name):
+            all_issues.extend(check_chapter_references(md_file))
 
     if not all_issues:
-        print("OK: No bare URLs detected.")
+        print("OK: No bare URLs or broken chapter citations detected.")
         return 0
 
     print(f"WARN: Found {len(all_issues)} bare URLs (should be markdown links):")

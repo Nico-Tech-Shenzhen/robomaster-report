@@ -12,9 +12,9 @@ from pathlib import Path
 # Current valid chapter references
 VALID_CHAPTERS = {
     '第1章', '第2章', '第3章', '第4章', '第5章',
-    '第6章', '第7章', '第8章', '第9章', '第10章',
+    '第6章', '第7章', '第8章', '第9章',
     'ch01.md', 'ch02.md', 'ch03.md', 'ch04.md', 'ch05.md',
-    'ch06.md', 'ch07.md', 'ch08.md', 'ch09.md', 'ch10.md',
+    'ch06.md', 'ch07.md', 'ch08.md', 'ch09.md',
 }
 
 # Old chapter references that should no longer exist
@@ -23,8 +23,9 @@ STALE_PATTERNS = [
     re.compile(r'第12章'),
     re.compile(r'ch11\.md'),
     re.compile(r'ch12\.md'),
-    re.compile(r'ch09\.md.*オープンソース'),  # old ch09 was about community/opensource
-    re.compile(r'ch10\.md.*国際比較'),        # old ch10 was about international comparison
+    re.compile(r'第10章'),
+    re.compile(r'ch10\.md'),
+    re.compile(r'08-lessons-for-japan\.md'),
 ]
 
 

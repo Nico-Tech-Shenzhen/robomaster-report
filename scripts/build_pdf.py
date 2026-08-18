@@ -17,14 +17,23 @@ from reportlab.platypus import PageBreak, Paragraph, SimpleDocTemplate, Spacer, 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "output" / "pdf" / "robomaster-report.pdf"
 DOCS = [
-    "01-competition-2026.md", "02-rules-as-engineering.md", "03-machines-2026.md",
-    "04-knowledge-system.md", "05-team-year.md", "06-people-industry-dji.md",
-    "07-institutions-comparison.md", "08-lessons-for-japan.md", "appendix.md",
+    "ch01.md", "ch02.md", "ch03.md", "ch04.md", "ch05.md",
+    "ch06.md", "ch07.md", "ch08.md", "ch09.md", "appendix.md",
 ]
 
 
 def markup(text: str) -> str:
     text = html.escape(text.strip())
+    text = re.sub(
+        r'&lt;a id=&quot;(ref-\d+)&quot;&gt;&lt;/a&gt;',
+        r'<a name="\1"/>',
+        text,
+    )
+    text = re.sub(
+        r'\[\[(\d+)\]\]\(#(ref-\d+)\)',
+        r'<a href="#\2" color="#2457a6">[\1]</a>',
+        text,
+    )
     text = re.sub(r"\[([^]]+)\]\((https?://[^)]+)\)", r'<a href="\2" color="#2457a6">\1</a>', text)
     text = re.sub(r"`([^`]+)`", r'<font name="NotoJP">\1</font>', text)
     text = re.sub(r"\*\*([^*]+)\*\*", r"<b>\1</b>", text)
@@ -49,7 +58,7 @@ def build():
     h2 = ParagraphStyle("JPH2", parent=body, fontSize=13, leading=19, spaceBefore=10, spaceAfter=6, textColor=colors.HexColor("#245b91"))
     h3 = ParagraphStyle("JPH3", parent=body, fontSize=11, leading=17, spaceBefore=7, spaceAfter=4)
     bullet = ParagraphStyle("JPBullet", parent=body, leftIndent=5 * mm, firstLineIndent=-3 * mm)
-    story = [Spacer(1, 35 * mm), Paragraph("RoboMaster 2026", ParagraphStyle("TitleJP", parent=h1, fontSize=28, leading=36, alignment=TA_CENTER)), Paragraph("学生が作るロボット群と、それを支える仕組み", ParagraphStyle("SubJP", parent=h2, alignment=TA_CENTER)), Spacer(1, 15 * mm), Paragraph("調査基準日：2026年8月17日", ParagraphStyle("DateJP", parent=body, alignment=TA_CENTER)), PageBreak()]
+    story = [Spacer(1, 35 * mm), Paragraph("RoboMaster 2026", ParagraphStyle("TitleJP", parent=h1, fontSize=28, leading=36, alignment=TA_CENTER)), Paragraph("初めて読む人のための構造と技術", ParagraphStyle("SubJP", parent=h2, alignment=TA_CENTER)), Spacer(1, 15 * mm), Paragraph("調査基準日：2026年8月18日", ParagraphStyle("DateJP", parent=body, alignment=TA_CENTER)), PageBreak()]
 
     for doc_index, name in enumerate(DOCS):
         lines = (ROOT / "docs" / name).read_text(encoding="utf-8").splitlines()
@@ -57,6 +66,8 @@ def build():
         while i < len(lines):
             line = lines[i].strip()
             if not line:
+                i += 1; continue
+            if line.startswith('--8<--'):
                 i += 1; continue
             if line.startswith("|") and i + 1 < len(lines) and re.match(r"^\|?\s*:?-+", lines[i + 1].strip().lstrip("|")):
                 rows = [[markup(c) for c in line.strip("|").split("|")]]
