@@ -20,10 +20,23 @@ DOCS = [
     "ch01.md", "ch02.md", "ch03.md", "ch04.md", "ch05.md",
     "ch06.md", "ch07.md", "ch08.md", "ch09.md", "appendix.md",
 ]
+JP_CHAR_WIDTHS = set()
 
 
 def markup(text: str) -> str:
     text = html.escape(text.strip())
+    if JP_CHAR_WIDTHS:
+        runs = []
+        using_sc = False
+        for char in text:
+            fallback = 0x2E80 <= ord(char) and ord(char) not in JP_CHAR_WIDTHS
+            if fallback != using_sc:
+                runs.append('<font name="NotoSC">' if fallback else '</font>')
+                using_sc = fallback
+            runs.append(char)
+        if using_sc:
+            runs.append('</font>')
+        text = "".join(runs)
     text = re.sub(
         r'&lt;a id=&quot;(ref-\d+)&quot;&gt;&lt;/a&gt;',
         r'<a name="\1"/>',
@@ -50,12 +63,17 @@ def footer(canvas, doc):
 
 
 def build():
+    global JP_CHAR_WIDTHS
     OUT.parent.mkdir(parents=True, exist_ok=True)
     pdfmetrics.registerFont(TTFont("NotoJP", r"C:\Windows\Fonts\NotoSansJP-VF.ttf"))
+    pdfmetrics.registerFont(TTFont("NotoSC", r"C:\Windows\Fonts\NotoSansSC-VF.ttf"))
+    JP_CHAR_WIDTHS = set(pdfmetrics.getFont("NotoJP").face.charWidths)
     styles = getSampleStyleSheet()
     body = ParagraphStyle("JPBody", fontName="NotoJP", fontSize=9.3, leading=15, spaceAfter=5, wordWrap="CJK", textColor=colors.HexColor("#20242a"))
+    reference = ParagraphStyle("JPReference", parent=body, fontSize=7, leading=8.2, spaceAfter=0)
     h1 = ParagraphStyle("JPH1", parent=body, fontSize=19, leading=27, spaceAfter=12, textColor=colors.HexColor("#173f70"))
     h2 = ParagraphStyle("JPH2", parent=body, fontSize=13, leading=19, spaceBefore=10, spaceAfter=6, textColor=colors.HexColor("#245b91"))
+    reference_heading = ParagraphStyle("JPReferenceHeading", parent=h2, fontSize=10.5, leading=12, spaceBefore=4, spaceAfter=1, keepWithNext=True)
     h3 = ParagraphStyle("JPH3", parent=body, fontSize=11, leading=17, spaceBefore=7, spaceAfter=4)
     bullet = ParagraphStyle("JPBullet", parent=body, leftIndent=5 * mm, firstLineIndent=-3 * mm)
     story = [Spacer(1, 35 * mm), Paragraph("RoboMaster 2026", ParagraphStyle("TitleJP", parent=h1, fontSize=28, leading=36, alignment=TA_CENTER)), Paragraph("初めて読む人のための構造と技術", ParagraphStyle("SubJP", parent=h2, alignment=TA_CENTER)), Spacer(1, 15 * mm), Paragraph("調査基準日：2026年8月18日", ParagraphStyle("DateJP", parent=body, alignment=TA_CENTER)), PageBreak()]
@@ -63,6 +81,7 @@ def build():
     for doc_index, name in enumerate(DOCS):
         lines = (ROOT / "docs" / name).read_text(encoding="utf-8").splitlines()
         i = 0
+        in_references = False
         while i < len(lines):
             line = lines[i].strip()
             if not line:
@@ -80,11 +99,13 @@ def build():
             if line.startswith("# "):
                 if doc_index: story.append(PageBreak())
                 story.append(Paragraph(markup(line[2:]), h1))
-            elif line.startswith("## "): story.append(Paragraph(markup(line[3:]), h2))
+            elif line.startswith("## "):
+                in_references = line[3:] == "参考文献"
+                story.append(Paragraph(markup(line[3:]), reference_heading if in_references else h2))
             elif line.startswith("### "): story.append(Paragraph(markup(line[4:]), h3))
             elif re.match(r"^[-*] ", line): story.append(Paragraph("• " + markup(line[2:]), bullet))
             elif re.match(r"^\d+\. ", line): story.append(Paragraph(markup(line), bullet))
-            else: story.append(Paragraph(markup(line), body))
+            else: story.append(Paragraph(markup(line), reference if in_references else body))
             i += 1
     SimpleDocTemplate(str(OUT), pagesize=A4, rightMargin=18*mm, leftMargin=18*mm, topMargin=17*mm, bottomMargin=19*mm, title="RoboMaster 2026 Research Report", author="Scramble").build(story, onFirstPage=footer, onLaterPages=footer)
     print(OUT)
