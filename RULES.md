@@ -1,63 +1,58 @@
-# RULES
+# Editorial policy
 
-## 1. Purpose and reader
+This file is the canonical detailed policy for reader-facing report content. Workflow routing belongs in `AGENTS.md` and Skills; terminology belongs in `dic.md`; chapter ownership belongs in `REPORT_PLAN.md`.
 
-- This is a Scramble research report that explains RoboMaster accurately to a first-time reader.
-- Every chapter begins with the repository’s exact two metadata lines.
-- Preserve information density: concrete facts, examples, tables, chronology, and sources take priority over short generic summaries.
+## Reader and prose
 
-## 2. Facts before analysis
+- Explain RoboMaster accurately to a first-time reader. Use academic, concrete, reader-first Japanese.
+- Preserve information density: facts, examples, tables, chronology, uncertainty, and sources take priority over generic compression.
+- Start from a documented example before generalizing. Use university names as grammatical subjects; introduce a team as a secondary identifier.
+- Distinguish source fact, report analysis, hypothesis, and recommendation. Do not infer causality from correlation, affiliation, geography, or chronology alone.
+- Retain uncertainty and counterexamples. A team practice is not automatically a competition-wide practice.
+- Every chapter begins with the repository's exact two metadata lines used in `docs/ch01.md`.
 
-- Present a concrete documented example before drawing a general conclusion.
-- Separate source fact, report analysis, hypothesis, and recommendation.
-- Do not turn correlation, organizational affiliation, geography, or chronology into causality without direct evidence.
-- Retain uncertainty and counterexamples. Do not convert one team’s practice into a competition-wide rule.
+## Evidence and claims
 
-## 3. Evidence and freshness
+- Prefer: current official rules/organizer documents; government or university documents; team reports and repositories; company pages; reputable reporting; secondary summaries.
+- Use current 2025–2026 evidence for current claims. Date and scope historical evidence explicitly.
+- `research/china-2026/claims-audit.md` governs wording and confidence for audited claims. Panel-only, team-reported, and single-source claims require explicit attribution.
+- Avoid unverified superlatives and causal claims. Keep incompatible denominators separate.
+- Kimi source cards archive evidence; rewrite their content for the reader rather than copying their prose.
+- Non-public material cannot be the sole support for a public factual claim. Field notes and photographs must be labelled as such.
 
-- Prefer, in order: current official rules and organizer documents; government or university documents; team BBS reports and repositories; company pages; reputable reporting; secondary summaries.
-- Current claims require current 2025–2026 evidence. Historical sources remain valid for chronology when their date and scope are explicit.
-- Link the most specific source: direct rule PDF, announcement, article, repository, release, or dataset rather than a generic home or search page.
-- Record enough identity to recheck a source: publisher, title, year/date, version or commit where relevant, and direct URL.
-- Non-public material may not be the sole support for a public factual claim.
+## Citations and source identity
 
-## 4. Citations and links
+- Use clickable local citations in the form `[[n]](#ref-n)` with a matching `<a id="ref-n"></a>` reference in the same chapter.
+- Cite factual numbers, quotations, institutional claims, named cases, and consequential technical claims at claim level.
+- Link the most specific document, release, repository, dataset, or media item. Reader-facing prose must not contain bare URLs.
+- Record publisher/creator, title, date/year, version or commit where relevant, direct URL, and access date for unstable web material.
+- A bibliography or corpus ID alone is not a substitute for a claim-level citation to the underlying source.
 
-- Visible in-text citations use `[n]` and are clickable to an anchored reference in the same chapter.
-- Each factual number, quotation, institutional claim, and named case must point to the source that supports it.
-- External URLs are clickable Markdown links. Bare URLs are not allowed in reader-facing prose.
-- A reference list is not a substitute for claim-level citation. Never cite a generic source collection when a direct document exists.
+## Numbers and comparisons
 
-## 5. Numbers
+- State date, population, unit, definition, and source for important numbers.
+- Do not conflate registrations, participants, universities, teams, matches, rounds, club members, registered members, field personnel, operators, advisers, alumni, investment, discounts, sponsorship, or prize money.
+- When definitions differ, present values separately; do not manufacture a trend.
+- Comparison tables must define common dimensions and flag missing or non-comparable data.
 
-- State the date, population, unit, definition, and source of every important number.
-- Do not merge registrations, actual participants, universities, teams, matches, rounds, club members, registered members, field personnel, operators, advisers, alumni, investment, discounts, sponsorship, or prize money.
-- If historical sources use incompatible denominators, show them separately rather than constructing a trend.
+## Language and technical explanation
 
-## 6. Japanese and Chinese
-
-- Reader-facing prose uses natural modern Japanese and Japanese new-character forms.
-- Simplified or Traditional Chinese appears only in a source title, quotation, URL, code identifier, or useful official-name annotation at first occurrence.
-- Translate Chinese administrative and competition terms by meaning; do not leave mechanical calques in Japanese prose.
-- `dic.md` is the naming authority. Robot classes use one canonical Japanese name. Companies use an established official English brand where available.
-
-## 7. Technical writing
-
-- Explain current technology in the sequence: team → system → problem → implementation → evidenced result.
+- Use natural modern Japanese and Japanese new-character forms. Follow `dic.md` for canonical names and forbidden terms.
+- Chinese forms may appear only in source titles, quotations, URLs, code identifiers, or a useful official-name annotation at first occurrence.
+- Explain technology as university/team → system → problem → implementation → evidenced result.
 - Distinguish mandatory competition hardware, optional components, historical products, and educational products.
-- For software and open hardware, record repository, season, license, dependency/version, and known reproduction limits when available.
-- “Publicly visible,” “open source,” “reproducible,” “adopted by another team,” and “current standard” are different claims.
+- For software/open hardware, record repository, season, license, dependency/version, and reproduction limits when available.
+- “Publicly visible,” “source available,” “open source,” “reproducible,” “adopted elsewhere,” and “current standard” are distinct claims.
 
-## 8. Structure and integrity
+## Structure, media, and deletion
 
-- Give each topic one canonical chapter; use cross-references instead of copying the same explanation.
-- Structural edits require repository-wide checks of navigation, chapter numbers, headings, redirects, references, index, MkDocs configuration, and PDF inputs.
-- Historical Git revisions are a research archive. Recover useful evidence from multiple commits; never assume one snapshot is the complete baseline.
-- Delete material only for a recorded reason: false, unsupported, duplicated, irrelevant, dead, or superseded.
+- Give each topic one canonical chapter as defined by `REPORT_PLAN.md`; cross-reference instead of duplicating explanations.
+- Use media to explain or evidence, not decorate. Captions identify what to observe and give attribution; licensing and web/PDF behavior follow the media Skill.
+- Historical Git revisions are a research archive. Recover targeted evidence from relevant commits, never old prose wholesale.
+- Delete report material only for a recorded reason: false, unsupported, duplicated, irrelevant, dead, or superseded. Preserve useful detail in the appropriate canonical location or evidence archive.
 
-## 9. Completion checks
+## Completion standard
 
-- Run all repository validators, `git diff --check`, and `mkdocs build --strict`.
-- Read the rendered HTML sequentially and inspect every page of a regenerated PDF when the PDF is tracked.
-- Confirm that all citations resolve locally, source links are specific, numeric statements agree, Chinese leakage is absent, and stale chapter references are gone.
-- Do not commit or push unless explicitly requested.
+- Run applicable repository validators, `git diff --check`, and `mkdocs build --strict`.
+- For release or layout changes, inspect rendered HTML sequentially and every page of a regenerated PDF.
+- Confirm citations resolve locally, links are specific, source IDs exist or are explicitly marked legacy, numbers agree, terminology passes, and chapter/media references are current.
