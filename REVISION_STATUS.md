@@ -5,8 +5,8 @@ Read and update only the target chapter row, the applicable integration checkpoi
 | Chapter | Draft status | Chapter QA | Media status | Evidence status | Integration checkpoint | Outstanding issues |
 |---|---|---|---|---|---|---|
 | 1 | Existing prose; final drafting deferred until body stabilizes | Not run for redesign | Planned | Pending | Final full-report review | Current scale denominators |
-| 2 | Existing prose; redesign not started | Not run for redesign | Planned; largest technical set | Pending | After Ch2–3 | Comparable test conditions |
-| 3 | Existing prose; redesign not started | Not run for redesign | Planned | Pending | After Ch2–3 | Detailed rule-version evidence |
+| 2 | Phase B redesign complete; nine parallel technical sections and chapter introduction | Final chapter and pair-integration QA passed (2026-08-20) | M03–M05 and two technical tables integrated; M06 deferred | Selected 2026 source cards and claims audit integrated | After Ch2–3 complete | Direct Taurus VR and TDT four-axis footage not resolved; source-reported performance values remain explicitly qualified |
+| 3 | Phase B rewrite complete; 2024→2026 chronology, multi-year ranking comparison, and 2026 emphasis | Final chapter and pair-integration QA passed (2026-08-20) | M07–M08 rule-change and ranking tables integrated | Official 2024–2026 national results, targeted history, and documented team-development evidence integrated | After Ch2–3 complete | Comparative management and exact elimination-match evidence remain uneven; no single-cause ranking claim made |
 | 4 | Existing prose; redesign not started | Not run for redesign | Planned | Pending | After Ch4–6 | Adoption/license/version audit |
 | 5 | Existing prose; redesign not started | Not run for redesign | Planned | Pending | After Ch4–6 | Team denominator and panel verification |
 | 6 | Existing prose; redesign not started | Not run for redesign | Planned | Pending | After Ch4–6 | Longitudinal outcome evidence |
@@ -18,7 +18,7 @@ Read and update only the target chapter row, the applicable integration checkpoi
 
 | Checkpoint | Status | Review focus / unresolved transfers |
 |---|---|---|
-| After Ch2–3 | Pending | Technology implementation versus rule evolution |
+| After Ch2–3 | Complete; final polish passed (2026-08-20) | Chapter 2 owns implementation detail; Chapter 3 owns chronological requirements and outcomes. Official multi-year results now distinguish national ranking categories from regional evidence; terminology, evidence, links, and PDF rendering passed. |
 | After Ch4–6 | Pending | Transfer versus team/education versus people/industry |
 | After Ch7–9 | Pending | DJI infrastructure versus institutions versus comparison |
 | Final full report after Ch1 | Pending | Chapter 1 preview, omissions, balance, terminology, visuals, and cross-references |

@@ -5,8 +5,9 @@ Create an entry only when media is selected for use. Distribution follows chapte
 | ID | Chapter / purpose | Candidate medium | Status | Rights / source action |
 |---|---|---|---|---|
 | M01–M02 | Ch.1 competition structure, scale, and match orientation | Series/entry diagram; defined scale table; licensed/author photo or video | Planned | Finalize after body; identify owner and denominators |
-| M03–M06 | Ch.2 mechanisms and integrated systems | Largest set: technical photos/video, CAD/mechanism images, system diagrams/tables | Planned | Taurus/TDT/ECUST and other cases; timestamp video and verify reuse basis |
-| M07–M08 | Ch.3 rule evolution and development effects | Version/ranking timeline; rule-to-outcome diagram/table | Planned | Cite each rule version and separate evidenced outcomes |
+| M03–M05 | Ch.2 mechanisms and integrated systems | Taurus dual-arm, TDT ring-leg, and ECUST serial-leg official videos with fallback links and timestamps | Integrated | Link-only use because the official pages prohibit reproduction; no frames copied into the report |
+| M06 | Ch.2 radar/vision integration | Original system diagram | Planned | Produce only when coordinate/communication interfaces can be supported without inference |
+| M07–M08 | Ch.3 rule evolution and development effects | Rule-change table and 2026 ranking/development table | Integrated | Each material statement links to a rule, university record, technical report, or official competition video; outcome relevance is separated from causation |
 | M09–M10 | Ch.4 transfer mechanisms and AWARD | Review/AWARD process; reuse lineage; field evidence; reproduction matrix | Planned | Record provenance, repository licenses, and commits |
 | M11–M12 | Ch.5 team and education/research | Team lifecycle/organization; education table; 从赛场到课堂 photos | Planned | Define categories and clear field-photo rights |
 | M13–M14 | Ch.6 people and industry | Relationship-category map; verified company/startup cases | Planned | Distinguish participant/alumnus/founder/sponsor/supplier/recruiter; no logo collage |
