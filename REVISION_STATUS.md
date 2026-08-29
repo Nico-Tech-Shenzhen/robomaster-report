@@ -1,5 +1,15 @@
 # Revision status
 
+## Current phase: Scramble internal review
+
+Research and drafting are frozen by human instruction (2026-08-30). The complete PDF has been visually reviewed and approved for this phase. The approved report baseline is b8ab54710da07700fbde508283c92f3c90fed8d7; the transition changes only review instructions and status, not report prose or the PDF.
+
+PDF SHA-256: 77e6b051eaca63b534867c7c175ad47248d251df45e534afee96367ee193b073.
+
+GitHub issues and PR reviews are now the review record. Preserve chapter architecture and verified evidence; make targeted corrections and refresh the PDF after meaningful review batches. Historical checkpoints and unresolved evidence notes below remain as background, not authorization to reopen broad drafting.
+
+The contributor table is deferred until internal review is complete. Its identity-verification and contribution-assessment requirements are recorded in AGENTS.md; no table has been added.
+
 Read and update only the target chapter row, the applicable integration checkpoint, and Global issues during normal chapter work.
 
 | Chapter | Draft status | Chapter QA | Media status | Evidence status | Integration checkpoint | Outstanding issues |
