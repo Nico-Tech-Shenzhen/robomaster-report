@@ -1,21 +1,74 @@
-# RoboMaster 2026 research report
+# RoboMaster 2026 調査レポート
 
-Japanese evidence-based report explaining RoboMaster to first-time readers.
+RoboMaster 2026を中心に、中国の大学ロボット競技でどのような技術が開発され、ルール変更、オープンソース、チーム運営、大学教育、人材・企業、DJIの競技基盤がどのようにつながっているかを調査した日本語レポートです。
 
-## Chapters
+**調査主体：一般社団法人 次世代ロボットエンジニア支援機構 Scramble**
 
-1. RoboMaster 2026の現場
-2. 2024→2025→2026の進化——ルール変更が技術をどう動かすか
-3. 2026年の機体とソフトウェア
-4. 設計資産が次のシーズンへ残る仕組み
-5. 誰がチームを動かすのか——学年、登録区分、年間運営
-6. 調達、スポンサー、人材と企業
-7. DJIと競技用ハードウェアの境界
-8. 政府はどう関わるか——制度・政策とRoboMaster
-9. 中国の大学ロボット競技の中でRoboMasterは何が違うか
+本レポートでは、RoboMasterを単なるロボット競技としてではなく、学生が複雑な実機システムを開発し、技術を公開・継承しながら、大学教育や研究、採用、起業、ロボット産業へ接続していく工学的なエコシステムとして整理しています。競技規則、技術審査、試合、引用・出典明示、オープンソース、技術交流といった大会運営そのものに工学的な作法が組み込まれている点も重要な調査対象です。
 
-The report is followed by an appendix. Editorial rules are in `RULES.md`, and canonical terminology is in `dic.md`.
+## レポート
 
-## Validation
+- **[PDF版を読む](output/pdf/robomaster-report.pdf)**
+- 本文：[`docs/`](docs/)
+- 調査資料・証拠マップ：[`research/`](research/)
+- レビュー・修正提案： [Issues](../../issues)
 
-Run all Python validators under `scripts/`, then `mkdocs build --strict` and `git diff --check`. `scripts/build_pdf.py` provides the separate PDF build.
+現在の版は、Scramble内での査読に供するためのレビュー版です。査読結果はGitHub Issues / Pull Requestsを通じて反映し、最終版では執筆・調査・査読メンバーを明記します。
+
+## 章構成
+
+1. **RoboMasterの規模と競技の全体像**
+2. **2026年のロボットと技術**
+3. **ルール変更と技術開発の変化**
+4. **オープンソースと技術移転**
+5. **チーム運営と大学教育・研究**
+6. **人材・スタートアップとロボット産業**
+7. **DJIが提供する競技基盤**
+8. **RoboMasterの制度化と社会的位置づけ**
+9. **中国の大学ロボット競技との比較**
+
+## このレポートで扱う主な論点
+
+- 2026年に実機投入された機構、制御、認識、測位、自律移動、操作系、シミュレーション
+- ルール変更が機体設計・技術開発・競争順位に与える影響
+- 技術報告、出典明示、オープンソース審査、AWARD、GitHub / Giteeを通じた技術移転
+- 多人数・多職種の学生チームによる、製品開発に近い年間開発プロセス
+- 大学の授業、研究、研究室、課外活動との接続
+- RoboMaster経験者の採用・起業と、中国のロボット企業との関係
+- DJI / 大会運営側が提供する競技基盤と、学生が開発する部分の境界
+- RoboMasterの歴史、制度化、大学・産業との関係
+- ROBOCON、ROBOTACなど中国の他の大学ロボット競技との構造比較
+
+## 調査・執筆方針
+
+本文は、具体的な機体、大学、制度、数値、公開リポジトリなどの確認可能な事実を優先し、その上で分析を行います。同じ説明を複数章で繰り返さず、詳細な調査データは表・図・注・参考文献にできるだけ残す方針です。
+
+中国語資料については、RoboMaster公式、大学・チーム公式資料、BBS、GitHub / Gitee、技術動画などを参照し、主張ごとに出典を確認しています。読者向け本文では、調査過程の説明よりも、確認できた事実とその関係を明確に示すことを優先しています。
+
+## リポジトリ構成
+
+- `docs/` — レポート本文
+- `research/china-2026/` — 中国語圏を中心とした2026年調査コーパス
+- `output/pdf/` — 生成済みPDF
+- `scripts/` — PDF生成・検証スクリプト
+- `RULES.md` — 執筆・編集ルール
+- `dic.md` — 用語統一辞書
+- `REPORT_PLAN.md` — 章構成と証拠配置
+
+## レビューへの参加
+
+事実関係、出典、技術内容、大学・チーム情報、表現、PDFレイアウトなどの指摘はGitHub Issuesで受け付けます。具体的な修正案がある場合はPull Requestでも歓迎します。
+
+最終版では、Issue、レビュー、調査、執筆などに実質的に協力いただいたメンバーについて、本人確認のうえ「執筆・調査・査読メンバー」として貢献内容を記載する予定です。
+
+## Build / validation
+
+```text
+python scripts/validate_terminology.py
+python scripts/validate_source_ids.py
+python scripts/build_pdf.py
+mkdocs build --strict
+git diff --check
+```
+
+`mkdocs` が利用できない環境では、利用可能な検証とPDF生成を実行します。
