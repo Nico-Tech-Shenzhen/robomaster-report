@@ -1,0 +1,1202 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://nico-tech-shenzhen.github.io/robomaster-report/ch04/">
+      
+      
+        <link rel="prev" href="../ch03/">
+      
+      
+        <link rel="next" href="../ch05/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第4章 オープンソースと技術移転 - RoboMaster 2026 Research Report</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#4" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href=".." title="RoboMaster 2026 Research Report" class="md-header__button md-logo" aria-label="RoboMaster 2026 Research Report" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RoboMaster 2026 Research Report
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第4章　オープンソースと技術移転
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="RoboMaster 2026 Research Report" class="md-nav__button md-logo" aria-label="RoboMaster 2026 Research Report" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    RoboMaster 2026 Research Report
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    はじめに
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章　RoboMaster 2026の現場
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章　2026年のロボットと技術
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章　ルール変更と技術開発の変化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章　オープンソースと技術移転
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章　オープンソースと技術移転
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 技術公開を促す制度
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 オープンソース審査と出典申告
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 技術報告・表彰と公開インセンティブ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 技術交流とチーム間の知識移転
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 実際に確認できる技術継承
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#46-bbsgithubgitee" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 BBS・GitHub・Giteeの役割
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#47" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 大学別の公開リポジトリ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#48" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.8 共通基盤と再利用可能なソフトウェア
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考文献
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章　チーム運営と大学教育・研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章　人材・スタートアップとロボット産業
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 DJIが提供する競技基盤
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 RoboMasterの制度化と社会的位置づけ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章　中国国内の競技比較
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    付録
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 技術公開を促す制度
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 オープンソース審査と出典申告
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 技術報告・表彰と公開インセンティブ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 技術交流とチーム間の知識移転
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 実際に確認できる技術継承
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#46-bbsgithubgitee" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 BBS・GitHub・Giteeの役割
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#47" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 大学別の公開リポジトリ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#48" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.8 共通基盤と再利用可能なソフトウェア
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考文献
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="4">第4章　オープンソースと技術移転<a class="headerlink" href="#4" title="Permanent link">&para;</a></h1>
+<p>調査主体: 次世代ロボットエンジニア支援機構 Scramble（一般社団法人）</p>
+<p>調査目的: RoboMasterの基本構造を、初見の読者にも正確に伝える</p>
+<p>RoboMasterでは、ある大学が解いた設計課題が、技術報告、審査、表彰、交流会、BBS、GitHubやGiteeを通じて、別の大学が検証・改良できる工学資産へ変わる。この循環は、公開件数の多さだけではなく、出典を申告し、自校での変更点を説明し、次のシーズンに適用し直す仕組みとして理解する必要がある。</p>
+<h2 id="41">4.1 技術公開を促す制度<a class="headerlink" href="#41" title="Permanent link">&para;</a></h2>
+<p>技術移転の入口は、チームの自発的なリポジトリ公開だけではない。RoboMasterの年間運営には、シーズン計画、完全形態審査、技術報告、参戦後の総括、オープンソース審査、総合表彰が配置され、チームは設計の根拠、実機の状態、既存技術の利用、改善内容を文書化する。公開できる対象も、コードに限らず、CAD、回路図、基板データ、部品表、制御モデル、試験動画、操作手訓練、コスト管理、採用・育成資料まで広い。</p>
+<p><strong>図4-1　RoboMasterにおける技術移転の循環（本報告作成）</strong></p>
+<table>
+<thead>
+<tr>
+<th>段階</th>
+<th>工学活動</th>
+<th>次の主体へ渡る情報</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>規則・競技課題</td>
+<td>トンネル、装配、自律移動、電力制限などを要求へ分解</td>
+<td>要求仕様、検証条件</td>
+</tr>
+<tr>
+<td>チーム開発</td>
+<td>機械、電気、組み込み、認識、制御を試作・統合</td>
+<td>CAD、回路、コード、試験記録</td>
+</tr>
+<tr>
+<td>申告・報告</td>
+<td>出典、再利用箇所、自校の変更、実機状態を記載</td>
+<td>技術報告、出典申告</td>
+</tr>
+<tr>
+<td>審査・表彰</td>
+<td>実機との一致、理解、改良、再現性、成果を評価</td>
+<td>質疑、修正要求、公開インセンティブ</td>
+</tr>
+<tr>
+<td>公開・交流</td>
+<td>BBSで説明し、GitHub・Gitee・配布ファイルへ接続</td>
+<td>バージョン付き成果物、質疑履歴</td>
+</tr>
+<tr>
+<td>他大学での再利用</td>
+<td>適用条件を読み替え、機体・規則・人員に合わせて改修</td>
+<td>変更履歴、新しい不具合と解決策</td>
+</tr>
+<tr>
+<td>次シーズン</td>
+<td>改良版を再び報告・公開</td>
+<td>複数世代の技術系譜</td>
+</tr>
+</tbody>
+</table>
+<p>この循環には二つの経路がある。制度が提出・説明を求める経路と、チームが将来の自校メンバーや他大学に向けて自発的に成果を公開する経路である。前者が出典と責任範囲を明確にし、後者が実装の粒度と探索可能性を高める。</p>
+<h2 id="42">4.2 オープンソース審査と出典申告<a class="headerlink" href="#42" title="Permanent link">&para;</a></h2>
+<p>2025年の公式オープンソース審査手順は、他チームの公開設計を用いたロボットについて、参照元と再設計内容を事前申告させ、必要に応じて資料提出と答弁を求めた。審査では、提出資料と実機の一致、参照した設計、変更した箇所、チーム自身が技術を理解しているかが確認される。再審査後も要件を満たさない場合、対象ロボットは検査を通過できない。<a href="#ref-1">[1]</a></p>
+<p>したがって、制度の中心は既存成果の利用禁止ではなく、利用関係の可視化にある。先行チームのコードを含む場合は出典を記し、自校のセンサー、座標系、機構、計算資源、競技年へ合わせた変更を説明する。公開物をそのまま動かせたかどうかよりも、どこまでを借り、どこからを設計し直したかが審査可能な形で残る。 出典と変更理由を併せて記録することは、後続の設計者が先行成果を検証し、次の改修へ進むための来歴管理にもなる。</p>
+<table>
+<thead>
+<tr>
+<th>区分</th>
+<th>チームが示す内容</th>
+<th>審査・再利用で確認する点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>自主設計</td>
+<td>要求、原理、設計判断、試験結果</td>
+<td>実機と資料の一致、再現条件</td>
+</tr>
+<tr>
+<td>先行成果の参照</td>
+<td>大学・チーム、記事、リポジトリ、対象箇所</td>
+<td>出典の特定可能性、対応シーズン</td>
+</tr>
+<tr>
+<td>コード・モデルの再利用</td>
+<td>使用したモジュール、依存関係、ライセンス</td>
+<td>改変可否、版、設定、ハードウェア差</td>
+</tr>
+<tr>
+<td>再設計</td>
+<td>変更理由、変更箇所、性能・不具合の比較</td>
+<td>自校が加えた工学的判断</td>
+</tr>
+<tr>
+<td>答弁</td>
+<td>担当者による構成・動作・安全性の説明</td>
+<td>実装理解、担当範囲、修正への対応</td>
+</tr>
+</tbody>
+</table>
+<p>公開されていることと、自由に改変・再配布できることも同義ではない。Apache License 2.0、AGPL、CC BY-SA、CC BY-NC-SA、CC BY-NC-ND、ライセンス未記載では許諾範囲が異なる。再利用側はURLだけでなく、タグまたはコミット、規則年、依存関係、ライセンスを記録する必要がある。</p>
+<h2 id="43">4.3 技術報告・表彰と公開インセンティブ<a class="headerlink" href="#43" title="Permanent link">&para;</a></h2>
+<p>2025年のオープンソース優秀賞は、シーズン中に中核技術または運営方法を公開したチームを対象とし、ソフトウェアと機械・ハードウェアで提出物を分けていた。<a href="#ref-2">[2]</a> 2026年の総合賞基準では、最優秀シーズン計画賞と技術報告賞に1,000～5,000元の賞金が設定され、技術報告は完全形態審査時の技術案を整理して公開することが求められた。<a href="#ref-3">[3]</a> これは、競技成績だけでなく、開発過程を他者が読める形へ変換する仕事にも報酬を与える設計である。</p>
+<p>一方、RoboMaster AWARDは個人の技術・管理上の貢献を扱う別制度であり、オープンソース優秀賞や技術報告賞と同一ではない。2026年8月の全国大会会場では、管理、アルゴリズム、ソフトウェア、組み込み、制御、機械、ハードウェアの候補者パネルが展示された。現地で確認できた71件は候補展示であって、最終受賞者一覧ではない。<a href="#ref-4">[4]</a></p>
+<table>
+<thead>
+<tr>
+<th>AWARD 2026の方向</th>
+<th style="text-align: right;">会場で確認した候補数</th>
+<th>大学・貢献の例</th>
+<th>対応する公開資料</th>
+<th>証拠の位置づけ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>管理</td>
+<td style="text-align: right;">17</td>
+<td>華中科技大学：交差型組織、進捗・品質・リスク管理</td>
+<td>2024年管理成果報告</td>
+<td>BBS本文で詳細を確認可能</td>
+</tr>
+<tr>
+<td>アルゴリズム</td>
+<td style="text-align: right;">14</td>
+<td>深セン大学：レーダー解析、自動照準の工程化</td>
+<td>2026年の技術公開群</td>
+<td>パネルとリポジトリを対応可能</td>
+</tr>
+<tr>
+<td>ソフトウェア</td>
+<td style="text-align: right;">1</td>
+<td>候補展示は1件</td>
+<td>会場パネル</td>
+<td>パネル記載の範囲</td>
+</tr>
+<tr>
+<td>組み込み</td>
+<td style="text-align: right;">15</td>
+<td>江南大学・復旦大学・東北大学など</td>
+<td>電気制御・制御基盤の公開資料</td>
+<td>一部はBBSで補強可能</td>
+</tr>
+<tr>
+<td>制御</td>
+<td style="text-align: right;">5</td>
+<td>東北大学：車輪脚制御の改善</td>
+<td>技術動画・チーム資料</td>
+<td>会場で読めた5件の集計</td>
+</tr>
+<tr>
+<td>機械</td>
+<td style="text-align: right;">12</td>
+<td>同済大学：ロボットアームや給弾機構</td>
+<td>会場パネル</td>
+<td>詳細資料がない項目は候補内容のみ</td>
+</tr>
+<tr>
+<td>ハードウェア</td>
+<td style="text-align: right;">7</td>
+<td>深セン大学：無線充電と電力系統</td>
+<td>2026年技術公開群</td>
+<td>パネルと公開物を対応可能</td>
+</tr>
+</tbody>
+</table>
+<p>展示の意義は、機械やアルゴリズムだけでなく、管理、文書化、組み込み基盤、検証手順も競技の成果として可視化された点にある。候補パネルを出発点にBBS、大学記事、リポジトリへ遡れば、短い紹介文を再検証可能な実装へ接続できる。チーム運営そのものの分析は第5章で扱う。</p>
+<h2 id="44">4.4 技術交流とチーム間の知識移転<a class="headerlink" href="#44" title="Permanent link">&para;</a></h2>
+<p>文書とリポジトリは非同期に参照できるが、設計の前提や失敗条件は対話で補われる。RoboMaster青年工程師大会は2016年から地域交流会を行い、組織委員会、企業技術者、大学チームが開発経験を共有する場を設けた。<a href="#ref-5">[5]</a> 大会後の発表、BBSの質疑、オンライン交流群、大学間の練習試合は、公開ファイルだけでは分からない調整値、検査上の注意、再現できなかった条件を交換する経路になる。</p>
+<p>華中科技大学は2024年の管理報告で、武漢工程大学、湖北工業大学、武漢理工大学、文華学院との4回の大規模交流試合と、複数大学との訪問・オンライン交流を記録した。<a href="#ref-6">[6]</a> 遼寧科技大学も2026年の哨兵公開で、瀋陽工業大学、瀋陽理工大学、東北大学、南京航空航天大学金城学院、大連理工大学などへの謝意を明記した。こうした同期的な交流で問題の所在を共有し、その後に技術報告やコードを残すことで、会話が一回限りの助言で終わらない。</p>
+<p>華南理工大学のSimulatorXは、公開ソフトウェアとイベントが結びついた例である。2022年には104大学が参加する操作手シミュレーション大会を実施し、協力大学からサーバー提供やテスト支援を受け、25回以上の版更新を重ねた。<a href="#ref-7">[7]</a> ここでは、交流会が利用者を集め、利用者のフィードバックが次版の公開物を改善する循環が成立した。</p>
+<h2 id="45">4.5 実際に確認できる技術継承<a class="headerlink" href="#45" title="Permanent link">&para;</a></h2>
+<p>技術移転を示すには、外観の類似ではなく、後発側が先行資料を明記している必要がある。以下は、出典、再利用箇所、変更内容を後発大学の文書で追える事例である。</p>
+<table>
+<thead>
+<tr>
+<th>先行大学・公開資産</th>
+<th>後発大学</th>
+<th>再利用した要素</th>
+<th>後発側の変更</th>
+<th>技術移転としての意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>深セン北理モスクワ大学（PolarBear）のSim2Realナビゲーション</td>
+<td>遼寧科技大学</td>
+<td>脱出プラグイン、ナビゲーションツリー、fake yawの考え方</td>
+<td>小面積のRMUL環境へ合わせ、Nav2のMPPI、連続経由点、独自TF構成へ統合</td>
+<td>実機不足を補う開発手順が、別の哨兵全体へ組み込まれた</td>
+</tr>
+<tr>
+<td>中南大学の自動照準、同済大学の自動照準・熱量制御</td>
+<td>遼寧科技大学</td>
+<td>FYT系の自動照準基盤、SuperPowerのsolverと熱量制御</td>
+<td>高速回転目標を二段階に分け、ロック機構と探索処理を追加</td>
+<td>複数大学のモジュールを一台へ統合し、対象戦術に合わせて再設計した</td>
+</tr>
+<tr>
+<td>上海交通大学などの直列脚・車輪脚資料</td>
+<td>香港科技大学</td>
+<td>直列脚歩兵のモデルと構造上の先行知見</td>
+<td>チェーン張力調整、機体小型化、低慣性ジンバル、関節減速機を改良</td>
+<td>トンネル通過と近距離射撃という別の性能目標へ設計を寄せた</td>
+</tr>
+<tr>
+<td>南京航空航天大学、華南理工大学、浙江大学、深セン大学のダート資料</td>
+<td>広州城市理工学院</td>
+<td>発射架、調整機構、試験方法</td>
+<td>yaw軸ねじ機構を修正し、CAD、説明書、試験動画、定量記録を一式化</td>
+<td>複数年の設計を参照し、再現と較正の手順まで成果物に加えた</td>
+</tr>
+</tbody>
+</table>
+<p>深セン北理モスクワ大学は、アルゴリズムシミュレーション、半実物試験、実機検証の三段階と、哨兵全体のTF構成を公開している。<a href="#ref-8">[8]</a> 遼寧科技大学はそれをそのまま複製せず、SLAM Toolbox、small_pointlio、MPPI、BehaviorTree.CPP、自動照準、下位制御を一つの2026年システムへ統合した。<a href="#ref-9">[9]</a> 後発側の文書が参照元だけでなく、採用しなかった方式や残った問題まで記すため、再利用は依存ではなく比較可能な設計判断になる。</p>
+<p>広州城市理工学院の2025年ダートシステムは、四大学の先行公開を参考文献として列挙し、修正済みCAD、構造説明、較正・発射試験をまとめた。<a href="#ref-10">[10]</a> 香港科技大学の直列脚歩兵も、上海交通大学の先行実装を参照しながら、車体寸法、駆動・張力調整、ジンバル慣性を変更した。<a href="#ref-11">[11]</a> いずれも、公開資産の価値は完成モデルの複製ではなく、後発側が自校の制約に合わせて変更し、その差分を次の参照元として残す点にある。</p>
+<h2 id="46-bbsgithubgitee">4.6 BBS・GitHub・Giteeの役割<a class="headerlink" href="#46-bbsgithubgitee" title="Permanent link">&para;</a></h2>
+<p>技術移転の媒体は代替関係ではなく、役割分担を持つ。BBS記事は対象シーズン、機体、開発上の問題、動画、配布先、連絡先、質疑を一つの入口にする。GitHubとGiteeはコード差分、Issue、タグ、ライセンス、継続更新を追跡し、大容量CADや試験記録はクラウド配布へ分離されることが多い。</p>
+<table>
+<thead>
+<tr>
+<th>媒体</th>
+<th>主な役割</th>
+<th>読者が確認する点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RoboMaster BBS</td>
+<td>背景説明、技術報告、動画、質疑、配布先の索引</td>
+<td>投稿日、対象シーズン、添付切れ、回答履歴</td>
+</tr>
+<tr>
+<td>GitHub</td>
+<td>コード・文書の版管理、Issue、CI、ライセンス</td>
+<td>既定ブランチ、タグ、最終コミット、依存関係</td>
+</tr>
+<tr>
+<td>Gitee</td>
+<td>中国国内から到達しやすいコード配布</td>
+<td>GitHubとの同期、ミラー元、版の差</td>
+</tr>
+<tr>
+<td>クラウド配布</td>
+<td>CAD、基板データ、学習済み重み、動画</td>
+<td>有効期限、ファイル一覧、ハッシュ、許諾</td>
+</tr>
+<tr>
+<td>動画・交流会</td>
+<td>実機挙動、操作、失敗条件、質疑</td>
+<td>編集の有無、試験条件、対応する公開物</td>
+</tr>
+</tbody>
+</table>
+<p>武漢科技大学の<code>awakening</code>は、大学別の公開物を分野ごとに索引化し、探索の入口を提供する。<a href="#ref-12">[12]</a> 索引は有用だが、再利用時には必ず元記事と元リポジトリへ戻り、版とライセンスを確認する必要がある。</p>
+<h2 id="47">4.7 大学別の公開リポジトリ<a class="headerlink" href="#47" title="Permanent link">&para;</a></h2>
+<p>公開活動の強さは単純な順位にはできないが、複数年の更新、サブシステムの広さ、説明文書、下流の引用を追える大学は、技術共有の中核として位置づけられる。深セン北理モスクワ大学はSim2Realとナビゲーションを多数のApache-2.0リポジトリに分け、上海交通大学は組み込み、無線充電、技術ブログを継続し、深セン大学はダート、レーダー、自動照準を2026年にまとめて公開した。青島大学は視覚、自律移動、組み込み、減速機をGitHubとGiteeへ展開している。</p>
+<table>
+<thead>
+<tr>
+<th>大学・チーム</th>
+<th>リポジトリ／公開先</th>
+<th>主題・言語／基盤</th>
+<th>シーズン・ライセンス</th>
+<th>学習・再利用できる内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>深セン北理モスクワ大学・PolarBear</td>
+<td><a href="https://github.com/SMBU-PolarBear-Robotics-Team/pb2025_sentry_nav">pb2025_sentry_nav</a></td>
+<td>哨兵ナビゲーション、C++／ROS 2・Nav2</td>
+<td>2025–2026、Apache-2.0</td>
+<td>Sim2Real、TF、再定位、行動木、CI</td>
+</tr>
+<tr>
+<td>上海交通大学・交龍</td>
+<td><a href="https://github.com/SJTU-RoboMaster-Team">SJTU-RoboMaster-Team</a></td>
+<td>組み込み、無線充電、技術ブログ、C/C++</td>
+<td>複数年、各リポジトリ参照</td>
+<td>行列演算、STM32、送受電回路の設計履歴</td>
+</tr>
+<tr>
+<td>深セン大学・RobotPilots</td>
+<td><a href="https://github.com/SZURPVision/RP-26AutoAim-Frame">RP-26AutoAim-Frame</a></td>
+<td>自動照準、C++／プラグイン構成</td>
+<td>2026、リポジトリ参照</td>
+<td>検出・予測・射撃を分離した協働設計</td>
+</tr>
+<tr>
+<td>東北大学・TDT</td>
+<td><a href="https://github.com/T-DT-Algorithm-2024/T-DT-2024-Radar">T-DT-2024-Radar</a></td>
+<td>レーダー、C++／点群・視覚</td>
+<td>2024–2025、リポジトリ参照</td>
+<td>センサー融合、配置、処理構成</td>
+</tr>
+<tr>
+<td>中南大学・FYT</td>
+<td><a href="https://github.com/CSU-FYT-Vision/FYT2024_vision">FYT2024_vision</a></td>
+<td>自動照準、C++／OpenCV</td>
+<td>2024、リポジトリ参照</td>
+<td>追跡・弾道を含む視覚基盤</td>
+</tr>
+<tr>
+<td>華北理工大学・Horizon</td>
+<td><a href="https://github.com/BreCaspian/ROBOMASTER-HORIZON-LiDAR-2025">ROBOMASTER-HORIZON-LiDAR-2025</a></td>
+<td>レーダー、C++／LiDAR・カメラ</td>
+<td>2025、AGPL系</td>
+<td>LiDARと画像の統合認識</td>
+</tr>
+<tr>
+<td>ハルビン工業大学（深セン）・南工驍鷹</td>
+<td><a href="https://github.com/PageChen04/radar_ros_ws">radar_ros_ws</a></td>
+<td>レーダー、C++／ROS 2</td>
+<td>2024、リポジトリ参照</td>
+<td>点群登録、クラスタリング、座標変換</td>
+</tr>
+<tr>
+<td>太原科技大学・NewMaker</td>
+<td><a href="https://github.com/haikuosenlan/RMVision">RMVision</a></td>
+<td>自動照準、C++／OpenCV</td>
+<td>複数年、リポジトリ参照</td>
+<td>装甲板とエネルギー機関の認識</td>
+</tr>
+<tr>
+<td>青島大学・未来</td>
+<td><a href="https://github.com/QDU-VRobot/qdu26_sentry_navigation">qdu26_sentry_navigation</a></td>
+<td>自律移動、C++／ROS 2</td>
+<td>2026、リポジトリ参照</td>
+<td>二重LiDAR、測位、経路計画</td>
+</tr>
+<tr>
+<td>中国石油大学（華東）・RPS</td>
+<td><a href="https://github.com/RoboPioneers">RoboPioneers</a></td>
+<td>機械、制御、ソフトウェア</td>
+<td>2023–2026、各公開物参照</td>
+<td>P17減速機、シーズン横断の設計変更</td>
+</tr>
+<tr>
+<td>UBC・Pacific Spirit</td>
+<td><a href="https://github.com/wele0612/PSP_supercapacitor">PSP_supercapacitor</a></td>
+<td>電源、C／回路</td>
+<td>2022–2023、リポジトリ参照</td>
+<td>スーパーキャパシタの回路と制御</td>
+</tr>
+<tr>
+<td>武漢科技大学・崇実</td>
+<td><a href="https://github.com/WUST-RM/awakening">awakening</a></td>
+<td>公開物索引、自動照準・レーダー・意思決定</td>
+<td>継続更新、索引先参照</td>
+<td>複数大学の成果を探索する分類体系</td>
+</tr>
+</tbody>
+</table>
+<p>古い実装は現行規則への適合を保証しないが、設計判断と改良の履歴として価値がある。読者が再利用できるのは、リポジトリ名の一覧ではなく、対象機体、対応年、入出力、ハードウェア、依存関係、ライセンスまで追える公開物である。</p>
+<h2 id="48">4.8 共通基盤と再利用可能なソフトウェア<a class="headerlink" href="#48" title="Permanent link">&para;</a></h2>
+<p>RoboMaster Open Source Software（RMOSS）は、ROS 2上でカメラ、SBC―MCU通信、弾道計算、自動照準、エネルギー機関認識、Gazeboシミュレーションを組み合わせる、RoboMasterの公開エコシステムにある再利用可能な共通フレームワークである。中心の<code>rmoss_core</code>はApache License 2.0で、共通インターフェースと機能実装を分ける。<a href="#ref-13">[13]</a> <code>rmoss_contrib</code>、<code>rmoss_gazebo</code>、カメラドライバーなどから必要な構成を選択できる。競技全体の統一標準として採用されていることを示す資料はなく、複数の機能を共有・再構成するための基盤と位置づけられる。</p>
+<p>華南農業大学の<code>rm_vision</code>は、検出器、追跡器、弾道解算、カメラ、シリアル通信をROS 2ノードとして分離した再利用可能な視覚実装である。<a href="#ref-14">[14]</a> RMOSSと<code>rm_vision</code>は、共通メッセージや工程分割を学ぶ基盤になり得る一方、特定センサー、学習済みモデル、弾速、機体座標系を設定し直さなければ実機性能は得られない。</p>
+<p>ROS 2 Humble、YOLO、Nav2、BehaviorTree.CPPも複数大学で実装例を確認できる。こうした共通基盤は、繰り返し実装する通信・座標・構成管理を共有し、各大学が規則固有の認識、制御、試験へ時間を振り向けるための足場である。</p>
+<h2 id="_1">参考文献<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><a id="ref-1"></a>[1] RoboMaster組織委員会, 「RoboMaster 2025机甲大师超级对抗赛开源审查流程」, 2025年4月28日. <a href="https://www.robomaster.com/zh-CN/resource/pages/announcement/1837">公式公告</a></p>
+<p><a id="ref-2"></a>[2] RoboMaster組織委員会, 「2025赛季开源优秀奖评选公告」, 2025年. <a href="https://www.robomaster.com/zh-CN/resource/pages/announcement/1857">公式公告</a></p>
+<p><a id="ref-3"></a>[3] RoboMaster, 「RoboMaster 2026高校系列赛综合类奖项评选标准」, 2026年7月1日. <a href="https://www.robomaster.com/zh-CN/resource/pages/announcement/1921">公式公告</a></p>
+<p><a id="ref-4"></a>[4] Scramble, 「RoboMaster AWARD 2026候補展示・現地調査記録」, 深セン, 2026年8月5日. 現地写真転記（候補71件、管理・アルゴリズム・ソフトウェア・組み込み・制御・機械・ハードウェア）。</p>
+<p><a id="ref-5"></a>[5] RoboMaster, 「RoboMaster 青年工程师大会」. <a href="https://www.robomaster.com/zh-CN/cultural/conference">公式ページ</a></p>
+<p><a id="ref-6"></a>[6] 華中科技大学狼牙, 「RM AWARD 2024管理成果报告」, 2024年9月3日. <a href="https://bbs.robomaster.com/article/28348?source=8">BBS記事</a></p>
+<p><a id="ref-7"></a>[7] 華南理工大学華南虎, 「SimulatorX模拟器开源」, 2022年10月8日. <a href="https://bbs.robomaster.com/article/9145">BBS記事</a></p>
+<p><a id="ref-8"></a>[8] 深セン北理モスクワ大学PolarBear, 「Sim2Real导航及整车建模开源分享」, 2025年4月13日. <a href="https://bbs.robomaster.com/article/714072">BBS記事</a></p>
+<p><a id="ref-9"></a>[9] 遼寧科技大学COD, 「RM2026哨兵机器人导航、决策、自瞄、下位机控制全开源」, 2026年3月31日. <a href="https://bbs.robomaster.com/article/1882897?source=8">BBS記事</a></p>
+<p><a id="ref-10"></a>[10] 広州城市理工学院野狼, 「RM2025飞镖系统开源」, 2025年9月28日. <a href="https://bbs.robomaster.com/article/804799">BBS記事</a></p>
+<p><a id="ref-11"></a>[11] 香港科技大学ENTERPRIZE, 「RM26串联腿步兵开源」, 2026年8月. <a href="https://bbs.robomaster.com/article/1938220?source=1">BBS記事</a></p>
+<p><a id="ref-12"></a>[12] 武漢科技大学崇実, 「awakening」. <a href="https://github.com/WUST-RM/awakening">GitHub</a></p>
+<p><a id="ref-13"></a>[13] RoboMaster OSS, 「rmoss_core」. <a href="https://github.com/robomaster-oss/rmoss_core">GitHub</a></p>
+<p><a id="ref-14"></a>[14] 華南農業大学, 「rm_vision」. <a href="https://github.com/SCAU-RM-NAV/rm_vision">GitHub</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

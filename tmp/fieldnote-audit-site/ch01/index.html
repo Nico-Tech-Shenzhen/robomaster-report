@@ -1,0 +1,841 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://nico-tech-shenzhen.github.io/robomaster-report/ch01/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../ch02/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第1章 RoboMaster 2026の現場 - RoboMaster 2026 Research Report</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-robomaster-2026" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href=".." title="RoboMaster 2026 Research Report" class="md-header__button md-logo" aria-label="RoboMaster 2026 Research Report" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RoboMaster 2026 Research Report
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第1章　RoboMaster 2026の現場
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="RoboMaster 2026 Research Report" class="md-nav__button md-logo" aria-label="RoboMaster 2026 Research Report" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    RoboMaster 2026 Research Report
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    はじめに
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章　RoboMaster 2026の現場
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章　RoboMaster 2026の現場
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 一局の試合で何が起きるか
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 ロボットと設備
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 大会シリーズと参加段階
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 何が標準で、何を競うのか
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 本報告の時点
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考文献
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章　2026年のロボットと技術
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章　ルール変更と技術開発の変化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章　オープンソースと技術移転
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章　チーム運営と大学教育・研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章　人材・スタートアップとロボット産業
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 DJIが提供する競技基盤
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 RoboMasterの制度化と社会的位置づけ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章　中国国内の競技比較
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    付録
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 一局の試合で何が起きるか
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 ロボットと設備
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 大会シリーズと参加段階
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 何が標準で、何を競うのか
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 本報告の時点
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考文献
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="1-robomaster-2026">第1章　RoboMaster 2026の現場<a class="headerlink" href="#1-robomaster-2026" title="Permanent link">&para;</a></h1>
+<p>調査主体: 次世代ロボットエンジニア支援機構 Scramble（一般社団法人）</p>
+<p>調査目的: RoboMasterの基本構造を、初見の読者にも正確に伝える</p>
+<h2 id="11">1.1 一局の試合で何が起きるか<a class="headerlink" href="#11" title="Permanent link">&para;</a></h2>
+<p>RoboMaster University Championship（RMUC）は、赤と青の二チームが複数種のロボットと固定設備を運用する大学対抗競技である。17 mmまたは42 mmの樹脂弾が装甲モジュールに命中すると耐久値が減り、発射熱量、シャーシ電力、獲得資源、復活、強化状態を裁判システムが管理する。射撃だけでなく、資源の回収と装配、索敵、自律巡回、飛行支援、固定目標への攻撃、操縦者間の情報共有が同時に進む。2026年全国大会段階の詳細は競技規則V2.1.0に定められている。<a href="#ref-1">[1]</a></p>
+<p>学生が作る対象は機体だけではない。CAD、加工部品、回路基板、組み込み制御、電源、コンピュータービジョン、自己位置推定、経路計画、戦術画面、検査治具、予備品までを一つのシステムとして統合する。制作仕様の強制条項に適合しなければ出場できないため、競技性能と安全・寸法・質量・裁判システム取付条件を同時に満たす必要がある。<a href="#ref-2">[2]</a></p>
+<p>華南農業大学のエンジニアロボットは、両腕とVRによる操作系を組み合わせ、全国大会で4級装配を3回完了したと大学が報告している。<a href="#ref-5">[5]</a> この例で問われるのは、複雑な腕を作る技術だけではない。競技が求める作業に、機構、人の操作、姿勢保持、判定をどう接続するかである。機体が複雑になる理由は、学生の技術力と、競技が与える開発課題の関係から理解する必要がある。</p>
+<p>本報告は、規則によって要求がどう変わり、解法が他大学や次の学年へどう残り、その開発経験が企業の職務へどうつながるかを検討する。RoboMasterの公式紹介も、工学知識の総合的な応用・実践を評価することと、観客を引き付ける対抗競技の表現を併記している。<a href="#ref-6">[6]</a> 観戦性を備えた大会の中で、学生が実機を設計・統合・改善する仕組みを調べることが、本報告の中心課題である。</p>
+<h2 id="12">1.2 ロボットと設備<a class="headerlink" href="#12" title="Permanent link">&para;</a></h2>
+<p>本報告で用いる名称は公式規則の英語・中国語表記に合わせる。最初に全体をまとめて示し、以降は日本語名だけを使う。</p>
+<table>
+<thead>
+<tr>
+<th>標準日本語名（公式英語名 / 公式中国語名）</th>
+<th>主な役割</th>
+<th>学生が設計する中心課題</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ヒーローロボット（Hero Robot / 英雄机器人）</td>
+<td>42 mm弾による主力攻撃</td>
+<td>発射精度、反動、重心、機動性</td>
+</tr>
+<tr>
+<td>歩兵ロボット（Standard Robot / 步兵机器人）</td>
+<td>17 mm弾による機動戦</td>
+<td>自動照準、追跡、熱量・電力管理</td>
+</tr>
+<tr>
+<td>エンジニアロボット（Engineer Robot / 工程机器人）</td>
+<td>資源取得、装配、救援</td>
+<td>マニピュレーター、視覚支援、遠隔操作</td>
+</tr>
+<tr>
+<td>哨兵ロボット（Sentry Robot / 哨兵机器人）</td>
+<td>自律巡回、射撃、戦術行動</td>
+<td>測位、地図、計画、意思決定、復旧</td>
+</tr>
+<tr>
+<td>空中ロボット（Aerial Robot / 空中机器人）</td>
+<td>上空からの攻撃・支援</td>
+<td>飛行安全、通信、搭載量</td>
+</tr>
+<tr>
+<td>レーダー（Radar / 雷达）</td>
+<td>敵機検出、位置送信、対空対応</td>
+<td>LiDAR・カメラ融合、座標変換、通信</td>
+</tr>
+<tr>
+<td>ダートシステム（Dart System / 飞镖系统）</td>
+<td>基地など固定目標への攻撃</td>
+<td>発射再現性、照準、安全機構</td>
+</tr>
+</tbody>
+</table>
+<p>公式英語では歩兵ロボットを<code>Standard Robot</code>と呼ぶ。一般英訳の<code>Infantry Robot</code>と混在させない。レーダーとダートシステムはロボット編成に関わるが、固定設備であり移動ロボットの兵種とは区別する。</p>
+<h2 id="13">1.3 大会シリーズと参加段階<a class="headerlink" href="#13" title="Permanent link">&para;</a></h2>
+<p>高校シリーズにはフル編成のRMUC、少数機で参加できるRoboMaster University League（RMUL）、自律システムを中心とするAI Challengeなどがある。2026年の重慶リーグ戦では38チームが参加し、3対3対抗、歩兵対抗、エンジニア課題の登録数は異なっていた。<a href="#ref-3">[3]</a> 新規チームが最初からRMUCの全編成を用意する必要はなく、リーグ戦や校内戦を入口にできる。</p>
+<p>2026年RMUC地域大会は東部・南部・北部で実施された。公開された地域大会データは96大学、266試合613局を含む。これは地域大会の実出場規模であり、RoboMaster全種目の登録大学数や歴代累計参加者数とは別の指標である。<a href="#ref-4">[4]</a></p>
+<h2 id="14">1.4 何が標準で、何を競うのか<a class="headerlink" href="#14" title="Permanent link">&para;</a></h2>
+<p>DJIとRoboMaster組織委員会は、裁判システム、画像伝送装置、公式モーターなどの共通部品と通信仕様を提供する。一方、シャーシ、発射機構、マニピュレーター、電源、制御ソフトウェア、認識、ナビゲーション、操作画面の多くはチームが設計する。共通部品が命中判定や電力制限の互換性を作り、その境界内で機体構成と戦術が競争になる。競技用ハードウェアは第7章で詳しく扱う。</p>
+<p>各章はこの分業を異なる側面から説明する。第2・3章は学生が作る実機と要求の変化、第4章は設計資産が大学間を移る経路、第5章は開発を反復する組織と教育、第6章は経験者と企業の接続を扱う。第8章でこれらを支える制度を総合し、第9章では他競技との構造の違いを比較する。</p>
+<h2 id="15">1.5 本報告の時点<a class="headerlink" href="#15" title="Permanent link">&para;</a></h2>
+<p>本報告の基準日は2026年8月18日である。規則は全国大会段階V2.1.0、制作仕様はV2.0.0を基準にする。地域大会は当時のV1系規則で実施されており、後発の全国大会規則を地域大会ログへ遡及適用しない。チームの公開性能値は当該チームの報告として扱い、第三者比較試験とはみなさない。</p>
+<h2 id="_1">参考文献<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><a id="ref-1"></a>[1] RoboMaster組織委員会, 「RoboMaster 2026 机甲大师超级对抗赛比赛规则手册 V2.1.0」, 2026年7月16日. <a href="https://bbs.robomaster.com/wiki/20204847/811947">規則・資料センター</a></p>
+<p><a id="ref-2"></a>[2] RoboMaster組織委員会, 「RoboMaster 2026 机甲大师高校系列赛机器人制作规范手册 V2.0.0」, 2026年6月26日. <a href="https://bbs.robomaster.com/wiki/20204847/811947">規則・資料センター</a></p>
+<p><a id="ref-3"></a>[3] RoboMaster組織委員会, 「RoboMaster 2026 机甲大师高校联盟赛（重庆站）参赛手册 V2.0」, 2026年. <a href="https://bbs-web-static.robomaster.com/250bcff7b9fa40c39fe4d3dcf03b9c4d1773228470534/RoboMaster%202026%20%E6%9C%BA%E7%94%B2%E5%A4%A7%E5%B8%88%E9%AB%98%E6%A0%A1%E8%81%94%E7%9B%9B%EF%BC%88%E9%87%8D%E5%BA%86%E7%AB%99%EF%BC%89%E5%8F%82%E8%B5%9B%E6%89%8B%E5%86%8CV2.0.pdf">参加要項PDF</a></p>
+<p><a id="ref-4"></a>[4] RoboMaster高校大会運営, 「RMUC 2026区域赛部分赛事数据发布」, 2026年. <a href="https://bbs.robomaster.com/article">RoboMasterコミュニティ</a></p>
+<p><a id="ref-5"></a>[5] 華南農業大学, 「2026年RoboMaster全国準優勝――大学過去最高成績」, 2026年8月11日. <a href="https://www.scau.edu.cn/2026/0811/c17646a441849/page.htm">大学公式記事</a></p>
+<p><a id="ref-6"></a>[6] RoboMaster組織委員会, 「RoboMaster机甲大师超级对抗赛介绍」. <a href="https://www.robomaster.com/zh-CN/robo/rm?djifrom=nav">公式競技紹介</a>（2026年8月30日閲覧）</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

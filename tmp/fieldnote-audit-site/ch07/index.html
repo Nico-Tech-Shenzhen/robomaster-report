@@ -1,0 +1,947 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://nico-tech-shenzhen.github.io/robomaster-report/ch07/">
+      
+      
+        <link rel="prev" href="../ch06/">
+      
+      
+        <link rel="next" href="../ch08/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第7章 DJIが提供する競技基盤 - RoboMaster 2026 Research Report</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#7-dji" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href=".." title="RoboMaster 2026 Research Report" class="md-header__button md-logo" aria-label="RoboMaster 2026 Research Report" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RoboMaster 2026 Research Report
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第7章 DJIが提供する競技基盤
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="RoboMaster 2026 Research Report" class="md-nav__button md-logo" aria-label="RoboMaster 2026 Research Report" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    RoboMaster 2026 Research Report
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    はじめに
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章　RoboMaster 2026の現場
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章　2026年のロボットと技術
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章　ルール変更と技術開発の変化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章　オープンソースと技術移転
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章　チーム運営と大学教育・研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章　人材・スタートアップとロボット産業
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 DJIが提供する競技基盤
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 DJIが提供する競技基盤
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 必須、任意、学生開発の三層
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 裁判システムが異なる機体を一つの試合へ接続する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 公式部品は設計の共通語になる
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#74-dji" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 DJIが提供しないシステム
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#75" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 競技基盤と教育製品は別の系統である
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#76" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 境界が生む競技の性格
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考文献
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 RoboMasterの制度化と社会的位置づけ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章　中国国内の競技比較
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    付録
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 必須、任意、学生開発の三層
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 裁判システムが異なる機体を一つの試合へ接続する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 公式部品は設計の共通語になる
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#74-dji" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 DJIが提供しないシステム
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#75" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 競技基盤と教育製品は別の系統である
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#76" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 境界が生む競技の性格
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考文献
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="7-dji">第7章 DJIが提供する競技基盤<a class="headerlink" href="#7-dji" title="Permanent link">&para;</a></h1>
+<p>調査主体: 次世代ロボットエンジニア支援機構 Scramble（一般社団法人）</p>
+<p>調査目的: RoboMasterの基本構造を、初見の読者にも正確に伝える</p>
+<p>RoboMasterの機体はDJIの完成品を競わせるものではない。DJIと大会組織委員会が共通の計測・通信基盤を用意し、大学はその制約に適合する機械、回路、制御、認識、操作系を設計する。この境界を理解すると、標準化と学生の設計自由度が両立する理由が見える。</p>
+<h2 id="71">7.1 必須、任意、学生開発の三層<a class="headerlink" href="#71" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>区分</th>
+<th>代表例</th>
+<th>競技での扱い</th>
+<th>大学が設計する範囲</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>必須の競技基盤</td>
+<td>装甲、主制御、電源管理、発射計測、画像伝送</td>
+<td>機種・種目ごとに制作仕様が搭載と接続を規定</td>
+<td>取付、配線、放熱、機体への統合</td>
+</tr>
+<tr>
+<td>任意・用途別の公式部品</td>
+<td>M3508/C620、M2006/C610、GM6020、開発ボード、Livox</td>
+<td>規則や用途に合えば採用。全機体への一律搭載ではない</td>
+<td>機構、回路、ファームウェア、制御、センサー構成</td>
+</tr>
+<tr>
+<td>学生開発システム</td>
+<td>シャーシ、脚、腕、自動照準、自律移動、レーダー処理、UI</td>
+<td>寸法・電力・安全などの規則内で競争</td>
+<td>原則としてシステム全体</td>
+</tr>
+</tbody>
+</table>
+<p>2026年の物資購入案内は、裁判システム機上モジュールが当該シーズンの規則に合わせて更新され、将来の機能や対応モジュールが変わり得ると明記する。したがって「DJI製だから必須」でも「前年に使えたから現行」でもなく、当該年の規則と制作仕様で区分する。<a href="#ref-1">[1]</a></p>
+<h2 id="72">7.2 裁判システムが異なる機体を一つの試合へ接続する<a class="headerlink" href="#72" title="Permanent link">&para;</a></h2>
+<p>裁判システムは学生の機体を遠隔操縦する装置ではなく、試合を共通条件で成立させる計測・制限・通信層である。装甲モジュールが被弾を検出して体力へ反映し、発射系は弾速と発射熱量、電源管理系はシャーシ電力を扱う。主制御モジュールはロボット状態、得点、フィールド情報を試合側と交換し、画像伝送系は操縦映像と競技データを運ぶ。2026年制作仕様は機種別の搭載モジュール、取付位置、露出範囲、配線とインターフェースを定める。<a href="#ref-2">[2]</a></p>
+<table>
+<thead>
+<tr>
+<th>裁判機能</th>
+<th>共通化されるもの</th>
+<th>学生側に残る設計問題</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>被弾・体力</td>
+<td>命中検出と体力計算</td>
+<td>装甲露出と機構保護を両立する配置</td>
+</tr>
+<tr>
+<td>発射管理</td>
+<td>弾速、熱量、発射状態</td>
+<td>給弾、摩擦輪、照準、反動、弾道推定</td>
+</tr>
+<tr>
+<td>電力管理</td>
+<td>シャーシ電力の計測と上限</td>
+<td>駆動配分、回生、スーパーキャパシタ、電源変換</td>
+</tr>
+<tr>
+<td>状態・試合データ</td>
+<td>機体状態とフィールド側通信</td>
+<td>データ解釈、意思決定、独自UI、故障処理</td>
+</tr>
+<tr>
+<td>画像伝送</td>
+<td>共通の映像・通信経路</td>
+<td>カメラ配置、認識系、操縦画面</td>
+</tr>
+</tbody>
+</table>
+<p>この基盤があるため、構造も制御方式も異なる大学の機体を同じ条件で比較できる。一方、大学は質量、電力、搭載位置を満たすよう機体を裁判システムの周囲へ設計する。標準化されるのは試合との境界であり、ロボット工学そのものではない。</p>
+<h2 id="73">7.3 公式部品は設計の共通語になる<a class="headerlink" href="#73" title="Permanent link">&para;</a></h2>
+<p>M3508とC620、M2006とC610、GM6020、開発ボードC型は競技で広く参照されるが、完成機の設計を決めない。M3508の公式仕様は24 V、最大連続トルク3 N·m、C620の最大連続電流20 Aを示し、開発ボードC型はCAN、UART、IMUなどの接続を提供する。<a href="#ref-3">[3]</a><a href="#ref-4">[4]</a> 既知の寸法、通信方式、電流限界、文書、交換品の入手性は、短いシーズンで複数機体を並行開発する際の共通語になる。</p>
+<p>採用は用途別である。M2006/C610や旧UWB、旧電池、旧裁判モジュールは2019年AI Challengeの歴史的部品表に見られるが、2026年の全機体必須品ではない。<a href="#ref-5">[5]</a> Livoxも2026年購入案内ではMid-70やMid-360Sが割引対象で、旧Mid-360は生産終了品とされる。<a href="#ref-1">[1]</a> 現行、任意、歴史的という時間軸を混ぜてはならない。</p>
+<p>大学は必要に応じて独自PCB、電源回路、制御器、センサー、計算機を組み合わせる。公式部品を使っても、減速、伝達、冷却、配線、ファームウェア、状態推定は学生の仕事である。公式部品から離れれば自由度が増す一方、電気的適合、安全、保守、予備品までチームが引き受ける。</p>
+<h2 id="74-dji">7.4 DJIが提供しないシステム<a class="headerlink" href="#74-dji" title="Permanent link">&para;</a></h2>
+<p>第2章で扱った車輪脚・リング脚・直列脚、多軸エンジニアロボットの腕、自律哨兵ロボットの経路計画、レーダー処理、自動照準、独自電力回路、無線充電、操作UI、シミュレーター、全体統合は大学が開発する。DJIはこれらの完成解を競技機として支給しない。</p>
+<table>
+<thead>
+<tr>
+<th>学生開発領域</th>
+<th>2026年に確認できる実装の型</th>
+<th>裁判システムとの接点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>機械</td>
+<td>脚式シャーシ、多軸アーム、発射機構</td>
+<td>質量、寸法、装甲露出、電力</td>
+</tr>
+<tr>
+<td>回路・制御</td>
+<td>独自PCB、電源変換、姿勢・駆動制御</td>
+<td>電源管理、状態通信</td>
+</tr>
+<tr>
+<td>認識・自律</td>
+<td>自動照準、測位、レーダー、経路計画</td>
+<td>試合データ、画像伝送</td>
+</tr>
+<tr>
+<td>操作・開発環境</td>
+<td>独自UI、VR操作、シミュレーション</td>
+<td>クライアント通信、競技状態</td>
+</tr>
+</tbody>
+</table>
+<h2 id="75">7.5 競技基盤と教育製品は別の系統である<a class="headerlink" href="#75" title="Permanent link">&para;</a></h2>
+<p>RoboMaster S1は2019年に発表された完成型教育ロボット、EP/EP Coreは2020年から展開された教育・開発プラットフォームである。EP CoreはS1の機能を引き継ぎ、アーム、グリッパー、SDK、授業向け機能を加えた。<a href="#ref-6">[6]</a> DJI Education HubはS1、EP、RoboMaster TTをプログラミング学習、シミュレーション、授業管理へ接続するサービスとして案内してきた。<a href="#ref-7">[7]</a></p>
+<table>
+<thead>
+<tr>
+<th>系統</th>
+<th>主な利用者</th>
+<th>提供されるもの</th>
+<th>RMUCとの関係</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>大学競技基盤</td>
+<td>大学チーム</td>
+<td>規則、裁判システム、物資、試合運営</td>
+<td>学生製作機を競技へ接続</td>
+</tr>
+<tr>
+<td>S1 / EP / EP Core</td>
+<td>学習者、学校</td>
+<td>完成ロボット、SDK、教材</td>
+<td>教育用途。RMUC機体ではない</td>
+</tr>
+<tr>
+<td>Education Hub</td>
+<td>教員・学習者</td>
+<td>教材、シミュレーション、授業管理</td>
+<td>教育サービス。裁判システムとは別</td>
+</tr>
+</tbody>
+</table>
+<p>2026年8月時点でもEP Coreサポート、ダウンロード、Education Hubのページは公開されているが、地域別ストアの在庫だけから事業規模は判定できない。教育部門の全面終了やS1/EPの一括終了を告知するDJIの一次資料は確認できなかったため、本報告は「教育事業が終了した」とは記さない。一方、大学競技、裁判システム供給、物資割引は2026年も継続している。<a href="#ref-1">[1]</a><a href="#ref-8">[8]</a></p>
+<h2 id="76">7.6 境界が生む競技の性格<a class="headerlink" href="#76" title="Permanent link">&para;</a></h2>
+<p>主催側が規則、計測、通信、共通部品の一部を用意し、大学が機体とソフトウェアを作る。この分業は独自機を同一試合へ接続しながら、機械、電気、制御、認識、操作、統合を競争領域として残す。教育完成品や教育プラットフォームは周辺にあるが、大学競技の製作責任を代替しない。 この共通基盤と、技術を説明・公開・継承する手順がどのように継続的な競技制度を形作るかを、第8章で検討する。</p>
+<h2 id="_1">参考文献<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><a id="ref-1"></a>[1] RoboMaster, 「RoboMaster 2026机甲大师高校系列赛物资购买说明」, 2025年10月21日. <a href="https://www.robomaster.com/zh-CN/resource/pages/announcement/1879">公式公告</a></p>
+<p><a id="ref-2"></a>[2] RoboMaster組織委員会, 「RoboMaster 2026 制作规范手册」V1.4.1, 2026年4月21日. <a href="https://bbs-web-static.robomaster.com/81cd185109d64c329ec7717c1584ab2a1776752726810/RoboMaster%202026%20University%20Series%20Robot%20Specification%20Manual%20V1.4.1%EF%BC%8820260421%EF%BC%89.pdf">公式PDF</a></p>
+<p><a id="ref-3"></a>[3] RoboMaster, 「M3508 Gear Motor」. <a href="https://www.robomaster.com/en-US/products/components/general/M3508">公式製品ページ</a></p>
+<p><a id="ref-4"></a>[4] RoboMaster, 「Development Board Type C」. <a href="https://www.robomaster.com/en-US/products/components/general/development-board-type-c">公式製品ページ</a></p>
+<p><a id="ref-5"></a>[5] RoboMaster, 「ICRA 2019 RoboMaster AI Challenge Materials Purchase Order」, 2019年. <a href="https://www.robomaster.com/zh-CN/resource/pages/announcement/988">公式公告</a></p>
+<p><a id="ref-6"></a>[6] DJI, 「Support for RoboMaster EP Core」. <a href="https://www.dji.com/support/product/robomaster-ep-core">公式サポート</a></p>
+<p><a id="ref-7"></a>[7] DJI, 「DJI Education Hub」. <a href="https://edu.dji.com/">公式サービス</a></p>
+<p><a id="ref-8"></a>[8] RoboMaster, 「RMU 2026 Instructions for Purchasing Materials」, 2025年10月21日. <a href="https://www.robomaster.com/en-US/resource/pages/announcement/1886">公式英語版</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

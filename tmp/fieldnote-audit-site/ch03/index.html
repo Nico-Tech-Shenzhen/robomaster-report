@@ -1,0 +1,1000 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://nico-tech-shenzhen.github.io/robomaster-report/ch03/">
+      
+      
+        <link rel="prev" href="../ch02/">
+      
+      
+        <link rel="next" href="../ch04/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第3章 ルール変更と技術開発の変化 - RoboMaster 2026 Research Report</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#3" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href=".." title="RoboMaster 2026 Research Report" class="md-header__button md-logo" aria-label="RoboMaster 2026 Research Report" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RoboMaster 2026 Research Report
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第3章　ルール変更と技術開発の変化
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="RoboMaster 2026 Research Report" class="md-nav__button md-logo" aria-label="RoboMaster 2026 Research Report" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    RoboMaster 2026 Research Report
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    はじめに
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第1章　RoboMaster 2026の現場
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第2章　2026年のロボットと技術
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章　ルール変更と技術開発の変化
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3章　ルール変更と技術開発の変化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31-2024" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 2024年——地形と資源取得が機体を分岐させる
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-2025" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 2025年——継続開発と設計資産の審査
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 2026年——装配と電力変換が新しい担当領域になる
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 2026年——トンネル、自律運用、対空処理
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 三年間の変化を設計入力として整理する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#36-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 2026年の順位変化——技術と開発体制を分けて見る
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 規則改版と技術検査が増やす開発作業
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考文献
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4章　オープンソースと技術移転
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5章　チーム運営と大学教育・研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6章　人材・スタートアップとロボット産業
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7章 DJIが提供する競技基盤
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8章 RoboMasterの制度化と社会的位置づけ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9章　中国国内の競技比較
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    付録
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31-2024" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 2024年——地形と資源取得が機体を分岐させる
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-2025" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 2025年——継続開発と設計資産の審査
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 2026年——装配と電力変換が新しい担当領域になる
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 2026年——トンネル、自律運用、対空処理
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 三年間の変化を設計入力として整理する
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#36-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 2026年の順位変化——技術と開発体制を分けて見る
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 規則改版と技術検査が増やす開発作業
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考文献
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="3">第3章　ルール変更と技術開発の変化<a class="headerlink" href="#3" title="Permanent link">&para;</a></h1>
+<p>調査主体: 次世代ロボットエンジニア支援機構 Scramble（一般社団法人）</p>
+<p>調査目的: RoboMasterの基本構造を、初見の読者にも正確に伝える</p>
+<p>RoboMasterでは、ルール変更が地形、作業対象、電力条件、情報利用の変更を通じて、そのまま機体とシステムの設計要求になる。各大学は既存機を使い続けるだけではなく、機構、電源、制御、自律機能、検査手順を毎年更新しなければならない。本章では、2024年から2026年までの主要な変化を大学の技術的応答と対応づけ、要求の更新が開発課題と競争順位をどう組み替えたかを示す。</p>
+<h2 id="31-2024">3.1 2024年——地形と資源取得が機体を分岐させる<a class="headerlink" href="#31-2024" title="Permanent link">&para;</a></h2>
+<p>2024年全国大会の規則・制作仕様では、資源島の構造、鉱石配置、交換条件、機体寸法が改訂された。<a href="#ref-1">[1]</a> 華南理工大学（華南虎チーム）は、大資源島の半閉鎖化に対応し、従来の門型機構から、鉱石の取得と交換を分担する機構へエンジニアロボットを再設計した。4輪メカナムホイールのシャーシ上で複数鉱石を扱うため、腕の可動域だけでなく、機体姿勢、交換所への接近方向、格納寸法が設計変数になった。<a href="#ref-2">[2]</a></p>
+<p>同じ時期に、中南大学（FYTチーム）は車輪脚歩兵、6自由度アームを持つエンジニアロボット、誘導機能付きダートシステムを公開し、香港科技大学や武漢工程大学も車輪脚機構を公開した。<a href="#ref-3">[3]</a><a href="#ref-4">[4]</a> したがって、車輪脚や多自由度アームは2026年に突然出現したものではない。2024年までに存在した機構が、地形、装配、自律運用という後続シーズンの要求に合わせて統合・改良された。</p>
+<h2 id="32-2025">3.2 2025年——継続開発と設計資産の審査<a class="headerlink" href="#32-2025" title="Permanent link">&para;</a></h2>
+<p>2025年は、車輪脚、エンジニア制御、自律ナビゲーションを一シーズンで作り直すのではなく、前年機を試験し、故障条件と調整手順を文書化する段階が目立つ。中国鉱業大学（CUBOTチーム）のRM AWARD技術報告は、エンジニアロボットと車輪脚の設計・制御をまとめ、翌年に南京航空航天大学金城学院が偏置並列脚を開発する際の参考文献になった。<a href="#ref-5">[5]</a> 技術の出典申告、公開報告、審査・表彰は第4章で詳述するが、開発現場では「独自か模倣か」ではなく、先行設計のどこを採用し、どこを変更したかを説明する作業が増えた。</p>
+<p>2025年に蓄積された移動・操作・自律化の技術は、2026年の新しい競技要求へ流用された。ただし、同じ機構名でも前年と同じ設計ではない。トンネル通過、より複雑な装配、対空処理、無線給電を加えると、機械、回路、ソフトウェア、試験計画の担当境界そのものが変わる。</p>
+<h2 id="33-2026">3.3 2026年——装配と電力変換が新しい担当領域になる<a class="headerlink" href="#33-2026" title="Permanent link">&para;</a></h2>
+<p>2026年のエンジニア課題は、エネルギーユニットを取得するだけでなく、接近、挿入、移動、反転、指定姿勢での保持を連続して行う装配へ広がった。全国大会用規則では、正しい姿勢の保持と競技システム側の判定を含むため、把持力に加えて座標系、接触検出、操縦画面のフィードバック、判定遅延を設計しなければならない。<a href="#ref-6">[6]</a></p>
+<p>香港科技大学（ENTERPRIZEチーム）は装配工程を操作端の状態へ分解した。華南農業大学（Taurusチーム）は双七軸両腕とVR操作を実装し、全国大会で最高難度の4級装配を3回達成したと大学公式記事で報告している。<a href="#ref-7">[7]</a><a href="#ref-8">[8]</a> 両腕やVRの構成は第2章で扱った通りであり、本章で重要なのは、装配の段階化が機械担当だけでなく、操作系、通信、ソフトウェア統合へ追加作業を発生させた点である。</p>
+<p>無線給電も電源担当の仕事を拡張した。北京理工大学（DreamChaserチーム）はDAB（Dual Active Bridge）方式とSTM32G474上の位相同期制御を用い、送受電間の直接通信に依存しない給電装置を北部地域大会の技術検査へ通した。<a href="#ref-9">[9]</a> 出力だけでなく、コイル位置ずれ、発熱、絶縁、機上DCバスとの干渉、検査時の再現性が要求になる。試合作用と安全検査を同時に満たす電力変換器が、新たな整機サブシステムになった。</p>
+<h2 id="34-2026">3.4 2026年——トンネル、自律運用、対空処理<a class="headerlink" href="#34-2026" title="Permanent link">&para;</a></h2>
+<p>低いトンネルと段差は、脚機構を導入するだけでは解けない。東北大学は車輪・リング脚歩兵と四軸ジンバル哨兵を投入し、華東理工大学は低姿勢の直列脚でトンネル通過を実現した。<a href="#ref-10">[10]</a><a href="#ref-11">[11]</a> 設計負荷は、脚の運動学から、重心移動、射撃中の姿勢、自己復帰、ジンバル可動域、トンネル内の測位まで広がった。技術構成の詳細は第2章2.1と2.6を参照されたい。</p>
+<p>レーダーと哨兵には、地上機の位置推定に加えて空中ロボットへの対応が加わった。華南師範大学（PIONEERチーム）はLiDARと長焦点カメラを組み合わせ、南京理工大学江陰校区（Combatチーム）はSDRで競技無線を解析した。後者は区域大会で情報波の解析率が低かったことも報告している。<a href="#ref-12">[12]</a><a href="#ref-13">[13]</a> 新機能の追加は認識モデルだけでなく、追加センサーの較正、通信波形、シミュレーション、失敗時の縮退動作を開発項目にした。</p>
+<h2 id="35">3.5 三年間の変化を設計入力として整理する<a class="headerlink" href="#35" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>年・規則／競技環境の変化</th>
+<th>新しい工学要件</th>
+<th>文書化された大学の応答</th>
+<th>観測された競技上の関連</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024：資源島・交換条件、地形・寸法</td>
+<td>取得と交換の作業分解、姿勢・格納設計</td>
+<td>華南理工大学の複数鉱石機構、中南大学などの車輪脚・多自由度機構</td>
+<td>後年の装配・地形対応の設計基盤 <a href="#ref-1">[1]</a>–<a href="#ref-4">[4]</a></td>
+</tr>
+<tr>
+<td>2025：継続機体の改良、公開報告・審査</td>
+<td>故障条件、引用元、改良差分の文書化</td>
+<td>中国鉱業大学のエンジニア／車輪脚技術報告</td>
+<td>後続大学が報告を引用して改良 <a href="#ref-5">[5]</a></td>
+</tr>
+<tr>
+<td>2026：多段階装配</td>
+<td>接触制御、座標系、UI、判定フィードバック</td>
+<td>華南農業大学の双七軸両腕・VR、香港科技大学の操作支援</td>
+<td>華南農業大学が準優勝、4級装配を報告 <a href="#ref-7">[7]</a><a href="#ref-8">[8]</a></td>
+</tr>
+<tr>
+<td>2026：無線給電</td>
+<td>電力変換、熱、安全、検査再現性</td>
+<td>北京理工大学のDAB給電</td>
+<td>地域大会の技術検査を通過 <a href="#ref-9">[9]</a></td>
+</tr>
+<tr>
+<td>2026：トンネル・複雑地形</td>
+<td>低姿勢移動、自己復帰、射線・測位維持</td>
+<td>東北大学の四軸哨兵、華東理工大学の直列脚</td>
+<td>両大学が全国大会1位・3位 <a href="#ref-10">[10]</a><a href="#ref-11">[11]</a></td>
+</tr>
+<tr>
+<td>2026：対空・無線反制</td>
+<td>複合センサー、SDR解析、縮退動作</td>
+<td>華南師範大学、南京理工大学江陰校区</td>
+<td>地域大会での試験と失敗条件を報告 <a href="#ref-12">[12]</a><a href="#ref-13">[13]</a></td>
+</tr>
+</tbody>
+</table>
+<p>表の「競技上の関連」は同時に観測された結果であり、単独の勝因を示すものではない。機構が高度でも、整備、操縦、戦術、対戦相手、試合中の故障によって結果は変わる。</p>
+<h2 id="36-2026">3.6 2026年の順位変化——技術と開発体制を分けて見る<a class="headerlink" href="#36-2026" title="Permanent link">&para;</a></h2>
+<p>2026年全国総決勝は、東北大学が優勝、華南農業大学が準優勝、華東理工大学が3位、同済大学が4位となった。<a href="#ref-14">[14]</a><a href="#ref-17">[17]</a> 公式の全国大会受賞一覧を同じ大会段階で並べると、上位校の入れ替わりは一シーズンだけの変動ではなく、2024年から2026年にかけて競争階層そのものが動いたことを示している。</p>
+<table>
+<thead>
+<tr>
+<th>大学</th>
+<th style="text-align: right;">2024年全国大会 <a href="#ref-15">[15]</a></th>
+<th style="text-align: right;">2025年全国大会 <a href="#ref-16">[16]</a></th>
+<th style="text-align: right;">2026年全国大会 <a href="#ref-17">[17]</a></th>
+<th>三年間の変化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>東北大学</td>
+<td style="text-align: right;">3位</td>
+<td style="text-align: right;">4位</td>
+<td style="text-align: right;">優勝</td>
+<td>連続上位から優勝へ</td>
+</tr>
+<tr>
+<td>華南農業大学</td>
+<td style="text-align: right;">16強</td>
+<td style="text-align: right;">16強</td>
+<td style="text-align: right;">準優勝</td>
+<td>2年連続16強から決勝進出</td>
+</tr>
+<tr>
+<td>華東理工大学</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">総決勝未進出（地区復活戦33位）<a href="#ref-11">[11]</a></td>
+<td style="text-align: right;">3位</td>
+<td>初の全国総決勝で3位</td>
+</tr>
+<tr>
+<td>同済大学</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">8強</td>
+<td style="text-align: right;">4位</td>
+<td>全国上位へ進出</td>
+</tr>
+<tr>
+<td>上海交通大学</td>
+<td style="text-align: right;">優勝</td>
+<td style="text-align: right;">優勝</td>
+<td style="text-align: right;">32強</td>
+<td>2連覇後に32強</td>
+</tr>
+<tr>
+<td>華南理工大学</td>
+<td style="text-align: right;">準優勝</td>
+<td style="text-align: right;">3位</td>
+<td style="text-align: right;">16強</td>
+<td>連続表彰台から16強</td>
+</tr>
+</tbody>
+</table>
+<p>「—」は、公式一覧から比較可能な全国総決勝の順位区分を確認できなかった年を示す。華東理工大学の2025年欄だけは全国総決勝順位ではなく、大学公式記録にある地区復活戦33位と総決勝未進出を明記した。華南農業大学は2年連続の16強から準優勝へ、華東理工大学は全国総決勝未進出から初進出で3位へ、同済大学は8強から4位へ上がった。華東理工大学は全国大会前の上海大会でも、当時全国4回優勝の上海交通大学に2対1で勝利している。<a href="#ref-8">[8]</a><a href="#ref-11">[11]</a></p>
+<p>一方、上海交通大学は2024年と2025年の全国大会を連覇した後、2026年は32強となった。華南理工大学も2024年準優勝、2025年3位から2026年は16強へ移った。<a href="#ref-15">[15]</a>–<a href="#ref-17">[17]</a> 両大学は過去の実績だけでなく、蓄積された設計・試験能力を持つ。上海交通大学の2024年公式記録は、100人超・4部門の体制と、車輪脚歩兵で7000回の試験を行ったことを記し、同大学は2026年にも無線給電やSTM32制御基盤を公開している。<a href="#ref-18">[18]</a><a href="#ref-19">[19]</a> これらの記録は、設計・試験の蓄積を持つ大学でも順位が変わることを示す。過去の技術資産の保有と、その年の要求に合わせた複数兵種の統合・試合運用は、区別して評価する必要がある。</p>
+<table>
+<thead>
+<tr>
+<th>大学</th>
+<th>2026年の変化</th>
+<th>文書化された技術要素</th>
+<th>文書化された開発・運営要素</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>東北大学</td>
+<td>2024年3位、2025年4位から全国優勝</td>
+<td>車輪・リング脚歩兵、四軸ジンバル哨兵、自律測位・意思決定</td>
+<td>—</td>
+</tr>
+<tr>
+<td>華南農業大学</td>
+<td>2年連続16強から全国準優勝</td>
+<td>双七軸両腕、VR操作、車輪脚、4級装配</td>
+<td>機械、制御、システム統合を含む多兵種体制</td>
+</tr>
+<tr>
+<td>華東理工大学</td>
+<td>2025年地区復活戦33位・全国総決勝未進出から全国3位</td>
+<td>低姿勢直列脚、車輪脚、測位・自律意思決定</td>
+<td>2023年設立後の3年間の継続開発、80人超・複数学部・7機能部門</td>
+</tr>
+<tr>
+<td>同済大学</td>
+<td>2025年8強から全国4位</td>
+<td>ヒーロー発射系、自動照準などの継続技術</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>表の技術構成が示すのは、2026年の上位大学が、地形通過、装配、自律運用を同じ試合の中で成立させる開発に取り組んだことである。<a href="#ref-8">[8]</a><a href="#ref-10">[10]</a><a href="#ref-11">[11]</a> 機構と要求の対応は3.3〜3.5、華東理工大学の7部門を含む開発体制は第5章5.2で詳述する。運営欄の「—」は比較可能な記述がない項目を示し、技術要素だけから順位の原因を特定しない。</p>
+<p>上海交通大学の長期的な試験蓄積と2026年の技術公開、華東理工大学の3年間の継続開発を並べると、知識を持つことと、その年の全要求を試合で再現することは別の段階だと分かる。順位表の意味はスポーツ上の序列だけではない。毎年のルール変更が高く評価される工学能力の組合せを変え、実績ある大学を含む全チームに、再設計、統合、反復試験を継続させる仕組みを可視化している。</p>
+<h2 id="37">3.7 規則改版と技術検査が増やす開発作業<a class="headerlink" href="#37" title="Permanent link">&para;</a></h2>
+<p>2026年の競技規則は地域大会用のV1系から全国大会用のV2系へ移り、制作仕様も全国大会前に更新された。<a href="#ref-6">[6]</a> チームは変更箇所を機体ごとに割り当て、寸法・質量・エネルギー、裁判システム取付け、兵種固有要件、レーザー・電池安全、ソフトウェア版を試験表へ反映する必要がある。</p>
+<p>この作業は単なる書類対応ではない。最大展開寸法が変われば関節の制限値と格納姿勢が変わり、電力条件が変われば電源基板と熱試験が変わり、センサー追加は較正と起動順序を変える。規則変更は、機械図面、回路、ファームウェア、上位ソフトウェア、検査手順を同じ版で同期させる構成管理の仕事を増やした。2026年の競争力は、新しい機構を発案する能力だけでなく、変更された要求を短期間で整機へ反映し、検査と試合の両方で再現する能力にも表れている。試合で得た故障・運用情報を次の改修へつなぐ年間工程は、第5章5.3で扱う。</p>
+<h2 id="_1">参考文献<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><a id="ref-1"></a>[1] RoboMaster組織委員会, 「RMU 2024 Specifications Manuals」, 2024年. <a href="https://www.robomaster.com/en-US/resource/pages/announcement/1658">公式資料</a></p>
+<p><a id="ref-2"></a>[2] 華南理工大学華南虎チーム, 「RM2024エンジニアロボット機械構造公開」, 2024年. <a href="https://bbs-web-static.robomaster.com/bbs-prod/41a8202a9b9645aa812c5855f479d805/RM2024-%E5%8D%8E%E5%8D%97%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%A6-%E5%8D%8E%E5%8D%97%E8%99%8E-%E5%B7%A5%E7%A8%8B%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%9C%BA%E6%A2%B0%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E6%8A%A5%E5%91%8A.pdf">技術報告PDF</a></p>
+<p><a id="ref-3"></a>[3] 中南大学FYTチーム, 「RM2024歩兵ロボット技術報告」, 2024年9月10日. <a href="https://bbs.robomaster.com/article/43412">RoboMasterコミュニティ</a></p>
+<p><a id="ref-4"></a>[4] 香港科技大学ENTERPRIZEチーム, 「RM2024車輪脚平衡歩兵構造公開」, 2024年. <a href="https://bbs.robomaster.com/article/54241">RoboMasterコミュニティ</a></p>
+<p><a id="ref-5"></a>[5] 中国鉱業大学CUBOTチーム, 「RM AWARD 2025 エンジニア／車輪脚ロボット技術報告」, 2025年. <a href="https://bbs.robomaster.com/article/814277">RoboMasterコミュニティ</a></p>
+<p><a id="ref-6"></a>[6] RoboMaster組織委員会, 「RoboMaster 2026制作仕様」V2.0.0, 2026年6月26日. <a href="https://bbs.robomaster.com/wiki/20204847/811947">規則・資料センター</a></p>
+<p><a id="ref-7"></a>[7] 香港科技大学ENTERPRIZEチーム, 「RM2026エンジニア上位操作端・装配アルゴリズム」, 2026年. <a href="https://bbs.robomaster.com/article/1895855">RoboMasterコミュニティ</a></p>
+<p><a id="ref-8"></a>[8] 華南農業大学, 「2026年RoboMaster全国準優勝――大学過去最高成績」, 2026年8月11日. <a href="https://www.scau.edu.cn/2026/0811/c17646a441849/page.htm">大学公式記事</a></p>
+<p><a id="ref-9"></a>[9] 北京理工大学DreamChaserチーム, 「RM2026 DAB無線給電システム」, 2026年. <a href="https://bbs.robomaster.com/article/1890297">RoboMasterコミュニティ</a></p>
+<p><a id="ref-10"></a>[10] 人民日報, 「RoboMaster競技から20万人の若手エンジニア」, 2026年8月10日. <a href="https://www.peopleapp.com/column/30052888650-500007643026">記事</a></p>
+<p><a id="ref-11"></a>[11] 華東理工大学機械与動力工程学院, 「起源チーム、RoboMaster全国総決勝3位」, 2026年8月13日. <a href="https://mech.ecust.edu.cn/2026/0813/c10993a192729/page.htm">大学公式記事</a></p>
+<p><a id="ref-12"></a>[12] 華南師範大学PIONEERチーム, 「RM2026対空システム公開」, 2026年. <a href="https://bbs.robomaster.com/article/1884909">RoboMasterコミュニティ</a></p>
+<p><a id="ref-13"></a>[13] 南京理工大学江陰校区Combatチーム, 「RM2026レーダー無線処理公開」, 2026年. <a href="https://bbs.robomaster.com/article/1884180">RoboMasterコミュニティ</a></p>
+<p><a id="ref-14"></a>[14] RoboMaster機甲大師, 「全国大会第96試合――華南農業大学Taurus対東北大学TDT決勝戦」, 2026年8月9日. <a href="https://www.bilibili.com/video/BV1NEu16cEL4/">Bilibili公式動画</a></p>
+<p><a id="ref-15"></a>[15] RoboMaster組織委員会, 「RoboMaster 2024スーパー対抗全国大会受賞一覧」, 2024年8月22日. <a href="https://www.robomaster.com/zh-CN/resource/pages/announcement/1759">公式結果</a></p>
+<p><a id="ref-16"></a>[16] RoboMaster組織委員会, 「RoboMaster 2025スーパー対抗全国大会受賞一覧」, 2025年8月8日. <a href="https://www.robomaster.com/zh-CN/resource/pages/announcement/1856">公式結果</a></p>
+<p><a id="ref-17"></a>[17] RoboMaster組織委員会, 「RoboMaster 2026スーパー対抗全国大会受賞一覧」, 2026年8月12日. <a href="https://www.robomaster.com/zh-CN/resource/pages/announcement/1925">公式結果</a></p>
+<p><a id="ref-18"></a>[18] 上海交通大学, 「2024年RoboMaster全国総決勝優勝――史上初の3回優勝」, 2024年8月13日. <a href="https://news.sjtu.edu.cn/jdyw/20240813/201046.html">大学公式記事</a></p>
+<p><a id="ref-19"></a>[19] 上海交通大学交龍チーム, 「SJTU-RoboMaster-Team――2026年無線給電・STM32制御基盤ほか」, 2026年. <a href="https://github.com/SJTU-RoboMaster-Team">GitHub組織</a>（2026年8月20日閲覧）</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
