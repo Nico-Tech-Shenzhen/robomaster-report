@@ -8,6 +8,7 @@ RoboMaster 2026を中心に、中国の大学ロボット競技でどのよう�
 
 ## レポート
 
+- **[Web版を読む（GitHub Pages）](https://nico-tech-shenzhen.github.io/robomaster-report/)**
 - **[PDF版を読む](output/pdf/robomaster-report.pdf)**
 - 本文：[`docs/`](docs/)
 - 調査資料・証拠マップ：[`research/`](research/)
