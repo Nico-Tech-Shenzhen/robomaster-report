@@ -23,7 +23,7 @@ DOCS = [
 JP_CHAR_WIDTHS = set()
 
 
-def markup(text: str) -> str:
+def markup(text: str, namespace: str = "") -> str:
     text = html.escape(text.strip())
     if JP_CHAR_WIDTHS:
         runs = []
@@ -39,12 +39,12 @@ def markup(text: str) -> str:
         text = "".join(runs)
     text = re.sub(
         r'&lt;a id=&quot;(ref-\d+)&quot;&gt;&lt;/a&gt;',
-        r'<a name="\1"/>',
+        lambda m: f'<a name="{namespace}{m.group(1)}"/>',
         text,
     )
     text = re.sub(
         r'\[\[(\d+)\]\]\(#(ref-\d+)\)',
-        r'<a href="#\2" color="#2457a6">[\1]</a>',
+        lambda m: f'<a href="#{namespace}{m.group(2)}" color="#2457a6">[{m.group(1)}]</a>',
         text,
     )
     text = re.sub(r"\[([^]]+)\]\((https?://[^)]+)\)", r'<a href="\2" color="#2457a6">\1</a>', text)
@@ -69,17 +69,19 @@ def build():
     pdfmetrics.registerFont(TTFont("NotoSC", r"C:\Windows\Fonts\NotoSansSC-VF.ttf"))
     JP_CHAR_WIDTHS = set(pdfmetrics.getFont("NotoJP").face.charWidths)
     styles = getSampleStyleSheet()
-    body = ParagraphStyle("JPBody", fontName="NotoJP", fontSize=9.3, leading=15, spaceAfter=5, wordWrap="CJK", textColor=colors.HexColor("#20242a"))
-    reference = ParagraphStyle("JPReference", parent=body, fontSize=7, leading=8.2, spaceAfter=0)
+    body = ParagraphStyle("JPBody", fontName="NotoJP", fontSize=9.3, leading=14.5, spaceAfter=5, wordWrap="CJK", textColor=colors.HexColor("#20242a"))
+    reference = ParagraphStyle("JPReference", parent=body, fontSize=7, leading=7.5, spaceAfter=0)
     h1 = ParagraphStyle("JPH1", parent=body, fontSize=19, leading=27, spaceAfter=12, textColor=colors.HexColor("#173f70"))
-    h2 = ParagraphStyle("JPH2", parent=body, fontSize=13, leading=19, spaceBefore=10, spaceAfter=6, textColor=colors.HexColor("#245b91"))
+    h2 = ParagraphStyle("JPH2", parent=body, fontSize=13, leading=19, spaceBefore=10, spaceAfter=6, keepWithNext=True, textColor=colors.HexColor("#245b91"))
     reference_heading = ParagraphStyle("JPReferenceHeading", parent=h2, fontSize=10.5, leading=12, spaceBefore=4, spaceAfter=1, keepWithNext=True)
-    h3 = ParagraphStyle("JPH3", parent=body, fontSize=11, leading=17, spaceBefore=7, spaceAfter=4)
+    h3 = ParagraphStyle("JPH3", parent=body, fontSize=11, leading=17, spaceBefore=7, spaceAfter=4, keepWithNext=True)
     bullet = ParagraphStyle("JPBullet", parent=body, leftIndent=5 * mm, firstLineIndent=-3 * mm)
     story = [Spacer(1, 35 * mm), Paragraph("RoboMaster 2026", ParagraphStyle("TitleJP", parent=h1, fontSize=28, leading=36, alignment=TA_CENTER)), Paragraph("初めて読む人のための構造と技術", ParagraphStyle("SubJP", parent=h2, alignment=TA_CENTER)), Spacer(1, 15 * mm), Paragraph("調査基準日：2026年8月18日", ParagraphStyle("DateJP", parent=body, alignment=TA_CENTER)), PageBreak()]
 
     for doc_index, name in enumerate(DOCS):
         lines = (ROOT / "docs" / name).read_text(encoding="utf-8").splitlines()
+        chapter_body = ParagraphStyle("Body_" + name, parent=body, spaceAfter=3 if name == "ch05.md" else body.spaceAfter)
+        chapter_markup = lambda text: markup(text, Path(name).stem + "-")
         i = 0
         in_references = False
         while i < len(lines):
@@ -89,23 +91,23 @@ def build():
             if line.startswith('--8<--'):
                 i += 1; continue
             if line.startswith("|") and i + 1 < len(lines) and re.match(r"^\|?\s*:?-+", lines[i + 1].strip().lstrip("|")):
-                rows = [[markup(c) for c in line.strip("|").split("|")]]
+                rows = [[chapter_markup(c) for c in line.strip("|").split("|")]]
                 i += 2
                 while i < len(lines) and lines[i].strip().startswith("|"):
-                    rows.append([markup(c) for c in lines[i].strip().strip("|").split("|")]); i += 1
-                table = Table([[Paragraph(c, body) for c in row] for row in rows], repeatRows=1, hAlign="LEFT")
+                    rows.append([chapter_markup(c) for c in lines[i].strip().strip("|").split("|")]); i += 1
+                table = Table([[Paragraph(c, chapter_body) for c in row] for row in rows], repeatRows=1, hAlign="LEFT")
                 table.setStyle(TableStyle([("BACKGROUND", (0,0), (-1,0), colors.HexColor("#dce8f4")), ("GRID", (0,0), (-1,-1), .35, colors.HexColor("#9aa7b3")), ("VALIGN", (0,0), (-1,-1), "TOP"), ("LEFTPADDING", (0,0), (-1,-1), 4), ("RIGHTPADDING", (0,0), (-1,-1), 4)]))
                 story.extend([table, Spacer(1, 4 * mm)]); continue
             if line.startswith("# "):
                 if doc_index: story.append(PageBreak())
-                story.append(Paragraph(markup(line[2:]), h1))
+                story.append(Paragraph(chapter_markup(line[2:]), h1))
             elif line.startswith("## "):
                 in_references = line[3:] == "参考文献"
-                story.append(Paragraph(markup(line[3:]), reference_heading if in_references else h2))
-            elif line.startswith("### "): story.append(Paragraph(markup(line[4:]), h3))
-            elif re.match(r"^[-*] ", line): story.append(Paragraph("• " + markup(line[2:]), bullet))
-            elif re.match(r"^\d+\. ", line): story.append(Paragraph(markup(line), bullet))
-            else: story.append(Paragraph(markup(line), reference if in_references else body))
+                story.append(Paragraph(chapter_markup(line[3:]), reference_heading if in_references else h2))
+            elif line.startswith("### "): story.append(Paragraph(chapter_markup(line[4:]), h3))
+            elif re.match(r"^[-*] ", line): story.append(Paragraph("• " + chapter_markup(line[2:]), bullet))
+            elif re.match(r"^\d+\. ", line): story.append(Paragraph(chapter_markup(line), bullet))
+            else: story.append(Paragraph(chapter_markup(line), reference if in_references else chapter_body))
             i += 1
     SimpleDocTemplate(str(OUT), pagesize=A4, rightMargin=18*mm, leftMargin=18*mm, topMargin=17*mm, bottomMargin=19*mm, title="RoboMaster 2026 Research Report", author="Scramble").build(story, onFirstPage=footer, onLaterPages=footer)
     print(OUT)
