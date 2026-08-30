@@ -851,8 +851,11 @@
 </tbody>
 </table>
 <h2 id="23">2.3 組み込み制御——モデルを実時間へ落とす<a class="headerlink" href="#23" title="Permanent link">&para;</a></h2>
-<p>復旦大学（星雲EGAチーム）は、歩兵、ヒーロー、空中、哨兵の各ジンバルyaw軸に滑りモード制御を展開した。公開実装は通常滑り面と高速終端滑り面を使い分け、符号関数を飽和関数へ置き換えてチャタリングを抑える。異なる兵種へ移植できる共通クラスと数学的説明を併せて公開しており、制御器を一台限りの調整値からチーム内の再利用資産へ変えている。<a href="#ref-8">[8]</a></p>
-<p>山東理工大学（斉奇チーム）は、車輪脚の脚長制御にモデル予測制御（MPC）、未モデル化外乱の推定に線形拡張状態オブザーバー（LESO）を用いた。計算量を抑え、マイコンでの実行を想定したモデルである。<a href="#ref-9">[9]</a> 南京理工大学（Allianceチーム）は、ダート発射台の四隅へモーターとねじ軸を配置し、3Dプリンターの熱床調整と同じ原理でpitch、roll、yaw、高さを整える4Z軸調平機構を実装した。<a href="#ref-10">[10]</a> これらは、制御理論が機構の寸法、計算周期、センサー精度、試合前の準備時間に拘束される実例である。</p>
+<p>復旦大学（星雲EGAチーム）は、歩兵、ヒーロー、空中、哨兵の各ジンバルyaw軸にスライディングモード制御（SMC）を展開した。同大学の公開資料は、パラメータ数が少なく調整範囲が集中すること、同種のyawモーターを使うジンバルへ微調整で移植できることを採用理由に挙げる。追従誤差が小さいという報告は、適切なモデル化と調整を前提とする。異なる兵種で照準方向を追従させながら調整・移植の負担を減らす点に、工学上の意義がある。<a href="#ref-8">[8]</a></p>
+<p>この実装は角度・角速度から制御量を求め、モータードライバーの単位へ換算して電流指令として渡す。トルクを生む入力によって角度を追従させる構成であり、トルク目標そのものへの追従を示すものではない。通常滑り面と高速終端滑り面を使い分け、誤差が小さい領域では通常滑り面へ切り替え、符号関数を飽和関数へ置き換えてチャタリングを抑える。共通クラスと数学的説明の公開によって、制御器をチーム内の再利用資産にしている。<a href="#ref-8">[8]</a></p>
+<p>山東理工大学（斉奇チーム）は、車輪脚で姿勢・走行を安定させる制御と、車体高さ・横傾斜を調整する制御を分担させた。線形二次レギュレーター（LQR）は脚角度、前後位置、車体pitchとそれぞれの速度から車輪トルクと脚の仮想トルクを求める。線形拡張状態オブザーバー（LESO）はモデル誤差や外乱を総外乱として推定し、その推定値でLQRの出力を補償する。一方、モデル予測制御（MPC）は車体高さとroll、それぞれの変化速度を状態とし、左右脚の支持力を求める。支持力と脚の仮想トルクを仮想モデル制御（VMC）で関節モーターのトルクへ変換する構成である。<a href="#ref-9">[9]</a></p>
+<p>同大学の技術報告では、単段PIDによる脚長制御は斜面や外乱への追従に課題があり、カスケードPIDで改善した後も、脚長とrollの補償が干渉したと述べる。高さとrollを一つのモデルで扱うMPCは、この干渉を避け、先の姿勢変化を見込んで支持力を配分するために採用された。報告上のMPC周期は10 ms、予測窓は15ステップ（0.15秒）、LQR＋LESOの周期は1 msである。線形化によって計算量を抑えたMPCはOrange Piの組み込みLinux上で動かし、マイコンはジンバル・発射機構制御やCAN通信を担う。著者はマイコン上でMPCを実装しておらず、そこへ移す場合はLQRへの変更を選択肢としている。<a href="#ref-9">[9]</a></p>
+<p>南京理工大学（Allianceチーム）は、ダート発射台の四隅へモーターとねじ軸を配置し、3Dプリンターの熱床調整と同じ原理でpitch、roll、yaw、高さを整える4Z軸調平機構を実装した。<a href="#ref-10">[10]</a> これらは、制御理論が機構の寸法、計算周期、センサー精度、試合前の準備時間に拘束される実例である。</p>
 <h2 id="24">2.4 センシング・測位・レーダー——異なる座標と通信を統合する<a class="headerlink" href="#24" title="Permanent link">&para;</a></h2>
 <p>RoboMasterの「レーダー」は、競技場を観測して敵機位置を競技システムへ送る固定設備である。西北工業大学（WMJチーム）は、単一のSDRとGNU Radioで競技無線を受信・解析し、ROS 2 Humble、Nav2、MPPI、BehaviorTree.CPPを組み合わせたレーダー系を公開した。<a href="#ref-11">[11]</a> ここでは点群測位、無線解析、座標変換、戦術通信が別々の専門作業になる。</p>
 <p>華北理工大学（Horizonチーム）の対空追跡系は、HIKVISION製工業用カメラと35 mmレンズで空中ロボットを検出し、画像偏差を視線角へ変換してGM6020ジンバルを駆動する。目標を失うと円形またはアルキメデス螺旋で探索する。3万枚超の注釈データを整備した一方、高解像度カメラが19 fpsに制限される遅延も報告した。<a href="#ref-12">[12]</a> センサーの解像度を上げれば追跡性能が自動的に上がるわけではなく、画角、フレーム周期、制御遅延を一つのループとして設計する必要がある。</p>
@@ -866,8 +869,10 @@
 <p>華南農業大学（Taurusチーム）のエンジニアロボットは、左右各7軸の人型両腕とVRヘッドセットによるジェスチャートラッキングを組み合わせた。片腕で対象を拘束し、もう片腕で挿入・回転する操作では、関節の自己干渉、視野、通信遅延、姿勢保持を操縦画面と機構の双方で解く必要がある。同大学は全国大会で最高難度の4級装配を3回完了したと報告している。<a href="#ref-17">[17]</a></p>
 <p><strong>技術映像 M03：</strong> RoboMaster公式「<a href="https://www.bilibili.com/video/BV1Yi5M6DE8t/">双七軸人型アーム｜華南農業大学エンジニアロボット</a>」（2026年5月12日、00:00–00:30）。両腕の関節配置と対象物へ接近する際の姿勢変化を確認できる。転載不可のため、本報告では埋め込み画像を複製せず公式動画へリンクする。<a href="#ref-18">[18]</a></p>
 <h2 id="28">2.8 シミュレーション・開発基盤——実機完成前に統合を始める<a class="headerlink" href="#28" title="Permanent link">&para;</a></h2>
-<p>深セン北理モスクワ大学（PolarBearチーム）は、Gazeboによるアルゴリズム検証、半実物試験、実車検証を段階化した。シャーシとジンバルの間に<code>gimbal_odom</code>座標系を置き、ナビゲーションと自動照準が別々のTF木を持つ問題を解消している。<a href="#ref-19">[19]</a> 河北科技大学（Actor&amp;Thinkerチーム）のDaedalusは、自動照準、エンジニア視覚、対空処理を仮想環境で先行試験する。<a href="#ref-20">[20]</a> 華南理工大学（華南虎チーム）のSimulatorXは、実機アルゴリズムよりも操作手訓練と戦術検討を対象とし、ローカル練習とオンライン対戦を提供する。<a href="#ref-21">[21]</a></p>
-<p>三例の目的は異なる。Gazebo/TF環境は車体とセンサーの座標整合、Daedalusは視覚ロジック、SimulatorXは人と戦術を試す。Sim2Realは仮想結果を実機性能とみなす手法ではなく、壊れやすい統合工程を実車完成前へ前倒しする開発手順である。</p>
+<p>深セン北理モスクワ大学（PolarBearチーム）は、実車が使えない期間にも哨兵のナビゲーション開発を進めるため、Gazeboによるアルゴリズム検証、半実物試験、実車検証を段階化した。2025年の報告では、機械・配線の完成が大会出発の約1週間前になったと述べる。仮想の下位制御系が実機に近いシャーシ・ジンバル・発射のインターフェースを提供し、ROS 2・Nav2上で測位、経路追従、統合動作を先に確かめる。公開パッケージは仮想環境と実機の両方に起動手順を持つ。実機完成を待たずにアルゴリズム開発と接続確認を進められることが、開発基盤としての主要な価値である。<a href="#ref-19">[19]</a></p>
+<p>座標系の統合は、その検証を支える実装である。シャーシとジンバルの間に、ジンバルIMUの起動時の基準を表す<code>gimbal_odom</code>座標系を置き、ナビゲーション・自動照準・意思決定が同じTF木（座標変換の階層）を共有する。これは、別々のTF木では追跡対象と車体の位置関係を共通に扱いにくいという問題への対処である。ただし、元記事はGazeboでのナビゲーション検証を有用とする一方、発光する装甲板の描画では連続した画像認識を得られなかったと報告しており、視覚系の実機性能まで確認できたとはいえない。<a href="#ref-19">[19]</a></p>
+<p>河北科技大学（Actor&amp;Thinkerチーム）のDaedalusは、自動照準、エンジニア視覚、対空処理を、再現可能な仮想条件で先行試験する。同大学は、対空アルゴリズムを仮想環境で構築・調整し、一部の実データで微調整して実機へ投入したと報告している。<a href="#ref-20">[20]</a> 華南理工大学（華南虎チーム）のSimulatorXは、操作手訓練と戦術検討を対象とし、ローカル練習とオンライン対戦を提供する。<a href="#ref-21">[21]</a> ナビゲーションの開発・統合、視覚処理の検証、人の操縦・戦術訓練は、同じシミュレーションでも試す対象が異なる。</p>
+<p>本節のアルゴリズム開発・検証には「シミュレーションベース開発・検証」を用いる。PolarBearの元記事が掲げる「Sim2Real」は原題として保持するが、学習済み方策を実機へ移す手法の実証を意味するものとしては扱わない。確認できるのは、仮想環境で先行開発し、実データ・実機で検証する工程であり、仮想結果をそのまま実機性能とみなすことではない。<a href="#ref-19">[19]</a><a href="#ref-20">[20]</a></p>
 <h2 id="29">2.9 システム統合——一台の性能から試合運用へ<a class="headerlink" href="#29" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -940,8 +945,8 @@
 <p><a id="ref-5"></a>[5] 中国石油大学（華東）RPSチーム, 「RM2026 3508モーター用P17ホイール減速機」, 2026年. <a href="https://bbs.robomaster.com/article/1935506">RoboMasterコミュニティ</a></p>
 <p><a id="ref-6"></a>[6] 北京理工大学DreamChaserチーム, 「RM2026 FPGA誘導ダート制御器のハードウェア／ソフトウェア公開」, 2026年. <a href="https://bbs.robomaster.com/article/1939776">RoboMasterコミュニティ</a></p>
 <p><a id="ref-7"></a>[7] 深セン大学RobotPilotsチーム, 「RM2026 誘導ダート公開」, 2026年8月15日. <a href="https://bbs.robomaster.com/article/1938958">RoboMasterコミュニティ</a></p>
-<p><a id="ref-8"></a>[8] 復旦大学星雲EGAチーム, 「ジンバル滑りモード制御器――教材と公開実装」, 2026年8月17日. <a href="https://bbs.robomaster.com/article/1939327">技術記事</a>, <a href="https://github.com/xinruilee04/smc_controller">GitHub</a></p>
-<p><a id="ref-9"></a>[9] 山東理工大学斉奇チーム, 「MPC脚長制御とLESO外乱推定」, 2026年8月9日. <a href="https://bbs.robomaster.com/article/1938235">RoboMasterコミュニティ</a></p>
+<p><a id="ref-8"></a>[8] 復旦大学星雲EGAチーム, 「ジンバルのスライディングモード制御器――教材と公開実装」, 2026年8月17日. <a href="https://bbs.robomaster.com/article/1939327">技術記事</a>, <a href="https://github.com/xinruilee04/smc_controller/tree/2d5bd5861b4811c1f4e42316b7b538f99eddfc8b">GitHub：README・C++実装</a>（2026年8月30日閲覧）</p>
+<p><a id="ref-9"></a>[9] 山東理工大学斉奇チーム, 「車輪脚ロボットの脚長モデルとLESO観測器」, 2026年8月9日. <a href="https://bbs.robomaster.com/article/1938235">公開記事</a>, <a href="https://hz-rm-bbs-web-prod.oss-cn-hangzhou.aliyuncs.com/c1e56c646518487cb1773f5dc8459da51786286616374/Qi-Q26-Leg_Robot.zip">配布ZIP内技術報告PDF</a> pp.1–5, 8–10, 14–15, <a href="https://github.com/Ultra-Mann/MATLAB-CODE/blob/48c69dfa4bc91034c448fa7b038d0e122c54cc8a/LQR_LESO_calc.m">MATLAB実装</a>（2026年8月30日閲覧）</p>
 <p><a id="ref-10"></a>[10] 南京理工大学Allianceチーム, 「ダート架台4Z軸自動調平」, 2026年8月13日. <a href="https://bbs.robomaster.com/article/1938302">技術記事</a>, <a href="https://github.com/floatpigeon/4z-axis-chassis-leveling">GitHub</a></p>
 <p><a id="ref-11"></a>[11] 西北工業大学WMJチーム, 「単一SDR＋GNU Radioレーダー」, 2026年. <a href="https://bbs.robomaster.com/article/1938208">技術記事</a>, <a href="https://github.com/zplszz/WMJRadar">GitHub</a></p>
 <p><a id="ref-12"></a>[12] 華北理工大学Horizonチーム, 「対空レーザー追跡」, 2026年4月5日. <a href="https://bbs.robomaster.com/article/1883301">技術記事</a>, <a href="https://github.com/BreCaspian/LaserTracking-2026">GitHub</a></p>
@@ -951,8 +956,8 @@
 <p><a id="ref-16"></a>[16] 浙江大学Hello Worldチーム, 「HWSentryNav26」, 2026年. <a href="https://github.com/Polyacetone/HWSentryNav26">GitHub</a></p>
 <p><a id="ref-17"></a>[17] 華南農業大学, 「2026年RoboMaster全国準優勝――大学過去最高成績」, 2026年8月11日. <a href="https://www.scau.edu.cn/2026/0811/c17646a441849/page.htm">大学公式記事</a></p>
 <p><a id="ref-18"></a>[18] RoboMaster機甲大師, 「双七軸人型アーム――華南農業大学のエンジニアロボット」, 2026年5月12日. <a href="https://www.bilibili.com/video/BV1Yi5M6DE8t/">Bilibili公式動画</a></p>
-<p><a id="ref-19"></a>[19] 深セン北理モスクワ大学PolarBearチーム, 「Sim2Realナビゲーションと整機モデリング」, 2025年4月13日. <a href="https://bbs.robomaster.com/article/714072">技術記事</a>, <a href="https://github.com/SMBU-PolarBear-Robotics-Team">GitHub</a></p>
-<p><a id="ref-20"></a>[20] 河北科技大学Actor&amp;Thinkerチーム, 「RM2026 視覚アルゴリズムシミュレーター」, 2026年. <a href="https://bbs.robomaster.com/article/1887395">RoboMasterコミュニティ</a></p>
+<p><a id="ref-19"></a>[19] 深セン北理モスクワ大学PolarBearチーム, 「Sim2Real导航及整车建模开源分享」, 2025年4月13日, 技術背景・2.1–2.2節. <a href="https://bbs.robomaster.com/article/714072">技術記事</a>, <a href="https://github.com/SMBU-PolarBear-Robotics-Team/pb2025_sentry_nav/tree/fec4fd00360567b59cf1a8eb2bbc061abe349d3e">GitHub：pb2025_sentry_nav</a>（2026年8月30日閲覧）</p>
+<p><a id="ref-20"></a>[20] 河北科技大学Actor&amp;Thinkerチーム, 「RM2026 視覚アルゴリズムシミュレーター」, 2026年6月9日. <a href="https://bbs.robomaster.com/article/1887395">RoboMasterコミュニティ</a>, <a href="https://github.com/Blackjack200/bevy_robomaster_simulator">GitHub：Daedalus</a>（2026年8月30日閲覧）</p>
 <p><a id="ref-21"></a>[21] 華南理工大学華南虎チーム, 「SimulatorXシミュレーター公開」, 2022年10月8日. <a href="https://bbs.robomaster.com/article/9145">技術記事</a>, <a href="https://github.com/scutrobotlab/RM2022_SimulatorX">GitHub</a></p>
 <p><a id="ref-22"></a>[22] RoboMaster機甲大師, 「車輪・リング脚構型歩兵ロボット――東北大学TDTチーム」, 2025年5月27日. <a href="https://www.bilibili.com/video/BV1AXjRzWE9k/">Bilibili公式動画（00:00–00:22）</a></p>
 
