@@ -28,6 +28,7 @@
 3. リポジトリ：実装、ライセンス、変更履歴。
 4. 報道：周辺状況。一次資料を置き換えない。
 5. 本報告の分析：資料から導く解釈。主催者の意図とは区別する。
+6. 実務家の技術査読：実装の解釈と工学上の意義を検討する。事実訂正は一次資料と照合し、査読者の解釈・未検証の比較仮説と区別する。本版では@Kenjiro-Minamikawaによる[Issue #1](https://github.com/Nico-Tech-Shenzhen/robomaster-report/issues/1)・[Issue #2](https://github.com/Nico-Tech-Shenzhen/robomaster-report/issues/2)を反映した（2026年8月30日）。
 
 ## D. 未解決の証拠不足
 

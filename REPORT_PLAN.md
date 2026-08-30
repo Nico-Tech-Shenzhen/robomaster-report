@@ -18,7 +18,7 @@ Publication order is Chapters 1–9 below and requires explicit user approval to
 
 ### 2. 2026年のロボットと技術
 
-- Purpose/sections: a deep, parallel account of mechanical structures; drive/power/electronics; embedded control; sensing/localization/radar; vision/auto-aim; autonomy/decision; operation/UI/VR; simulation/Sim2Real/development platforms; system/process integration.
+- Purpose/sections: a deep, parallel account of mechanical structures; drive/power/electronics; embedded control; sensing/localization/radar; vision/auto-aim; autonomy/decision; operation/UI/VR; simulation-based development/verification and development platforms; system/process integration.
 - Boundary: explain concrete systems rather than vague「AI化」; leave rule chronology and outcomes to Chapter 3.
 - Evidence: Taurus `RM2026-0103, RM2026-0440, RM2026-0442, RM2026-0444, RM2026-0445` (H/M); TDT `RM2026-0441, RM2026-0443` (H); ECUST `RM2026-0446, RM2026-0452` (H); radar `RM2026-0411`; RobotPilots `RM2026-0405, RM2026-0431`; BIT `RM2026-0433`; candidates `RM2026-0406, RM2026-0408, RM2026-0409, RM2026-0416, RM2026-0418, RM2026-0419, RM2026-0420, RM2026-0421, RM2026-0422, RM2026-0423, RM2026-0426, RM2026-0428, RM2026-0432, RM2026-0435, RM2026-0439`.
 - Media: M03–M06, the report's largest technical concentration: Taurus dual arms/VR, TDT wheel-leg/four-axis sentry, ECUST serial-leg, radar/vision pipelines, CAD/mechanism images, hardware/system tables.
@@ -83,3 +83,7 @@ Publication order is Chapters 1–9 below and requires explicit user approval to
 ## Evidence access protocol
 
 For orientation read only `CODEX-HANDOFF.md`, `corpus-integrity.md`, and relevant portions of `claims-audit.md`. Read `evidence-clusters.md` to select converging evidence. Then use this map to choose one thematic summary or `source-map.md`; consult `INDEX.md` only to resolve candidates. Open individual cards only for claims being written, confidence checks, or citation/media metadata. Missing-card legacy IDs are search leads, never citations.
+
+## Practitioner review routing — 2026-08-30
+
+[Issues #1–#2 integration and attribution](PRACTITIONER_REVIEW.md): control architecture → 2.3; simulation development → 2.8; terrain-driven requirements → 3.4; reuse terminology and scope → 4.5/4.7; competition comparison hypothesis → 9.3. No broad research restart. The four-wheel/MPC prevalence hypothesis remains unpublished pending matched rules and representative implementation evidence, with Kosen and NHK/ABU cohorts kept separate.

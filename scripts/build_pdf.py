@@ -80,7 +80,7 @@ def build():
 
     for doc_index, name in enumerate(DOCS):
         lines = (ROOT / "docs" / name).read_text(encoding="utf-8").splitlines()
-        chapter_body = ParagraphStyle("Body_" + name, parent=body, spaceAfter=3 if name == "ch05.md" else body.spaceAfter)
+        chapter_body = ParagraphStyle("Body_" + name, parent=body, spaceAfter=3 if name in {"ch05.md", "ch09.md"} else body.spaceAfter)
         chapter_markup = lambda text: markup(text, Path(name).stem + "-")
         i = 0
         in_references = False

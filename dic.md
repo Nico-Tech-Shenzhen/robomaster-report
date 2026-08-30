@@ -30,6 +30,10 @@ This is the naming authority for reader-facing Japanese. Tables are intentionall
 | 麦克纳姆轮 | メカナムホイール | 麦克纳姆轮 | — |
 | 底盘 | シャーシ | 底盤; 底盘 | — |
 | 云台 | ジンバル | 雲台; 云台 | — |
+| 滑模控制 / Sliding Mode Control | スライディングモード制御（SMC） | 滑りモード制御 | 初出は全称＋SMC、以後はSMC。滑り面・高速終端滑り面は機構説明として保持。 |
+| 仿真开发 / simulation-based development | シミュレーションベース開発 | — | 実機完成前のアルゴリズム開発・システム統合を指す。 |
+| 仿真验证 / simulation-based verification | シミュレーションベース検証 | — | 仮想環境での機能・動作確認。実機性能の実証とは区別する。 |
+| Sim2Real | Sim2Real | — | 原題は保持。本文では仮想環境から実機へ何を移すかを明示し、学習済み方策・制御器の移転と開発・検証工程を区別する。機械的一括置換はしない。 |
 | 总线 | バス | 総線; 总线 | Use「CANバス」where specific. |
 | 图传 | 画像伝送 | 図伝; 图传 | Translate the function. |
 | 检录 | 技術検査 | 検録; 检录 | Chinese allowed in source titles. |
