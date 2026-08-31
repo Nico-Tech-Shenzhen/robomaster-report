@@ -331,6 +331,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="2.2 駆動・電源・回路——計算資源を機体へ載せる">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        電力制約を計測・変換・駆動配分へつなぐ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -411,7 +428,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         参考文献
@@ -691,6 +708,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="2.2 駆動・電源・回路——計算資源を機体へ載せる">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        電力制約を計測・変換・駆動配分へつなぐ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -771,7 +805,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         参考文献
@@ -850,6 +884,42 @@
 </tr>
 </tbody>
 </table>
+<h3 id="_1">電力制約を計測・変換・駆動配分へつなぐ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>天津工業大学（304チーム）は、モーターと駆動回路の電力を負荷・回転数を変えて測り、電流、回転速度、それらの積と二乗を含む6係数モデルを同定した。制御器はこのモデルで電力を予測し、4モーターの制御偏差に応じて許容電力を配分し、送信前の電流指令を制限する。スーパーキャパシタの残量に応じて利用可能電力を減衰させる入力も備える。公開コードと同定用スクリプトは、電力制約が実時間のアクチュエーター配分へ変換される過程を示す。著者が報告する競技実績はRMUL 2026であり、RMUCへの投入実績とは区別する。<a href="#ref-23">[23]</a></p>
+<p>測定位置をそろえる仕事も重要である。桂林理工大学（群星チーム）の2025年スーパーキャパシタ制御板Plusは、制御板の手元電圧ではなく、電源管理モジュール（PMM）のChassis端子電圧を全差動回路で遠隔検出し、往復配線の電圧降下による誤差を補償する。同大学の報告では、約50 cmの18 AWG配線、24 V・0〜10 A負荷という条件で、裁判システム表示に対する電力誤差が補償なしの−5 Wから±1 Wへ改善した。これは報告された試験条件での値である。同大学は、西交利物浦大学の電力モデルの考え方を採用し、自作基板の電力計測で補正する構成も説明している。<a href="#ref-24">[24]</a></p>
+<p><strong>表M21：学生の電力設計を役割別に比較する。</strong> 公開コード・設計資料・著者の試験報告から本報告が整理した。各行は別の設計事例であり、一台の共通回路ではない。</p>
+<table>
+<thead>
+<tr>
+<th>大学・担当領域</th>
+<th>実装と工学上の役割</th>
+<th>確認範囲・限界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>天津工業大学：モデルと駆動配分</td>
+<td>実測から電力モデルを同定し、4モーターへ配分。予測超過時に電流指令を抑制</td>
+<td>コード・同定手順を公開。RMUL 2026で顕著な超過がなかったとの著者報告。機体ごとの再同定が必要 <a href="#ref-23">[23]</a></td>
+</tr>
+<tr>
+<td>桂林理工大学：蓄電・検出・保護</td>
+<td>双方向の充放電制御、端子電圧の遠隔補償、電流検出。TVS、ヒューズ、PMOS・PWMのハードウェアによるタイミング保護を統合</td>
+<td>旧版の素子破損を踏まえた設計。急旋回時にバッファのみの閉ループ制御で給電停止した経験も報告 <a href="#ref-24">[24]</a></td>
+</tr>
+<tr>
+<td>西交利物浦大学：電源系統の分離</td>
+<td>OmniCtrl 2 Proで24 V→5 V→3.3 Vへ変換。基板内・外部の5 V、デジタル・アナログの3.3 Vを分け、電子ヒューズ（eFuse）と起動順序制御で保護</td>
+<td>マニュアルの電源系統図で確認。著者は異常電源試験と24時間連続運転を報告。電源系統の分離はガルバニック絶縁を意味しない <a href="#ref-25">[25]</a></td>
+</tr>
+<tr>
+<td>華中科技大学：計算機用電源</td>
+<td>MP2980の4スイッチ昇降圧回路でNUC用24 V→20 V電源を構成。大電流経路の銅箔、帰還配線、放熱器取付けを設計</td>
+<td>著者報告のリップルは20 V・7 A出力で77 mVpp（波形の最大・最小差）。試合中の温度・耐振動性能まで示す値ではない <a href="#ref-26">[26]</a></td>
+</tr>
+</tbody>
+</table>
+<p>裁判システムの2026年通信仕様では、<code>0x0202</code>の電圧・電流・電力欄は予約領域であり、同メッセージにはバッファエネルギーと発射熱量が残る。一方、<code>0x0201</code>にはシャーシ電力上限が通知される。<a href="#ref-27">[27]</a> したがって、計測値の削除を「すべての閉ループ制御が不可能」「全大学に同じ電力モデルが必須」と読むことはできない。上記の実装は、通知される制約と自前の計測・推定を組み合わせ、配線誤差の補償、電力変換・保護、モーター配分を経て実機の運転へつなぐ具体例である。NUCや主制御基板への給電は機体全体の電源設計に属し、シャーシ電力の測定対象と同一ではない。主催者側の境界と資源管理は第7章7.2で詳述する。</p>
 <h2 id="23">2.3 組み込み制御——モデルを実時間へ落とす<a class="headerlink" href="#23" title="Permanent link">&para;</a></h2>
 <p>復旦大学（星雲EGAチーム）は、歩兵、ヒーロー、空中、哨兵の各ジンバルyaw軸にスライディングモード制御（SMC）を展開した。同大学の公開資料は、パラメータ数が少なく調整範囲が集中すること、同種のyawモーターを使うジンバルへ微調整で移植できることを採用理由に挙げる。追従誤差が小さいという報告は、適切なモデル化と調整を前提とする。異なる兵種で照準方向を追従させながら調整・移植の負担を減らす点に、工学上の意義がある。<a href="#ref-8">[8]</a></p>
 <p>この実装は角度・角速度から制御量を求め、モータードライバーの単位へ換算して電流指令として渡す。トルクを生む入力によって角度を追従させる構成であり、トルク目標そのものへの追従を示すものではない。通常滑り面と高速終端滑り面を使い分け、誤差が小さい領域では通常滑り面へ切り替え、符号関数を飽和関数へ置き換えてチャタリングを抑える。共通クラスと数学的説明の公開によって、制御器をチーム内の再利用資産にしている。<a href="#ref-8">[8]</a></p>
@@ -937,7 +1007,7 @@
 </tbody>
 </table>
 <p>RoboMaster 2026の技術的特徴は、個々のアルゴリズムの新しさよりも、機械、電力、センサー、実時間制御、操縦者、試合サーバーを一つの故障し得るシステムとして完成させる点にある。規則がこの統合課題をどう変えたかは、第3章で年代順に扱う。</p>
-<h2 id="_1">参考文献<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h2 id="_2">参考文献<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p><a id="ref-1"></a>[1] 人民日報, 「RoboMaster競技から20万人の若手エンジニア」, 2026年8月10日. <a href="https://www.peopleapp.com/column/30052888650-500007643026">記事</a></p>
 <p><a id="ref-2"></a>[2] RoboMaster機甲大師, 「低姿勢でトンネルを通過する直列脚――華東理工大学の歩兵ロボット」, 2026年5月27日. <a href="https://www.bilibili.com/video/BV1CSG26BENT/">Bilibili公式動画（00:00–00:48）</a></p>
 <p><a id="ref-3"></a>[3] 南京航空航天大学金城学院Born of Fireチーム, 「RM2026 偏置並列脚（整機）制御公開」, 2026年. <a href="https://bbs.robomaster.com/article/1883510">RoboMasterコミュニティ</a></p>
@@ -960,6 +1030,11 @@
 <p><a id="ref-20"></a>[20] 河北科技大学Actor&amp;Thinkerチーム, 「RM2026 視覚アルゴリズムシミュレーター」, 2026年6月9日. <a href="https://bbs.robomaster.com/article/1887395">RoboMasterコミュニティ</a>, <a href="https://github.com/Blackjack200/bevy_robomaster_simulator">GitHub：Daedalus</a>（2026年8月30日閲覧）</p>
 <p><a id="ref-21"></a>[21] 華南理工大学華南虎チーム, 「SimulatorXシミュレーター公開」, 2022年10月8日. <a href="https://bbs.robomaster.com/article/9145">技術記事</a>, <a href="https://github.com/scutrobotlab/RM2022_SimulatorX">GitHub</a></p>
 <p><a id="ref-22"></a>[22] RoboMaster機甲大師, 「車輪・リング脚構型歩兵ロボット――東北大学TDTチーム」, 2025年5月27日. <a href="https://www.bilibili.com/video/BV1AXjRzWE9k/">Bilibili公式動画（00:00–00:22）</a></p>
+<p><a id="ref-23"></a>[23] 天津工業大学304チーム, 「功率控制算法」, 2026年4月8日. <a href="https://bbs.robomaster.com/article/1882902">技術記事</a>, <a href="https://github.com/TGURM304/PowerManager/tree/9577f344d09740b6bc3db4dbbdd178026038725f">PowerManager・公開コードとREADME</a>（MIT、2026年8月31日照合）</p>
+<p><a id="ref-24"></a>[24] 桂林理工大学群星チーム, 「RM2025超级电容控制板Plus『硬件篇』」, 2025年. <a href="https://bbs.robomaster.com/article/714505">著者の設計・試験報告</a>, <a href="https://github.com/DonotFreeze/RM-PCB-SuperCapControlBoard_Plus">公開設計</a>（2026年8月31日照合）</p>
+<p><a id="ref-25"></a>[25] 西交利物浦大学OmniXチーム, 「OmniCtrl 2 Pro主控板开源」, 2026年. <a href="https://bbs.robomaster.com/article/1914397">技術記事</a>, <a href="https://hz-rm-bbs-web-prod.oss-cn-hangzhou.aliyuncs.com/6f69f0de61864d0e8c3cc84cb3342ac61782722376803/OmniCtrl-Pro-2-Manual-1_0.pdf">ユーザーマニュアルV1.0・§2、冊子pp.14–15</a>, <a href="https://hz-rm-bbs-web-prod.oss-cn-hangzhou.aliyuncs.com/25b53e855e4c445a865bc0ecb15fc1b41782722375960/SCH_OMX_OmniCtrl_Pro_2_2558.pdf">回路図</a>（2026年8月31日照合）</p>
+<p><a id="ref-26"></a>[26] 華中科技大学狼牙チーム, 「MP2980超小BUCK-BOOST升降压模块」. <a href="https://bbs.robomaster.com/article/376777">著者の設計・測定報告</a>, <a href="https://oshwhub.com/fengl/mp2980-ultra-small-buck-boost">公開設計</a>（2026年8月31日照合）</p>
+<p><a id="ref-27"></a>[27] RoboMaster組織委員会, 「RoboMaster 2026大学シリーズ通信仕様」V2.0.0, 2026年6月26日, 表1-12・1-13（0x0201・0x0202）. <a href="https://hz-rm-bbs-web-prod.oss-cn-hangzhou.aliyuncs.com/2568625171b44e49a44541ec0dbdd2d51782458406243/RoboMaster%202026%20%E6%9C%BA%E7%94%B2%E5%A4%A7%E5%B8%88%E9%AB%98%E6%A0%A1%E7%B3%BB%E5%88%97%E8%B5%9B%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE%20V2.0.0%EF%BC%8820260626%EF%BC%89.pdf">公式PDF</a>（2026年8月31日照合）</p>
 
 
 
