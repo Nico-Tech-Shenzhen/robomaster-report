@@ -80,7 +80,7 @@ def build():
 
     for doc_index, name in enumerate(DOCS):
         lines = (ROOT / "docs" / name).read_text(encoding="utf-8").splitlines()
-        chapter_body = ParagraphStyle("Body_" + name, parent=body, spaceAfter=3 if name in {"ch05.md", "ch09.md"} else body.spaceAfter)
+        chapter_body = ParagraphStyle("Body_" + name, parent=body, leading=13.5 if name == "ch03.md" else body.leading, allowWidows=0 if name == "ch03.md" else 1, spaceAfter=3 if name in {"ch03.md", "ch05.md", "ch09.md"} else body.spaceAfter)
         chapter_markup = lambda text: markup(text, Path(name).stem + "-")
         i = 0
         in_references = False
@@ -95,7 +95,14 @@ def build():
                 i += 2
                 while i < len(lines) and lines[i].strip().startswith("|"):
                     rows.append([chapter_markup(c) for c in lines[i].strip().strip("|").split("|")]); i += 1
-                table = Table([[Paragraph(c, chapter_body) for c in row] for row in rows], repeatRows=1, hAlign="LEFT")
+                # Issue #3 evidence tables: retain readable label columns in print.
+                power_widths = {
+                    "大学・担当領域": (0.19, 0.43, 0.38),
+                    "年・比較文書": (0.17, 0.46, 0.37),
+                    "量": (0.23, 0.36, 0.41),
+                }.get(rows[0][0])
+                col_widths = [(174 * mm - 12) * ratio for ratio in power_widths] if power_widths else None
+                table = Table([[Paragraph(c, chapter_body) for c in row] for row in rows], colWidths=col_widths, repeatRows=1, hAlign="LEFT")
                 table.setStyle(TableStyle([("BACKGROUND", (0,0), (-1,0), colors.HexColor("#dce8f4")), ("GRID", (0,0), (-1,-1), .35, colors.HexColor("#9aa7b3")), ("VALIGN", (0,0), (-1,-1), "TOP"), ("LEFTPADDING", (0,0), (-1,-1), 4), ("RIGHTPADDING", (0,0), (-1,-1), 4)]))
                 story.extend([table, Spacer(1, 4 * mm)]); continue
             if line.startswith("# "):

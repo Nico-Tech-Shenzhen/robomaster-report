@@ -23,6 +23,7 @@ Publication order is Chapters 1–9 below and requires explicit user approval to
 - Evidence: Taurus `RM2026-0103, RM2026-0440, RM2026-0442, RM2026-0444, RM2026-0445` (H/M); TDT `RM2026-0441, RM2026-0443` (H); ECUST `RM2026-0446, RM2026-0452` (H); radar `RM2026-0411`; RobotPilots `RM2026-0405, RM2026-0431`; BIT `RM2026-0433`; candidates `RM2026-0406, RM2026-0408, RM2026-0409, RM2026-0416, RM2026-0418, RM2026-0419, RM2026-0420, RM2026-0421, RM2026-0422, RM2026-0423, RM2026-0426, RM2026-0428, RM2026-0432, RM2026-0435, RM2026-0439`.
 - Media: M03–M06, the report's largest technical concentration: Taurus dual arms/VR, TDT wheel-leg/four-axis sentry, ECUST serial-leg, radar/vision pipelines, CAD/mechanism images, hardware/system tables.
 - Git recovery/gaps: robot specification/control-stack tables; comparable test conditions; match-use proof; `RM2026-0453` wireless charging analysis.
+- Issue #3 (2026-08-31): §2.2 preserves drivetrain/computing cases and adds student power engineering. Separate evidence layer `research/power-2026/`: `TJU304-2026-MOTOR-MODEL`, `GLUT-2025-SUPERCAP`, `XJTLU-OMNIX-2026-POWER-TREE`, `HUST-2026-MP2980`; current telemetry from `PROTOCOL-COMPARISON`. RMUL deployment is labelled, not treated as RMUC validation.
 
 ### 3. ルール変更と技術開発の変化
 
@@ -31,6 +32,7 @@ Publication order is Chapters 1–9 below and requires explicit user approval to
 - Evidence: `RM2026-0201, RM2026-0301`; context `RM2026-0101, RM2026-0103, RM2026-0105`; selected response cards from `RM2026-0405, RM2026-0406, RM2026-0408, RM2026-0409, RM2026-0411, RM2026-0418, RM2026-0423, RM2026-0426, RM2026-0428, RM2026-0431, RM2026-0432, RM2026-0433, RM2026-0439, RM2026-0440–RM2026-0446, RM2026-0452`.
 - Media: M07 version/ranking timeline; M08 rule-to-outcome chain.
 - Git recovery/gaps: lost V1/V2 comparisons, chronology, ranking explanations, rule-PDF URLs; corpus lacks a complete detailed version comparison.
+- Issue #3 (2026-08-31): §3.3 owns one compact RMUC power chronology from `research/power-2026/cards/RULE-EVOLUTION-2024-2026.md` and `PROTOCOL-COMPARISON.md`, corrected against primary PDFs as recorded in `PRACTITIONER_REVIEW.md`. BIT wireless example distinguishes inspection from actual charging. Detailed current rules → §7.2.
 
 ### 4. オープンソースと技術移転
 
@@ -63,6 +65,7 @@ Publication order is Chapters 1–9 below and requires explicit user approval to
 - Evidence: `RM2026-0201, RM2026-0301, RM2026-0101, RM2026-0105, RM2026-0501`; integrations `RM2026-0408, RM2026-0409` after exact checks.
 - Media: M15 referee/system architecture; M16 mandatory/optional/student-developed and education-product tables.
 - Git recovery/gaps: product/referee tables, compatibility notices, S1/EP/SDK status; authoritative current product/version matrix.
+- Issue #3 (2026-08-31): §7.2 is the primary home of RMUC power governance. Separate evidence layer `research/power-2026/`: `OFFICIAL-2026-RULES`, `OFFICIAL-2026-SPEC`; retain chassis power / total electrical consumption / game chassis energy / referee buffer energy / physical capacitor energy distinctions. Student circuits → §2.2; chronology → §3.3.
 
 ### 8. RoboMasterの制度化と社会的位置づけ
 
